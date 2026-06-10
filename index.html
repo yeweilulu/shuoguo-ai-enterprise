@@ -1,0 +1,4889 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>硕果 AI · 发布会演示 · 人工智能赋能企业高质量发展</title>
+<script src="./vendor/gsap.min.js"></script>
+<script type="importmap">
+{
+  "imports": {
+    "three": "./vendor/three/three.module.js",
+    "three/addons/": "./vendor/three/addons/"
+  }
+}
+</script>
+<link rel="stylesheet" href="./assets/index.css">
+<link rel="stylesheet" href="./assets/p5-bundle.css">
+<style>
+html,
+body{
+  width:100%;
+  height:100%;
+  max-width:100%;
+  max-height:100%;
+  margin:0;
+  overflow:hidden !important;
+  overscroll-behavior:none;
+  scrollbar-width:none;
+}
+body{
+  position:fixed;
+  inset:0;
+}
+html::-webkit-scrollbar,
+body::-webkit-scrollbar{
+  width:0;
+  height:0;
+  display:none;
+}
+#intro,
+#stage-wrap,
+#preshow{
+  overflow:hidden !important;
+}
+#p5-mount > div,
+#p5-mount #app-scale-root > div{
+  background:transparent !important;
+}
+</style>
+</head>
+<body class="intro-lock-stage">
+<div id="progress"></div>
+<!-- Preshow 视频模块已按要求临时注释，恢复时取消本段注释并把 load 入口改回 playPreshow()。
+<div id="preshow">
+  <div class="ps-stage" id="ps-stage">
+    <canvas id="ps-ambi"></canvas>
+    <div class="ps-scene" id="ps-scene">
+      <video id="ps-video" playsinline src="./0522-硕果.m4v"></video>
+      <div id="ps-start">
+        <div class="ps-play-btn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button id="ps-skip">SKIP →</button>
+</div>
+-->
+<div id="intro">
+  <div class="intro-bg"></div>
+  <div class="intro-half intro-top"></div>
+  <div class="intro-half intro-bottom"></div>
+  <div class="intro-kicker">SO GOOD AI · GLOBAL STRATEGY LAUNCH</div>
+  <div class="intro-text" id="intro-text"></div>
+  <div class="crack-line"></div>
+  <div class="crack-glow"></div>
+</div>
+<div id="stage-wrap">
+  <div id="stage">
+
+    <!-- 1 封面 -->
+    <section class="slide active" id="slide-cover">
+      <canvas class="fx" id="bg-cover"></canvas>
+      <div class="cover-wrap cover-wrap--text">
+        <div class="cover-left cover-left--text">
+          <h1 class="cover-title" id="cover-title-text"><span class="cover-title-line cover-title-line--top">从技术前沿</span><span class="cover-title-line cover-title-line--bottom">到经营现场</span></h1>
+        </div>
+      </div>
+      <div class="brand-tag">SHUOGUO · AI</div>
+      <div class="page-num"><em>01</em> / 32</div>
+    </section>
+
+    <!-- 2 过去十年，AI 一直在证明自己有多强 -->
+    <section class="slide direction-stage" id="slide-direction">
+      <div class="direction-story">
+        <div class="direction-head">
+          <div class="direction-kicker">PAST DECADE</div>
+          <h2 class="direction-title">过去十年，AI一直在证明自己有多强</h2>
+        </div>
+        <div class="direction-card-row">
+          <article class="direction-card direction-card--lab">
+            <div class="direction-card-label">实验室</div>
+            <div class="direction-card-visual">
+              <img src="./assets/generated/lab-transparent.png" alt="实验室场景">
+            </div>
+            <span class="direction-card-overlay" aria-hidden="true"></span>
+          </article>
+          <article class="direction-card direction-card--chat">
+            <div class="direction-card-label">聊天框</div>
+            <div class="direction-card-visual">
+              <img src="./assets/generated/chat-ui-transparent.png" alt="AI 聊天界面">
+            </div>
+            <span class="direction-card-overlay" aria-hidden="true"></span>
+          </article>
+          <article class="direction-card direction-card--system">
+            <div class="direction-card-label">大公司系统</div>
+            <div class="direction-card-visual">
+              <img src="./assets/generated/enterprise-dashboard-transparent.png" alt="大公司系统场景">
+            </div>
+            <span class="direction-card-overlay" aria-hidden="true"></span>
+          </article>
+        </div>
+        <div class="direction-finale"><span>AI能不能真正帮到一家企业？</span></div>
+      </div>
+      <div class="brand-tag">SHUOGUO · AI</div>
+      <div class="page-num"><em>02</em> / 32</div>
+    </section>
+
+    <!-- 3 机缘 -->
+	    <section class="slide statement-slide" id="slide-opportunity">
+	      <div class="statement-inner">
+	        <h2 class="speed-execute-title opportunity-title reveal-item">硕果AI，让前沿技术进入真实生意。</h2>
+	        <div class="opportunity-flow reveal-item">
+	          <article class="opportunity-node opportunity-node--ai">
+	            <span class="opportunity-node-kicker">01</span>
+	            <div class="opportunity-node-label">前沿AI能力</div>
+	          </article>
+	          <span class="opportunity-glyph" aria-hidden="true">
+	            <svg viewBox="0 0 32 32" role="presentation" focusable="false" aria-hidden="true">
+	              <path d="M10 6 L20 16 L10 26"></path>
+	            </svg>
+	          </span>
+	          <article class="opportunity-node opportunity-node--mid">
+	            <span class="opportunity-node-kicker">02</span>
+	            <div class="opportunity-node-label">企业经营现场</div>
+	          </article>
+	          <span class="opportunity-glyph" aria-hidden="true">
+	            <svg viewBox="0 0 32 32" role="presentation" focusable="false" aria-hidden="true">
+	              <path d="M10 6 L20 16 L10 26"></path>
+	            </svg>
+	          </span>
+	          <article class="opportunity-node opportunity-node--result">
+	            <span class="opportunity-node-kicker">03</span>
+	            <div class="opportunity-node-label">商业结果</div>
+	          </article>
+	        </div>
+	      </div>
+	      <div class="brand-tag">SHUOGUO · AI</div>
+	      <div class="page-num"><em>03</em> / 32</div>
+	    </section>
+
+    <!-- 4 决心 -->
+    <section class="slide" id="slide-decision">
+      <div class="decision-stage">
+        <div class="decision-kicker">SMART COMPANION</div>
+        <div class="decision-copy">
+          <span class="decision-copy-burst" aria-hidden="true"></span>
+          <span class="decision-copy-line" aria-hidden="true"></span>
+          <h2><span class="decision-line">他们不是不努力。</span><span class="decision-line decision-line2">他们只是缺一个随时在身边的智能军师。</span></h2>
+        </div>
+        <div class="decision-card-row">
+          <article class="decision-card"><img src="./image_outputs/split_exact_source_trimmed/panel_01.png" alt="经营者人物卡片"><span class="decision-mask" aria-hidden="true"></span></article>
+          <article class="decision-card"><img src="./image_outputs/split_exact_source_trimmed/panel_02.png" alt="经营者人物卡片"><span class="decision-mask" aria-hidden="true"></span></article>
+          <article class="decision-card"><img src="./image_outputs/split_exact_source_trimmed/panel_03.png" alt="经营者人物卡片"><span class="decision-mask" aria-hidden="true"></span></article>
+          <article class="decision-card"><img src="./image_outputs/split_exact_source_trimmed/panel_04.png" alt="经营者人物卡片"><span class="decision-mask" aria-hidden="true"></span></article>
+          <article class="decision-card"><img src="./image_outputs/split_exact_source_trimmed/panel_05.png" alt="经营者人物卡片"><span class="decision-mask" aria-hidden="true"></span></article>
+        </div>
+      </div>
+      <div class="brand-tag">SHUOGUO · AI</div>
+      <div class="page-num"><em>04</em> / 32</div>
+    </section>
+
+    <!-- 5 弯路与革新 -->
+    <section class="slide" id="slide-reform">
+      <canvas id="particle-canvas-reform"></canvas>
+      <div class="brand-tag">SHUOGUO · AI</div>
+      <div class="page-num"><em>05</em> / 32</div>
+    </section>
+
+    <!-- 6 AI 架构革新演进 -->
+    <section class="slide agent-reform-slide" id="slide-agent-reform">
+      <div class="agent-compare-stage">
+        <div class="agent-compare-row">
+          <div class="agent-compare-panel past" data-agent-past-panel>
+            <div class="agent-compare-title">过去的弯路</div>
+            <div class="agent-compare-tags">
+              <div class="agent-compare-tag">单模型问答</div>
+              <div class="agent-compare-tag">Harness补丁</div>
+              <div class="agent-compare-tag">记忆混乱</div>
+              <div class="agent-compare-tag">流程断点</div>
+            </div>
+          </div>
+          <div class="agent-compare-panel future" data-agent-future-panel>
+            <div class="agent-compare-title">我们的革新</div>
+            <div class="agent-compare-tags">
+              <div class="agent-compare-tag">脑手分离</div>
+              <div class="agent-compare-tag">状态外置</div>
+              <div class="agent-compare-tag">多Agent编排</div>
+              <div class="agent-compare-tag">结果可复盘</div>
+            </div>
+          </div>
+        </div>
+        <div class="agent-compare-summary">
+          <p class="agent-compare-summary-text" data-agent-summary>一句话：让AI从“会回答”，升级为“<b>会组织、会执行、会复盘</b>”。</p>
+        </div>
+      </div>
+      <div class="brand-tag">SHUOGUO · AI</div>
+      <div class="page-num"><em>06</em> / 32</div>
+    </section>
+
+    <!-- 7 AI 建档 / 持续学习（复制页） -->
+    <section class="slide" id="slide-profile-copy">
+      <div class="profile-orbit-wrap" aria-hidden="true">
+        <div class="profile-orbit-core" aria-hidden="true"></div>
+        <div class="profile-orbit-ring r1" aria-hidden="true"></div>
+        <div class="profile-orbit-ring r2" aria-hidden="true"></div>
+        <div class="profile-orbit-ring r3" aria-hidden="true"></div>
+        <div class="profile-orbit-mount" aria-hidden="true"></div>
+      </div>
+      <div class="profile-tags" aria-hidden="true">
+        <span class="profile-tag" style="left:18%;top:22%">行业</span>
+        <span class="profile-tag" style="left:62%;top:24%">规模</span>
+        <span class="profile-tag" style="left:30%;top:42%">客单</span>
+        <span class="profile-tag" style="left:74%;top:44%">成本</span>
+        <span class="profile-tag" style="left:14%;top:60%">团队</span>
+        <span class="profile-tag" style="left:48%;top:62%">客流</span>
+        <span class="profile-tag" style="left:70%;top:66%">现金流</span>
+        <span class="profile-tag" style="left:46%;top:18%">目标</span>
+      </div>
+      <div class="brand-tag">SHUOGUO · AI</div>
+      <div class="page-num"><em>07</em> / 32</div>
+    </section>
+
+    <!-- 原第 8 页内容已删除；当前真实顺序为 7 = 复制页、8 = 算力、9 = Nexus、10 = 脑树封面、11 = JS 注入页 -->
+
+    <!-- 8 算力 -->
+    <section class="slide statement-slide statement-morph-slide" id="slide-compute">
+      <div class="statement-inner">
+        <div class="statement-morph-stage">
+          <div class="statement-morph-text past">以前：一个AI硬扛全部任务</div>
+          <div class="statement-morph-text future">现在：大脑指挥，多只“手”并行执行</div>
+        </div>
+      </div>
+      <div class="brand-tag">SHUOGUO · AI</div>
+      <div class="page-num"><em>08</em> / 32</div>
+    </section>
+
+    <!-- 9 Nexus 协同网络 -->
+    <section  style="padding-top: 20px;" class="slide statement-slide nexus-network-slide" id="slide-nexus-network">
+      <div class="nexus-wrap reveal-item">
+        <svg class="nexus-connections" viewBox="0 0 1400 560" preserveAspectRatio="none" aria-hidden="true">
+          <path id="nexus-path-0" class="nexus-path active" d="M 98 280 C 248 276, 436 278, 640 280"></path>
+          <path id="nexus-path-1" class="nexus-path active" d="M 280 112 C 430 124, 560 176, 646 242"></path>
+          <path id="nexus-path-2" class="nexus-path active" d="M 336 202 C 470 214, 580 236, 654 258"></path>
+          <path id="nexus-path-3" class="nexus-path active" d="M 322 381 C 470 364, 584 324, 654 302"></path>
+          <path id="nexus-path-4" class="nexus-path active" d="M 532 106 C 612 132, 646 190, 680 238"></path>
+          <path id="nexus-path-5" class="nexus-path active" d="M 188 454 C 382 432, 590 364, 686 314"></path>
+          <path id="nexus-path-6" class="nexus-path active" d="M 868 106 C 792 132, 754 188, 720 238"></path>
+          <path id="nexus-path-7" class="nexus-path active" d="M 1064 190 C 924 204, 820 228, 744 256"></path>
+          <path id="nexus-path-8" class="nexus-path active" d="M 1064 370 C 922 356, 818 332, 742 304"></path>
+          <path id="nexus-path-10" class="nexus-path active" d="M 1204 112 C 1042 124, 872 176, 754 250"></path>
+          <path id="nexus-path-11" class="nexus-path active" d="M 1246 280 C 1078 280, 920 280, 760 280"></path>
+          <path id="nexus-path-12" class="nexus-path active" d="M 1204 448 C 1042 432, 874 382, 752 310"></path>
+          <circle class="nexus-flow-dot" r="5"><animateMotion dur="1.9s" repeatCount="indefinite"><mpath href="#nexus-path-0"></mpath></animateMotion></circle>
+          <circle class="nexus-flow-dot" r="5"><animateMotion dur="2.1s" repeatCount="indefinite"><mpath href="#nexus-path-1"></mpath></animateMotion></circle>
+          <circle class="nexus-flow-dot" r="5"><animateMotion dur="2.25s" repeatCount="indefinite"><mpath href="#nexus-path-2"></mpath></animateMotion></circle>
+          <circle class="nexus-flow-dot" r="5"><animateMotion dur="2.15s" repeatCount="indefinite"><mpath href="#nexus-path-3"></mpath></animateMotion></circle>
+          <circle class="nexus-flow-dot" r="5"><animateMotion dur="2.3s" repeatCount="indefinite"><mpath href="#nexus-path-4"></mpath></animateMotion></circle>
+          <circle class="nexus-flow-dot" r="5"><animateMotion dur="2.4s" repeatCount="indefinite"><mpath href="#nexus-path-5"></mpath></animateMotion></circle>
+          <circle class="nexus-flow-dot" r="5"><animateMotion dur="2.18s" repeatCount="indefinite"><mpath href="#nexus-path-6"></mpath></animateMotion></circle>
+          <circle class="nexus-flow-dot" r="5"><animateMotion dur="2.05s" repeatCount="indefinite"><mpath href="#nexus-path-7"></mpath></animateMotion></circle>
+          <circle class="nexus-flow-dot" r="5"><animateMotion dur="2.08s" repeatCount="indefinite"><mpath href="#nexus-path-8"></mpath></animateMotion></circle>
+          <circle class="nexus-flow-dot" r="5"><animateMotion dur="2.16s" repeatCount="indefinite"><mpath href="#nexus-path-10"></mpath></animateMotion></circle>
+          <circle class="nexus-flow-dot" r="5"><animateMotion dur="1.95s" repeatCount="indefinite"><mpath href="#nexus-path-11"></mpath></animateMotion></circle>
+          <circle class="nexus-flow-dot" r="5"><animateMotion dur="2.22s" repeatCount="indefinite"><mpath href="#nexus-path-12"></mpath></animateMotion></circle>
+        </svg>
+        <div class="nexus-layer">
+          <article class="nexus-node" style="left:7%; top:50%;">
+            <div class="nexus-node-header"><h3 class="nexus-node-name">用户意图</h3><div class="nexus-orb" aria-hidden="true"></div></div>
+            <p class="nexus-node-status">接收需求并识别任务目标</p>
+            <div class="nexus-progress"><span></span></div>
+          </article>
+          <article class="nexus-node" style="left:18%; top:20%;">
+            <div class="nexus-node-header"><h3 class="nexus-node-name">需求上下文</h3><div class="nexus-orb" aria-hidden="true"></div></div>
+            <p class="nexus-node-status">补齐背景信息与场景约束</p>
+            <div class="nexus-progress"><span></span></div>
+          </article>
+          <article class="nexus-node" style="left:22%; top:35%;">
+            <div class="nexus-node-header"><h3 class="nexus-node-name">规划 Agent</h3><div class="nexus-orb" aria-hidden="true"></div></div>
+            <p class="nexus-node-status">拆解任务并安排执行顺序</p>
+            <div class="nexus-progress"><span></span></div>
+          </article>
+          <article class="nexus-node" style="left:20%; top:66%;">
+            <div class="nexus-node-header"><h3 class="nexus-node-name">研究 Agent</h3><div class="nexus-orb" aria-hidden="true"></div></div>
+            <p class="nexus-node-status">检索资料并补足上下文</p>
+            <div class="nexus-progress"><span></span></div>
+          </article>
+          <article class="nexus-node" style="left:36%; top:18.5%;">
+            <div class="nexus-node-header"><h3 class="nexus-node-name">工具编排</h3><div class="nexus-orb" aria-hidden="true"></div></div>
+            <p class="nexus-node-status">选择工具链并建立调用顺序</p>
+            <div class="nexus-progress"><span></span></div>
+          </article>
+          <article class="nexus-node" style="left:10%; top:78%;">
+            <div class="nexus-node-header"><h3 class="nexus-node-name">记忆核心</h3><div class="nexus-orb" aria-hidden="true"></div></div>
+            <p class="nexus-node-status">同步长期记忆和共享状态</p>
+            <div class="nexus-progress"><span></span></div>
+          </article>
+          <article class="nexus-node nexus-node--commander" style="left:50%; top:50%;">
+            <div class="nexus-node-header"><h3 class="nexus-node-name">指挥官 agent</h3><div class="nexus-orb" aria-hidden="true"></div></div>
+            <p class="nexus-node-status">统一调度多 Agent 并实时分派任务</p>
+            <div class="nexus-progress"><span></span></div>
+          </article>
+          <article class="nexus-node" style="left:64%; top:18.5%;">
+            <div class="nexus-node-header"><h3 class="nexus-node-name">数据处理</h3><div class="nexus-orb" aria-hidden="true"></div></div>
+            <p class="nexus-node-status">清洗中间结果并结构化输出数据</p>
+            <div class="nexus-progress"><span></span></div>
+          </article>
+          <article class="nexus-node" style="left:78%; top:33%;">
+            <div class="nexus-node-header"><h3 class="nexus-node-name">执行 Agent</h3><div class="nexus-orb" aria-hidden="true"></div></div>
+            <p class="nexus-node-status">调用工具并落地执行具体动作</p>
+            <div class="nexus-progress"><span></span></div>
+          </article>
+          <article class="nexus-node" style="left:78%; top:67%;">
+            <div class="nexus-node-header"><h3 class="nexus-node-name">写作 Agent</h3><div class="nexus-orb" aria-hidden="true"></div></div>
+            <p class="nexus-node-status">组织表达并生成输出草稿</p>
+            <div class="nexus-progress"><span></span></div>
+          </article>
+          <article class="nexus-node" style="left:86%; top:20%;">
+            <div class="nexus-node-header"><h3 class="nexus-node-name">监控回收</h3><div class="nexus-orb" aria-hidden="true"></div></div>
+            <p class="nexus-node-status">跟踪状态并回收异常执行分支</p>
+            <div class="nexus-progress"><span></span></div>
+          </article>
+          <article class="nexus-node" style="left:89%; top:50%;">
+            <div class="nexus-node-header"><h3 class="nexus-node-name">失败隔离</h3><div class="nexus-orb" aria-hidden="true"></div></div>
+            <p class="nexus-node-status">局部重试失败任务并隔离风险传播</p>
+            <div class="nexus-progress"><span></span></div>
+          </article>
+          <article class="nexus-node" style="left:90%; top:80%;">
+            <div class="nexus-node-header"><h3 class="nexus-node-name">最终汇总</h3><div class="nexus-orb" aria-hidden="true"></div></div>
+            <p class="nexus-node-status">汇编结果并形成最终交付</p>
+            <div class="nexus-progress"><span></span></div>
+          </article>
+        </div>
+      </div>
+      <div class="nexus-caption">不是一个AI给建议，而是一群AI做会诊</div>
+      <div class="brand-tag">SHUOGUO · AI</div>
+      <div class="page-num"><em>09</em> / 32</div>
+    </section>
+
+    <!-- 10 脑树封面页 -->
+    <section class="slide" id="slide-result">
+      <canvas class="fx" id="bg-result-cover"></canvas>
+      <div class="cover-wrap">
+        <div class="cover-left">
+          <h1 class="statement-title reveal-item" style="
+          font-size: 74px;" id="cover-title-result">Session状态树：调用“最聪明的一刻”</h1>
+          <p class="cover-sub reveal-item">Agent = 专家角色
+Session = 任务现场
+Memory Store = 企业长期记忆</p>
+          <p class="result-cover-body reveal-item">可快照｜可克隆｜可回滚｜可并行推演</p>
+        </div>
+        <div class="cover-right reveal-item">
+          <canvas class="fx" id="brain-tree-result" style="pointer-events:auto"></canvas>
+        </div>
+      </div>
+      <div class="brand-tag">SHUOGUO · AI</div>
+      <div class="page-num"><em>10</em> / 32</div>
+    </section>
+
+    <!-- 11 JS 注入页 -->
+    <section class="slide" id="slide-flow">
+      <div class="flow-hud-decor" aria-hidden="true">
+        <span class="flow-corner c1"></span>
+        <span class="flow-corner c2"></span>
+        <span class="flow-corner c3"></span>
+        <span class="flow-corner c4"></span>
+        <span class="flow-data-lane left"></span>
+        <span class="flow-data-lane right"></span>
+        <span class="flow-core-ring"></span>
+        <span class="flow-axis x"></span>
+        <span class="flow-axis y"></span>
+        <span class="flow-node n1"></span>
+        <span class="flow-node n2"></span>
+        <span class="flow-node n3"></span>
+        <span class="flow-node n4"></span>
+      </div>
+      <div id="p5-overlay">
+        <div id="p5-mount"></div>
+      </div>
+      <div class="brand-tag">SHUOGUO · AI</div>
+      <div class="page-num"><em>11</em> / 32</div>
+    </section>
+
+    <!-- 12 Token 调度 -->
+    <section class="slide statement-slide health-stage-slide" id="slide-health">
+      <div class="health-stage-bg"></div>
+      <div class="health-stage-shell">
+        <div class="health-stage-primary" id="health-stage-primary">不是堆token</div>
+        <div class="health-stage-grid" id="health-stage-grid">
+          <div class="health-stage-card">
+            <b>任务分级</b>
+            <span>简单任务快处理，复杂任务深推理</span>
+          </div>
+          <div class="health-stage-card">
+            <b>模型分层</b>
+            <span>小模型跑效率，大模型做判断</span>
+          </div>
+          <div class="health-stage-card">
+            <b>并发沙盒</b>
+            <span>多路径同时探索，失败隔离</span>
+          </div>
+          <div class="health-stage-card">
+            <b>质量评估</b>
+            <span>每次输出都要可检查、可复盘</span>
+          </div>
+        </div>
+        <div class="health-stage-final" id="health-stage-final">真正的AI成本控制，不是少用，而是用准。</div>
+      </div>
+      <div class="brand-tag">SHUOGUO · AI</div>
+      <div class="page-num"><em>12</em> / 32</div>
+    </section>
+
+    <!-- 13 软硬件护城河 -->
+    <section class="slide statement-slide moat-stage-slide" id="slide-custom-plan">
+      <div class="moat-hero" id="moat-hero">
+        <h2 class="moat-hero-title" id="moat-hero-title">软硬件护城河｜从认知智能到行动智能</h2>
+      </div>
+
+      <div class="moat-matrix" id="moat-matrix">
+        <div class="moat-panel">
+          <div class="moat-panel-kicker">SOFTWARE MATRIX</div>
+          <h3>软件矩阵</h3>
+          <p>让企业知识、推理能力、场景顾问形成可复用的软件护城河。</p>
+          <div class="moat-node-grid">
+            <div class="moat-node">知识库</div>
+            <div class="moat-node">语义检索</div>
+            <div class="moat-node">多模型融合</div>
+            <div class="moat-node">智能顾问矩阵</div>
+            <div class="moat-node" style="grid-column:1 / span 2;">数据安全</div>
+          </div>
+        </div>
+
+        <div class="moat-panel">
+          <div class="moat-panel-kicker">HARDWARE BASE</div>
+          <h3>硬件底座</h3>
+          <p>让算力、执行终端和部署环境，真正承接企业 AI 的最后一公里。</p>
+          <div class="moat-node-grid">
+            <div class="moat-node">云端算力</div>
+            <div class="moat-node">安全沙盒</div>
+            <div class="moat-node">企业终端</div>
+            <div class="moat-node">本地化部署能力</div>
+          </div>
+        </div>
+
+        <div class="moat-panel future">
+          <div class="moat-panel-kicker">FUTURE DIRECTION</div>
+          <h3>未来方向</h3>
+          <div class="moat-future-line"><b>LVM 大视觉模型</b> + <b>Robot 机器人</b></div>
+          <p>左中右协同感知，向“看得见、会执行、能落地”的行动智能继续推进。</p>
+          <div class="moat-robot-stage">
+            <div class="moat-robot">
+              <div class="moat-robot-eye"></div>
+              <b>LEFT</b>
+              <span>环境感知<br>边缘识别</span>
+            </div>
+            <div class="moat-robot center">
+              <div class="moat-robot-eye"></div>
+              <b>CENTER</b>
+              <span>任务理解<br>策略生成</span>
+            </div>
+            <div class="moat-robot">
+              <div class="moat-robot-eye"></div>
+              <b>RIGHT</b>
+              <span>动作执行<br>闭环反馈</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="moat-impact" id="moat-impact">
+
+        <div class="moat-dust" id="moat-dust">
+          <img class="moat-smoke s1" src="./assets/moat-smoke-splash.png" alt="">
+        </div>
+        <div class="moat-impact-copy" id="moat-impact-copy">让AI看得见、想得深、算得准、落得下去。</div>
+      </div>
+      <div class="brand-tag">SHUOGUO · AI</div>
+      <div class="page-num"><em>13</em> / 32</div>
+    </section>
+
+    <!-- 14 用户闭环 -->
+    <section class="slide statement-slide user-journey-slide" id="slide-compare">
+      <div class="user-journey-shell">
+        <h2 class="journey-user-word" id="journey-user-word">用户</h2>
+        <div class="journey-grid" id="journey-grid">
+          <div class="journey-card">
+            <div class="journey-card-index">STEP 01</div>
+            <h3>基础调研</h3>
+            <div class="journey-card-sub">企业建档</div>
+          </div>
+          <div class="journey-card">
+            <div class="journey-card-index">STEP 02</div>
+            <h3>定位问题</h3>
+            <div class="journey-card-sub">AI诊断</div>
+          </div>
+          <div class="journey-card">
+            <div class="journey-card-index">STEP 03</div>
+            <h3>找到解法</h3>
+            <div class="journey-card-sub">报告生成</div>
+          </div>
+          <div class="journey-card">
+            <div class="journey-card-index">STEP 04</div>
+            <h3>落地实施</h3>
+            <div class="journey-card-sub">转嫁陪跑</div>
+          </div>
+          <div class="journey-card">
+            <div class="journey-card-index">STEP 05</div>
+            <h3>跟踪复盘</h3>
+            <div class="journey-card-sub">持续复盘</div>
+          </div>
+        </div>
+      </div>
+      <div class="brand-tag">SHUOGUO · AI</div>
+      <div class="page-num"><em>14</em> / 32</div>
+    </section>
+
+    <!-- 15 经营闭环承接 -->
+    <section class="slide statement-slide partner-closure-slide" id="slide-companion">
+      <div class="partner-closure-shell">
+        <div class="partner-copy">
+          <h2 class="partner-copy-title reveal-item">不是给你一段答案。
+而是陪你走完整个经营闭环。</h2>
+        </div>
+        <div class="partner-visual reveal-item">
+          <img src="./assets/user-loop-hero.png" alt="">
+        </div>
+      </div>
+      <div class="brand-tag">SHUOGUO · AI</div>
+      <div class="page-num"><em>15</em> / 32</div>
+    </section>
+
+    <!-- 16 AI 建档 / 持续学习 -->
+    <section class="slide" id="slide-profile">
+      <div class="profile-stage-two" id="profile-stage-two">
+        <div class="profile-stage-two-copy">
+          <h3 class="profile-stage-two-subtitle">一次建档，持续学习。</h3>
+        </div>
+        <div class="profile-brain-panel" id="profile-brain-panel">
+          <img class="profile-brain-art" src="./assets/cyber-brain-page16-transparent.png" alt="">
+          <div class="profile-brain-collision" id="profile-brain-collision" aria-hidden="true">
+            <span class="profile-collision-tag">行业</span>
+            <span class="profile-collision-tag">规模</span>
+            <span class="profile-collision-tag">客单</span>
+            <span class="profile-collision-tag">成本</span>
+            <span class="profile-collision-tag">团队</span>
+            <span class="profile-collision-tag">客流</span>
+            <span class="profile-collision-tag">现金流</span>
+            <span class="profile-collision-tag">目标</span>
+          </div>
+        </div>
+      </div>
+      <h2 class="profile-title-main" id="profile-title-main">让你的 AI 更了解你</h2>
+      <div class="brand-tag">SHUOGUO · AI</div>
+      <div class="page-num"><em>16</em> / 32</div>
+    </section>
+
+    <!-- 17 企业商业体检 -->
+    <section class="slide" id="slide-checkup">
+      <div class="checkup-shell">
+        <div class="checkup-left">
+          <h2 class="checkup-title">企业商业体检</h2>
+        </div>
+
+        <div class="checkup-phone">
+          <div class="phone-frame">
+            <div class="phone-side phone-side-vol"></div>
+            <div class="phone-side phone-side-pwr"></div>
+            <div class="phone-screen">
+              <img class="phone-content" src="./assets/phone-content.png" alt="">
+            </div>
+            <div class="phone-island"></div>
+          </div>
+        </div>
+
+        <div class="checkup-chart">
+          <svg class="chart-svg" viewBox="0 0 900 560" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+            <defs>
+              <linearGradient id="checkupRadarLineGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#a7f3d0"/>
+                <stop offset="0.5" stop-color="#00f2ff"/>
+                <stop offset="1" stop-color="#7000ff"/>
+              </linearGradient>
+              <radialGradient id="checkupRadarFillGrad" cx="50%" cy="42%" r="68%">
+                <stop offset="0" stop-color="#ffffff" stop-opacity=".26"/>
+                <stop offset=".42" stop-color="#00f2ff" stop-opacity=".2"/>
+                <stop offset="1" stop-color="#7000ff" stop-opacity=".08"/>
+              </radialGradient>
+            </defs>
+            <g class="chart-grid" fill="none">
+              <polygon points="360,235 391.8,248.2 405,280 391.8,311.8 360,325 328.2,311.8 315,280 328.2,248.2"/>
+              <polygon points="360,190 423.6,216.4 450,280 423.6,343.6 360,370 296.4,343.6 270,280 296.4,216.4"/>
+              <polygon points="360,145 455.5,184.5 495,280 455.5,375.5 360,415 264.5,375.5 225,280 264.5,184.5"/>
+              <polygon points="360,100 487.3,152.7 540,280 487.3,407.3 360,460 232.7,407.3 180,280 232.7,152.7"/>
+            </g>
+            <g class="chart-spokes" fill="none">
+              <line x1="360" y1="280" x2="360" y2="100"/>
+              <line x1="360" y1="280" x2="487.3" y2="152.7"/>
+              <line x1="360" y1="280" x2="540" y2="280"/>
+              <line x1="360" y1="280" x2="487.3" y2="407.3"/>
+              <line x1="360" y1="280" x2="360" y2="460"/>
+              <line x1="360" y1="280" x2="232.7" y2="407.3"/>
+              <line x1="360" y1="280" x2="180" y2="280"/>
+              <line x1="360" y1="280" x2="232.7" y2="152.7"/>
+            </g>
+            <g class="chart-axis-labels">
+              <text x="360" y="58" text-anchor="middle">用户</text>
+              <text x="556" y="144" text-anchor="start">产品</text>
+              <text x="628" y="290" text-anchor="start">客户</text>
+              <text x="556" y="442" text-anchor="start">竞争</text>
+              <text x="360" y="530" text-anchor="middle">渠道</text>
+              <text x="164" y="442" text-anchor="end">品牌</text>
+              <text x="92" y="290" text-anchor="end">现金流</text>
+              <text x="164" y="144" text-anchor="end">利润</text>
+            </g>
+            <path class="chart-area" fill="url(#checkupRadarFillGrad)" stroke="none"></path>
+            <path class="chart-line" stroke="url(#checkupRadarLineGrad)" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"></path>
+            <g class="chart-dots">
+              <circle class="dot" data-value="0.74" cx="360" cy="280" r="9"></circle>
+              <circle class="dot" data-value="0.69" cx="360" cy="280" r="9"></circle>
+              <circle class="dot" data-value="0.82" cx="360" cy="280" r="9"></circle>
+              <circle class="dot" data-value="0.57" cx="360" cy="280" r="9"></circle>
+              <circle class="dot" data-value="0.63" cx="360" cy="280" r="9"></circle>
+              <circle class="dot" data-value="0.71" cx="360" cy="280" r="9"></circle>
+              <circle class="dot" data-value="0.55" cx="360" cy="280" r="9"></circle>
+              <circle class="dot" data-value="0.78" cx="360" cy="280" r="9"></circle>
+            </g>
+          </svg>
+        </div>
+      </div>
+      <div class="brand-tag">SHUOGUO · AI</div>
+      <div class="page-num"><em>17</em> / 32</div>
+    </section>
+
+    <!-- 18 作战图报告 -->
+    <section class="slide" id="slide-action-map">
+      <div class="actionmap-shell">
+        <div class="actionmap-left">
+          <h2 class="actionmap-title">不是一份更厚的报告，<br>而是一张能执行的<em>作战图</em>。</h2>
+        </div>
+
+        <div class="actionmap-phone">
+          <div class="phone-frame">
+            <div class="phone-side phone-side-vol"></div>
+            <div class="phone-side phone-side-pwr"></div>
+            <div class="phone-screen">
+              <div class="stream-output">
+                <div class="stream-head">
+                  <span class="stream-dot"></span>
+                  <span>AI咨询</span>
+                </div>
+                <div class="stream-body" id="action-map-stream-output">
+                  <span class="stream-bubble"><span class="stream-content" id="action-map-stream-text"></span><span class="stream-cursor"></span></span>
+                </div>
+               
+                <div class="stream-compose"><div class="stream-input-shell"><span class="stream-input-placeholder">继续追问经营问题...</span><span class="stream-send">↑</span></div></div>
+              </div>
+            </div>
+            <div class="phone-island"></div>
+          </div>
+        </div>
+
+        <div class="actionmap-right">
+          <svg class="pentagon" viewBox="0 0 560 700" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+            <defs>
+              <radialGradient id="pentagonHalo">
+                <stop offset="0" stop-color="#00f2ff" stop-opacity=".95"/>
+                <stop offset="0.45" stop-color="#00f2ff" stop-opacity=".28"/>
+                <stop offset="1" stop-color="#00f2ff" stop-opacity="0"/>
+              </radialGradient>
+              <linearGradient id="pentagonEdge" gradientUnits="userSpaceOnUse" x1="108" y1="120" x2="108" y2="592">
+                <stop offset="0" stop-color="#a7f3d0"/>
+                <stop offset="1" stop-color="#00f2ff"/>
+              </linearGradient>
+            </defs>
+
+            <g class="pentagon-edges">
+              <line class="edge" data-pair="0-1" x1="108" y1="120" x2="108" y2="238"/>
+              <line class="edge" data-pair="1-2" x1="108" y1="238" x2="108" y2="356"/>
+              <line class="edge" data-pair="2-3" x1="108" y1="356" x2="108" y2="474"/>
+              <line class="edge" data-pair="3-4" x1="108" y1="474" x2="108" y2="592"/>
+              <line class="edge" data-pair="4-0" x1="136" y1="592" x2="164" y2="592"/>
+            </g>
+
+            <g class="pentagon-halos">
+              <circle class="halo" data-idx="0" cx="108" cy="120" r="52"/>
+              <circle class="halo" data-idx="1" cx="108" cy="238" r="52"/>
+              <circle class="halo" data-idx="2" cx="108" cy="356" r="52"/>
+              <circle class="halo" data-idx="3" cx="108" cy="474" r="52"/>
+              <circle class="halo" data-idx="4" cx="108" cy="592" r="52"/>
+            </g>
+
+            <g class="pentagon-labels">
+              <g class="label-text" data-idx="0" transform="translate(54 74)">
+                <rect x="0" y="0" width="420" height="92" rx="22"></rect>
+                <text x="106" y="56" text-anchor="start">问题判断</text>
+              </g>
+              <g class="label-text" data-idx="1" transform="translate(54 192)">
+                <rect x="0" y="0" width="420" height="92" rx="22"></rect>
+                <text x="106" y="56" text-anchor="start">策略选择</text>
+              </g>
+              <g class="label-text" data-idx="2" transform="translate(54 310)">
+                <rect x="0" y="0" width="420" height="92" rx="22"></rect>
+                <text x="106" y="56" text-anchor="start">成本测算</text>
+              </g>
+              <g class="label-text" data-idx="3" transform="translate(54 428)">
+                <rect x="0" y="0" width="420" height="92" rx="22"></rect>
+                <text x="106" y="56" text-anchor="start">风险提醒</text>
+              </g>
+              <g class="label-text" data-idx="4" transform="translate(54 546)">
+                <rect x="0" y="0" width="420" height="92" rx="22"></rect>
+                <text x="106" y="56" text-anchor="start">动作清单</text>
+              </g>
+            </g>
+
+            <g class="pentagon-nodes">
+              <g class="node" data-idx="0">
+                <circle cx="108" cy="120" r="26"/>
+                <text x="108" y="128" text-anchor="middle">01</text>
+              </g>
+              <g class="node" data-idx="1">
+                <circle cx="108" cy="238" r="26"/>
+                <text x="108" y="246" text-anchor="middle">02</text>
+              </g>
+              <g class="node" data-idx="2">
+                <circle cx="108" cy="356" r="26"/>
+                <text x="108" y="364" text-anchor="middle">03</text>
+              </g>
+              <g class="node" data-idx="3">
+                <circle cx="108" cy="474" r="26"/>
+                <text x="108" y="482" text-anchor="middle">04</text>
+              </g>
+              <g class="node" data-idx="4">
+                <circle cx="108" cy="592" r="26"/>
+                <text x="108" y="600" text-anchor="middle">05</text>
+              </g>
+            </g>
+          </svg>
+        </div>
+      </div>
+      <div class="brand-tag">SHUOGUO · AI</div>
+      <div class="page-num"><em>18</em> / 32</div>
+    </section>
+    <!-- 19 三方对比 · 通用 / 行业 / 硕果 -->
+    <section class="slide" id="slide-vs-trio">
+      <div class="vs-trio-shell">
+        <div class="vs-trio-head">
+          <h2 class="vs-trio-headline">同一个问题，<br><em>三种回答</em>。</h2>
+        </div>
+        <div class="vs-trio-row">
+          <div class="vs-trio-side" data-tier="general">
+            <div class="vs-trio-brand vs-trio-brand-general">通用 AI</div>
+            <div class="phone-frame">
+              <div class="phone-side phone-side-vol"></div>
+              <div class="phone-side phone-side-pwr"></div>
+              <div class="phone-screen">
+                <div class="stream-output">
+                  <div class="stream-head vs-head-general">
+                    <span class="stream-dot"></span>
+                    <span>通用咨询</span>
+                  </div>
+                  <div class="stream-body" id="vs-trio-output-general">
+                    <span class="stream-bubble"><span class="stream-content" id="vs-trio-text-general"></span><span class="stream-cursor"></span></span>
+                  </div>
+                  
+                  <div class="stream-compose"><div class="stream-input-shell"><span class="stream-input-placeholder">继续补充问题...</span><span class="stream-send">↑</span></div></div>
+                </div>
+              </div>
+              <div class="phone-island"></div>
+            </div>
+          </div>
+
+          <div class="vs-trio-side" data-tier="industry">
+            <div class="vs-trio-brand vs-trio-brand-industry">行业 AI</div>
+            <div class="phone-frame">
+              <div class="phone-side phone-side-vol"></div>
+              <div class="phone-side phone-side-pwr"></div>
+              <div class="phone-screen">
+                <div class="stream-output">
+                  <div class="stream-head vs-head-industry">
+                    <span class="stream-dot"></span>
+                    <span>行业咨询</span>
+                  </div>
+                  <div class="stream-body" id="vs-trio-output-industry">
+                    <span class="stream-bubble"><span class="stream-content" id="vs-trio-text-industry"></span><span class="stream-cursor"></span></span>
+                  </div>
+                  
+                  <div class="stream-compose"><div class="stream-input-shell"><span class="stream-input-placeholder">继续输入行业条件...</span><span class="stream-send">↑</span></div></div>
+                </div>
+              </div>
+              <div class="phone-island"></div>
+            </div>
+          </div>
+
+          <div class="vs-trio-side" data-tier="shuoguo">
+            <div class="vs-trio-brand vs-trio-brand-shuoguo">硕果 AI</div>
+            <div class="phone-frame">
+              <div class="phone-side phone-side-vol"></div>
+              <div class="phone-side phone-side-pwr"></div>
+              <div class="phone-screen">
+                <div class="stream-output">
+                  <div class="stream-head">
+                    <span class="stream-dot"></span>
+                    <span>AI咨询</span>
+                  </div>
+                  <div class="stream-body" id="vs-trio-output-shuoguo">
+                    <span class="stream-bubble"><span class="stream-content" id="vs-trio-text-shuoguo"></span><span class="stream-cursor"></span></span>
+                  </div>
+                  
+                  <div class="stream-compose"><div class="stream-input-shell"><span class="stream-input-placeholder">继续深挖执行动作...</span><span class="stream-send">↑</span></div></div>
+                </div>
+              </div>
+              <div class="phone-island"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="brand-tag">SHUOGUO · AI</div>
+      <div class="page-num"><em>21</em> / 32</div>
+    </section>
+    
+
+  
+
+    <!-- 20 通用 AI vs 硕果 AI 文案对比 -->
+    <section class="slide" id="slide-vs">
+      <div class="vs-shell">
+        <div class="vs-card vs-card-general">
+          <div class="vs-card-brand">通用 AI</div>
+          <div class="vs-card-tags">
+            <span class="vs-tag">泛知识</span><em class="vs-sep">｜</em><span class="vs-tag">泛建议</span><em class="vs-sep">｜</em><span class="vs-tag">靠追问</span><em class="vs-sep">｜</em><span class="vs-tag">难复盘</span>
+          </div>
+        </div>
+
+        <div class="vs-divider">
+          <div class="vs-divider-line"></div>
+          <div class="vs-divider-vs">VS</div>
+          <div class="vs-divider-line"></div>
+        </div>
+
+        <div class="vs-card vs-card-shuoguo">
+          <div class="vs-card-brand">硕果 AI</div>
+          <div class="vs-card-tags">
+            <span class="vs-tag">企业档案</span><em class="vs-sep">｜</em><span class="vs-tag">行业知识</span><em class="vs-sep">｜</em><span class="vs-tag">专家Agent</span><em class="vs-sep">｜</em><span class="vs-tag">执行闭环</span>
+          </div>
+        </div>
+      </div>
+      <div class="brand-tag">SHUOGUO · AI</div>
+      <div class="page-num"><em>19</em> / 32</div>
+    </section>
+    <!-- 21 vs 主副标题 -->
+    <section class="slide" id="slide-vs-line">
+      <div class="vs-line-shell">
+        <h2 class="vs-line-title" id="vs-line-title">通用AI回答问题，<em>硕果AI</em>解决经营。</h2>
+        <p class="vs-line-sub" id="vs-line-sub">差距不在会不会写，而在能不能<b>落地</b>。</p>
+      </div>
+      <div class="brand-tag">SHUOGUO · AI</div>
+      <div class="page-num"><em>20</em> / 32</div>
+    </section>
+    <!-- 22 强场景强约束强结果 -->
+    <section class="slide" id="slide-vs-strict">
+      <div class="vs-strict-shell">
+        <h2 class="vs-strict-title" id="vs-strict-title">
+          企业经营不是开放式聊天，<br>
+          而是<em>强场景</em>、<em>强约束</em>、<em>强结果</em>的问题。
+        </h2>
+      </div>
+      <div class="brand-tag">SHUOGUO · AI</div>
+      <div class="page-num"><em>22</em> / 32</div>
+    </section>
+
+    <!-- 23 速度 vs 落地 陈述 -->
+    <section class="slide" id="slide-speed-execute">
+      <div class="speed-execute-shell">
+        <h2 class="speed-execute-title">
+          <em>AI</em> 负责速度，<br>
+          <em>专家</em> 负责落地。
+        </h2>
+      </div>
+      <div class="brand-tag">SHUOGUO · AI</div>
+      <div class="page-num"><em>23</em> / 32</div>
+    </section>
+
+    <!-- 24 人机协同：AI 咨询师 + 专业咨询师 + 收束 -->
+    <section class="slide" id="slide-collab">
+      <div class="collab-shell">
+        <div class="collab-card collab-card-ai" id="collab-card-ai">
+          <div class="phone-frame">
+            <div class="phone-side phone-side-vol"></div>
+            <div class="phone-side phone-side-pwr"></div>
+            <div class="phone-screen">
+              <img class="phone-content" src="./assets/ai-consultant.png" alt="">
+            </div>
+            <div class="phone-island"></div>
+          </div>
+          <div class="collab-caption">
+            <div class="collab-name">AI 咨询师</div>
+            <div class="collab-tags">
+              <span>快速诊断</span>
+              <span>生成方案</span>
+              <span>拆解动作</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="collab-card collab-card-pro" id="collab-card-pro">
+          <div class="phone-frame">
+            <div class="phone-side phone-side-vol"></div>
+            <div class="phone-side phone-side-pwr"></div>
+            <div class="phone-screen">
+              <img class="phone-content" src="./assets/expert-consultant.png" alt="">
+            </div>
+            <div class="phone-island"></div>
+          </div>
+          <div class="collab-caption">
+            <div class="collab-name">专业咨询师</div>
+            <div class="collab-tags">
+              <span>校准细节</span>
+              <span>控制风险</span>
+              <span>陪跑执行</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- finale 移出 shell，保证后倒时本行文字保持正向 -->
+      <div class="collab-finale" id="collab-finale">
+        <h2 class="collab-finale-title">
+          人机协同，才是小微企业最稳的<em>答案</em>。
+        </h2>
+      </div>
+
+      <div class="brand-tag">SHUOGUO · AI</div>
+      <div class="page-num"><em>24</em> / 32</div>
+    </section>
+
+    <!-- 25 把经营方法装进每个企业主的手机 -->
+    <section class="slide" id="slide-shouji-method">
+      <div class="method-shell">
+        <div class="method-col method-col-left">
+          <h2 class="method-headline reveal-item">把经营方法</h2>
+          <div class="method-card reveal-item">
+            <span class="method-card-title">认知课</span>
+            <i class="method-card-divider">/</i>
+            <span class="method-card-desc">看懂增长</span>
+          </div>
+          <div class="method-card reveal-item">
+            <span class="method-card-title">方法课</span>
+            <i class="method-card-divider">/</i>
+            <span class="method-card-desc">学会获客</span>
+          </div>
+        </div>
+
+        <div class="method-phone-wrap reveal-item">
+          <div class="phone-frame">
+            <div class="phone-side phone-side-vol"></div>
+            <div class="phone-side phone-side-pwr"></div>
+            <div class="phone-screen">
+              <img class="phone-content" src="./assets/ai-consultant.png" alt="">
+            </div>
+            <div class="phone-island"></div>
+          </div>
+        </div>
+
+        <div class="method-col method-col-right">
+          <h2 class="method-headline reveal-item">装进每个企业主的手机。</h2>
+          <div class="method-card reveal-item">
+            <span class="method-card-title">案例课</span>
+            <i class="method-card-divider">/</i>
+            <span class="method-card-desc">复用打法</span>
+          </div>
+          <div class="method-card reveal-item">
+            <span class="method-card-title">AI实操课</span>
+            <i class="method-card-divider">/</i>
+            <span class="method-card-desc">用好工具</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="brand-tag">SHUOGUO · AI</div>
+      <div class="page-num"><em>25</em> / 32</div>
+    </section>
+
+    <!-- 26 你更懂商业，AI 更懂你 -->
+    <section class="slide" id="slide-know-business">
+      <div class="speed-execute-shell">
+        <h2 class="speed-execute-title">你更懂商业，<em>AI</em>更懂你。</h2>
+      </div>
+      <div class="brand-tag">SHUOGUO · AI</div>
+      <div class="page-num"><em>26</em> / 32</div>
+    </section>
+
+    <!-- 27 课程打基础，直播破卡点 -->
+    <section class="slide" id="slide-course">
+      <div class="method-shell">
+        <div class="method-col method-col-left">
+          <h2 class="method-headline reveal-item">课程打基础</h2>
+          <div class="method-card reveal-item">
+            <span class="method-card-title">实时提问</span>
+          </div>
+          <div class="method-card reveal-item">
+            <span class="method-card-title">专家拆解</span>
+          </div>
+        </div>
+
+        <div class="method-phone-wrap reveal-item">
+          <div class="phone-frame">
+            <div class="phone-side phone-side-vol"></div>
+            <div class="phone-side phone-side-pwr"></div>
+            <div class="phone-screen">
+              <img class="phone-content" src="./assets/expert-consultant.png" alt="">
+            </div>
+            <div class="phone-island"></div>
+          </div>
+        </div>
+
+        <div class="method-col method-col-right">
+          <h2 class="method-headline reveal-item">直播破卡点。</h2>
+          <div class="method-card reveal-item">
+            <span class="method-card-title">AI整理</span>
+          </div>
+          <div class="method-card reveal-item">
+            <span class="method-card-title">当天行动</span>
+          </div>
+        </div>
+      </div>
+      <div class="brand-tag">SHUOGUO · AI</div>
+      <div class="page-num"><em>27</em> / 32</div>
+    </section>
+
+    <!-- 28 让专家智慧，实时抵达经营现场 -->
+    <section class="slide" id="slide-live">
+      <div class="speed-execute-shell">
+        <h2 class="speed-execute-title">让专家智慧，实时抵达经营现场。</h2>
+      </div>
+      <div class="brand-tag">SHUOGUO · AI</div>
+      <div class="page-num"><em>28</em> / 32</div>
+    </section>
+
+    <!-- 29 从一个工具到一张增长网络 -->
+    <section class="slide" id="slide-tool-network">
+      <div class="method-shell">
+        <div class="method-col method-col-left">
+          <h2 class="method-headline reveal-item">从一个工具</h2>
+          <div class="method-card reveal-item">
+            <span class="method-card-title">客户连接</span>
+          </div>
+          <div class="method-card reveal-item">
+            <span class="method-card-title">行业联盟</span>
+          </div>
+        </div>
+
+        <div class="method-phone-wrap reveal-item">
+          <div class="phone-frame">
+            <div class="phone-side phone-side-vol"></div>
+            <div class="phone-side phone-side-pwr"></div>
+            <div class="phone-screen">
+              <img class="phone-content" src="./assets/ai-consultant.png" alt="">
+            </div>
+            <div class="phone-island"></div>
+          </div>
+        </div>
+
+        <div class="method-col method-col-right">
+          <h2 class="method-headline reveal-item">到一张增长网络。</h2>
+          <div class="method-card reveal-item">
+            <span class="method-card-title">异业合作</span>
+          </div>
+          <div class="method-card reveal-item">
+            <span class="method-card-title">经验资产</span>
+          </div>
+        </div>
+      </div>
+      <div class="brand-tag">SHUOGUO · AI</div>
+      <div class="page-num"><em>29</em> / 32</div>
+    </section>
+
+    <!-- 30 资源被智能匹配 -->
+    <section class="slide" id="slide-smart-match">
+      <div class="speed-execute-shell">
+        <h2 class="speed-execute-title">让资源不再靠偶然相遇，<br>而是被智能匹配。</h2>
+      </div>
+      <div class="brand-tag">SHUOGUO · AI</div>
+      <div class="page-num"><em>32</em> / 32</div>
+    </section>
+
+    <!-- 31 从单打独斗迈向生态共存 -->
+    <section class="slide" id="slide-ecosystem">
+      <div class="method-shell method-shell--simple">
+        <div class="method-col method-col-left method-col-plain">
+          <h2 class="method-headline reveal-item">从单打独斗</h2>
+        </div>
+
+        <div class="method-phone-wrap reveal-item">
+          <div class="phone-frame">
+            <div class="phone-side phone-side-vol"></div>
+            <div class="phone-side phone-side-pwr"></div>
+            <div class="phone-screen">
+              <img class="phone-content" src="./assets/ai-consultant.png" alt="">
+            </div>
+            <div class="phone-island"></div>
+          </div>
+        </div>
+
+        <div class="method-col method-col-right method-col-plain">
+          <h2 class="method-headline reveal-item">迈向生态共存</h2>
+        </div>
+      </div>
+      <div class="brand-tag">SHUOGUO · AI</div>
+      <div class="page-num"><em>31</em> / 32</div>
+    </section>
+
+    <!-- 32 结语页 -->
+    <section class="slide" id="slide-end">
+      <div class="end-bg" aria-hidden="true"></div>
+      <div class="end-copy">
+        <h2 class="statement-title reveal-item">硕果AI<br>让小微企业不再孤军奋战。</h2>
+        <p class="statement-sub reveal-item">让每一家企业，<br>都有自己的商业智能系统。</p>
+      </div>
+      <div class="page-num"><em>30</em> / 32</div>
+    </section>
+
+  </div>
+</div>
+
+<script>
+/* ===== 30:6 固定舞台：按屏幕宽度等比缩放，顶部对齐 ===== */
+const STAGE_W = 3000, STAGE_H = 600;
+const P5_APP_BASE_W = 1700, P5_APP_BASE_H = 1116;
+
+function syncP5MountScale(){
+  const mount = document.getElementById('p5-mount');
+  if(!mount) return;
+  const outer = mount.firstElementChild;
+  const appRoot = mount.querySelector('#app-scale-root');
+  if(!outer || !appRoot) return;
+  const mountW = mount.clientWidth || STAGE_W;
+  const mountH = mount.clientHeight || STAGE_H;
+  const scale = Math.min(mountW / P5_APP_BASE_W, mountH / P5_APP_BASE_H);
+
+  outer.style.width = `${mountW}px`;
+  outer.style.height = `${mountH}px`;
+  outer.style.display = 'flex';
+  outer.style.alignItems = 'center';
+  outer.style.justifyContent = 'center';
+  outer.style.overflow = 'hidden';
+
+  appRoot.style.height = `${P5_APP_BASE_H}px`;
+  appRoot.style.transform = `scale(${scale})`;
+  appRoot.style.transformOrigin = 'center center';
+}
+
+function fitStage(){
+  const stage = document.getElementById('stage');
+  const wrap = document.getElementById('stage-wrap');
+  const intro = document.getElementById('intro');
+  if(!stage || !wrap) return;
+  const scale = window.innerWidth / STAGE_W;
+  stage.style.transform = `scale(${scale})`;
+  if(intro) intro.style.transform = `scale(${scale})`;
+  wrap.style.height = `${Math.max(window.innerHeight, STAGE_H * scale)}px`;
+  syncP5MountScale();
+}
+fitStage();
+window.addEventListener('resize', fitStage);
+
+/* ===== 幻灯片切换 ===== */
+const slides = document.querySelectorAll('.slide');
+const total = slides.length;
+let cur = 0;
+const progress = document.getElementById('progress');
+const curLabel = document.getElementById('cur');
+
+slides.forEach((slide, index) => {
+  const pageNum = slide.querySelector('.page-num');
+  if(!pageNum) return;
+  pageNum.innerHTML = `<em>${String(index + 1).padStart(2, '0')}</em> / ${total}`;
+});
+
+function readPageIndexFromUrl(){
+  const params = new URLSearchParams(window.location.search);
+  const raw = params.get('page') ?? params.get('p') ?? params.get('slide');
+  if(raw === null) return null;
+  const page = Number.parseInt(raw, 10);
+  if(!Number.isFinite(page)) return null;
+  return Math.max(0, Math.min(total - 1, page - 1));
+}
+
+function syncPageParam(idx){
+  const url = new URL(window.location.href);
+  url.searchParams.set('page', String(idx + 1));
+  url.searchParams.delete('p');
+  url.searchParams.delete('slide');
+  window.history.replaceState(null, '', url);
+}
+
+function syncSlideChrome(idx){
+  progress.style.width = ((idx + 1) / total * 100) + '%';
+  if(curLabel) curLabel.textContent = idx + 1;
+}
+
+function playSlideReveal(slide){
+  const items = slide.querySelectorAll('.reveal-item');
+  if(!items.length || !window.gsap) return;
+  gsap.killTweensOf(items);
+  gsap.fromTo(items,
+    {opacity:0, y:26, filter:'blur(8px)'},
+    {opacity:1, y:0, filter:'blur(0px)', duration:.74, stagger:.12, ease:'power3.out'}
+  );
+}
+
+function playComputeIn(){
+  const slide = document.getElementById('slide-compute');
+  if(!slide || !window.gsap) return;
+  const past = slide.querySelector('.statement-morph-text.past');
+  const future = slide.querySelector('.statement-morph-text.future');
+  if(!past || !future) return;
+
+  computeStage = 0;
+  computeAnimating = false;
+  gsap.killTweensOf([past, future]);
+  gsap.set(past, {opacity:0, scale:1, y:0, filter:'blur(12px)'});
+  gsap.set(future, {opacity:0, scale:.56, filter:'blur(18px)'});
+
+  gsap.to(past, {
+    opacity:1,
+    scale:1,
+    y:0,
+    filter:'blur(0px)',
+    duration:.78,
+    ease:'power3.out',
+    onComplete(){
+      computeStage = 1;
+    }
+  });
+}
+
+let computeStage = 0;
+let computeAnimating = false;
+
+function clearComputeDemo(){
+  computeAnimating = false;
+  const slide = document.getElementById('slide-compute');
+  if(!slide || !window.gsap) return;
+  const past = slide.querySelector('.statement-morph-text.past');
+  const future = slide.querySelector('.statement-morph-text.future');
+  gsap.killTweensOf([past, future]);
+}
+
+function triggerComputeFuture(){
+  const slide = document.getElementById('slide-compute');
+  if(!slide || computeStage !== 1 || computeAnimating || !window.gsap) return false;
+  const past = slide.querySelector('.statement-morph-text.past');
+  const future = slide.querySelector('.statement-morph-text.future');
+  if(!past || !future) return false;
+
+  computeAnimating = true;
+  computeStage = 2;
+  gsap.timeline({
+    defaults:{ease:'power3.out'},
+    onComplete(){
+      computeAnimating = false;
+    }
+  })
+    .to(past, {
+      y:-108,
+      scale:.78,
+      opacity:.78,
+      filter:'blur(0px)',
+      duration:1.08,
+      ease:'power2.inOut'
+    }, 'switch')
+    .to(future, {opacity:1, scale:1, filter:'blur(0px)', duration:1.22, ease:'back.out(1.5)'}, 'switch+=.06');
+  return true;
+}
+
+function handleComputeAdvance(){
+  if(computeAnimating) return true;
+  if(computeStage === 1) return triggerComputeFuture();
+  return false;
+}
+
+function playAgentReformIn(){
+  const slide = document.getElementById('slide-agent-reform');
+  if(!slide || !window.gsap) return;
+  const past = slide.querySelector('[data-agent-past-panel]');
+  const future = slide.querySelector('[data-agent-future-panel]');
+  const summary = slide.querySelector('[data-agent-summary]');
+  const pastTags = past ? Array.from(past.querySelectorAll('.agent-compare-tag')) : [];
+  const futureTags = future ? Array.from(future.querySelectorAll('.agent-compare-tag')) : [];
+  if(!past || !future || !summary) return;
+
+  agentReformStage = 0;
+  agentReformAnimating = false;
+  gsap.killTweensOf([past, future, summary, ...pastTags, ...futureTags]);
+  gsap.set(past, {opacity:0, x:0, scale:1, filter:'blur(10px)', transformOrigin:'left center'});
+  gsap.set(future, {opacity:0, x:0, filter:'blur(10px)'});
+  gsap.set(pastTags, {opacity:0, y:18, filter:'blur(8px)'});
+  gsap.set(futureTags, {opacity:0, y:18, filter:'blur(8px)'});
+  gsap.set(summary, {opacity:0, scale:.8, y:18, filter:'blur(12px)'});
+  requestAnimationFrame(() => triggerAgentReformPast());
+}
+
+let agentReformStage = 0;
+let agentReformAnimating = false;
+
+function clearAgentReformDemo(){
+  agentReformAnimating = false;
+  const slide = document.getElementById('slide-agent-reform');
+  if(!slide || !window.gsap) return;
+  const past = slide.querySelector('[data-agent-past-panel]');
+  const future = slide.querySelector('[data-agent-future-panel]');
+  const summary = slide.querySelector('[data-agent-summary]');
+  const pastTags = past ? Array.from(past.querySelectorAll('.agent-compare-tag')) : [];
+  const futureTags = future ? Array.from(future.querySelectorAll('.agent-compare-tag')) : [];
+  gsap.killTweensOf([past, future, summary, ...pastTags, ...futureTags]);
+}
+
+function triggerAgentReformPast(){
+  const slide = document.getElementById('slide-agent-reform');
+  if(!slide || agentReformStage !== 0 || agentReformAnimating || !window.gsap) return false;
+  const past = slide.querySelector('[data-agent-past-panel]');
+  const pastTags = past ? Array.from(past.querySelectorAll('.agent-compare-tag')) : [];
+  if(!past || !pastTags.length) return false;
+
+  agentReformAnimating = true;
+  gsap.timeline({
+    defaults:{ease:'power3.out'},
+    onComplete(){
+      agentReformAnimating = false;
+      agentReformStage = 1;
+    }
+  })
+    .to(past, {opacity:1, x:70, filter:'blur(0px)', duration:.8})
+    .to(pastTags, {opacity:1, y:0, filter:'blur(0px)', duration:.42, stagger:.07}, '-=.28');
+  return true;
+}
+
+function triggerAgentReformFuture(){
+  const slide = document.getElementById('slide-agent-reform');
+  if(!slide || agentReformStage !== 1 || agentReformAnimating || !window.gsap) return false;
+  const past = slide.querySelector('[data-agent-past-panel]');
+  const future = slide.querySelector('[data-agent-future-panel]');
+  const futureTags = future ? Array.from(future.querySelectorAll('.agent-compare-tag')) : [];
+  if(!past || !future || !futureTags.length) return false;
+
+  agentReformAnimating = true;
+  gsap.timeline({
+    defaults:{ease:'power3.out'},
+    onComplete(){
+      agentReformAnimating = false;
+      agentReformStage = 2;
+    }
+  })
+    .to(past, {opacity:.4, scale:.8, x:14, duration:1, ease:'power2.inOut'}, 0)
+    .to(future, {opacity:1, x:-70, filter:'blur(0px)', duration:.8}, 0)
+    .to(futureTags, {opacity:1, y:0, filter:'blur(0px)', duration:.42, stagger:.07}, .16);
+  return true;
+}
+
+function triggerAgentReformSummary(){
+  const slide = document.getElementById('slide-agent-reform');
+  if(!slide || agentReformStage !== 2 || agentReformAnimating || !window.gsap) return false;
+  const summary = slide.querySelector('[data-agent-summary]');
+  if(!summary) return false;
+
+  agentReformAnimating = true;
+  agentReformStage = 3;
+  gsap.to(summary, {
+    opacity:1,
+    scale:1,
+    y:0,
+    filter:'blur(0px)',
+    duration:.8,
+    ease:'back.out(1.9)',
+    onComplete(){
+      agentReformAnimating = false;
+    }
+  });
+  return true;
+}
+
+function handleAgentReformAdvance(){
+  if(agentReformAnimating) return true;
+  if(agentReformStage === 0) return triggerAgentReformPast();
+  if(agentReformStage === 1) return triggerAgentReformFuture();
+  if(agentReformStage === 2) return triggerAgentReformSummary();
+  return false;
+}
+
+function startDirectionTextParticles(slide){
+  const mount = slide.querySelector('.direction-text-particles');
+  const label = slide.querySelector('.direction-final span');
+  const text = (label?.dataset.text || label?.textContent || '').trim();
+  if(label) label.dataset.text = text;
+  window.startDirectionReferenceParticles?.(mount, text);
+}
+
+function stopDirectionTextParticles(){
+  window.stopDirectionReferenceParticles?.();
+}
+
+let directionFinaleShown = false;
+let directionFinaleAnimating = false;
+let healthStageStep = 0;
+let healthStageAnimating = false;
+
+function playDirectionIn(){
+  const slide = document.getElementById('slide-direction');
+  if(!slide || !window.gsap) return;
+  const title = slide.querySelector('.direction-title');
+  const kicker = slide.querySelector('.direction-kicker');
+  const cards = Array.from(slide.querySelectorAll('.direction-card'));
+  const overlays = Array.from(slide.querySelectorAll('.direction-card-overlay'));
+  const finale = slide.querySelector('.direction-finale span');
+  if(!title || !cards.length || !finale) return;
+
+  directionFinaleShown = false;
+  directionFinaleAnimating = false;
+  stopDirectionTextParticles();
+  gsap.killTweensOf([title, kicker, finale, ...cards, ...overlays]);
+  gsap.set(kicker, {opacity:0, y:18, filter:'blur(8px)'});
+  gsap.set(title, {opacity:0, y:34, filter:'blur(18px)'});
+  gsap.set(cards, {
+    opacity:0,
+    y:72,
+    scale:.94,
+    rotateX:-8,
+    filter:'blur(16px)',
+    transformOrigin:'center bottom'
+  });
+  gsap.set(overlays, {opacity:.04});
+  gsap.set(finale, {
+    opacity:0,
+    y:30,
+    scale:.9,
+    filter:'blur(20px)',
+    transformOrigin:'center center'
+  });
+
+  const tl = gsap.timeline();
+  tl.to(kicker, {
+      opacity:1,
+      y:0,
+      filter:'blur(0px)',
+      duration:.52,
+      ease:'power2.out'
+    })
+    .to(title, {
+      opacity:1,
+      y:0,
+      filter:'blur(0px)',
+      duration:.72,
+      ease:'power3.out'
+    }, '-=.2')
+    .to(cards, {
+      opacity:1,
+      y:0,
+      scale:1,
+      rotateX:0,
+      filter:'blur(0px)',
+      duration:.86,
+      stagger:.1,
+      ease:'power3.out'
+    }, '-=.24');
+}
+
+function triggerDirectionFinale(){
+  const slide = document.getElementById('slide-direction');
+  if(!slide || !window.gsap || directionFinaleShown || directionFinaleAnimating) return false;
+  const cards = Array.from(slide.querySelectorAll('.direction-card'));
+  const finale = slide.querySelector('.direction-finale span');
+  if(!cards.length || !finale) return false;
+
+  directionFinaleAnimating = true;
+  gsap.killTweensOf([finale, ...cards]);
+  const tl = gsap.timeline({
+    onComplete(){
+      directionFinaleShown = true;
+      directionFinaleAnimating = false;
+    }
+  });
+  tl.to(cards, {
+      opacity:0,
+      duration:.42,
+      stagger:.18,
+      ease:'power2.inOut'
+    })
+    .to(finale, {
+      opacity:1,
+      y:0,
+      scale:1,
+      filter:'blur(0px)',
+      duration:.78,
+      ease:'power3.out'
+    }, '+=.08');
+  return true;
+}
+
+function playDecisionIn(){
+  const slide = document.getElementById('slide-decision');
+  if(!slide || !window.gsap) return;
+  const kicker = slide.querySelector('.decision-kicker');
+  const cards = Array.from(slide.querySelectorAll('.decision-card'));
+  const masks = Array.from(slide.querySelectorAll('.decision-mask'));
+  const copy = slide.querySelector('.decision-copy');
+  const burst = slide.querySelector('.decision-copy-burst');
+  const line = slide.querySelector('.decision-copy-line');
+  const title = slide.querySelector('.decision-copy h2');
+  if(!kicker || !cards.length || !copy || !title || !burst || !line) return;
+
+  decisionStage = 0;
+  decisionAnimating = true;
+  gsap.killTweensOf([kicker, copy, burst, line, title, ...cards, ...masks]);
+  gsap.set(kicker, {opacity:0, y:18, filter:'blur(8px)'});
+  gsap.set(cards, {
+    opacity:1,
+    y:46,
+    scale:.92,
+    filter:'blur(8px)',
+    transformOrigin:'center bottom'
+  });
+  gsap.set(masks, {opacity:1, filter:'blur(0px)'});
+  gsap.set(copy, {opacity:0});
+  gsap.set(burst, {
+    opacity:0,
+    scale:.24,
+    filter:'blur(36px)',
+    transformOrigin:'center center'
+  });
+  gsap.set(line, {
+    opacity:0,
+    scaleX:0,
+    transformOrigin:'center center'
+  });
+  gsap.set(title, {
+    opacity:0,
+    y:-220,
+    scale:1.32,
+    rotateX:-28,
+    filter:'blur(30px) brightness(1.7)',
+    transformOrigin:'center center'
+  });
+
+  const tl = gsap.timeline();
+  tl.to(kicker, {
+      opacity:1,
+      y:0,
+      filter:'blur(0px)',
+      duration:.5,
+      ease:'power2.out'
+    })
+    .to(cards, {
+      opacity:1,
+      y:0,
+      scale:1,
+      filter:'blur(0px)',
+      duration:.44,
+      ease:'power3.out'
+    }, '-=.12')
+    .to(masks, {
+      opacity:0,
+      filter:'blur(8px)',
+      duration:.46,
+      stagger:.12,
+      ease:'power2.out'
+    }, '<')
+    .add(() => {
+      decisionAnimating = false;
+      decisionStage = 1;
+    });
+}
+
+let decisionStage = 0;
+let decisionAnimating = false;
+
+function clearDecisionDemo(){
+  decisionAnimating = false;
+  const slide = document.getElementById('slide-decision');
+  if(!slide || !window.gsap) return;
+  const kicker = slide.querySelector('.decision-kicker');
+  const cards = Array.from(slide.querySelectorAll('.decision-card'));
+  const masks = Array.from(slide.querySelectorAll('.decision-mask'));
+  const copy = slide.querySelector('.decision-copy');
+  const burst = slide.querySelector('.decision-copy-burst');
+  const line = slide.querySelector('.decision-copy-line');
+  const title = slide.querySelector('.decision-copy h2');
+  gsap.killTweensOf([kicker, copy, burst, line, title, ...cards, ...masks]);
+}
+
+function triggerDecisionCopy(){
+  const slide = document.getElementById('slide-decision');
+  if(!slide || decisionStage !== 1 || decisionAnimating || !window.gsap) return false;
+  const copy = slide.querySelector('.decision-copy');
+  const burst = slide.querySelector('.decision-copy-burst');
+  const line = slide.querySelector('.decision-copy-line');
+  const title = slide.querySelector('.decision-copy h2');
+  if(!copy || !burst || !line || !title) return false;
+
+  decisionAnimating = true;
+  decisionStage = 2;
+  gsap.timeline({
+    onComplete(){
+      decisionAnimating = false;
+    }
+  })
+    .to(copy, {
+      opacity:1,
+      duration:.18,
+      ease:'none'
+    })
+    .to(line, {
+      opacity:1,
+      scaleX:1,
+      duration:.12,
+      ease:'expo.out'
+    }, '<')
+    .to(burst, {
+      opacity:1,
+      scale:1,
+      filter:'blur(18px)',
+      duration:.28,
+      ease:'power2.out'
+    }, '<')
+    .to(title, {
+      opacity:1,
+      y:0,
+      scale:1,
+      rotateX:0,
+      filter:'blur(0px) brightness(1.08)',
+      duration:.74,
+      ease:'power4.in'
+    }, '<')
+    .to(title, {
+      y:18,
+      scale:1.04,
+      rotateX:0,
+      filter:'blur(0px) brightness(1.02)',
+      duration:.16,
+      ease:'power2.out'
+    })
+    .to(title, {
+      y:0,
+      scale:1.02,
+      filter:'blur(0px) brightness(1)',
+      duration:.22,
+      ease:'back.out(2.6)'
+    })
+    .to(line, {
+      opacity:0,
+      scaleX:1.46,
+      duration:.46,
+      ease:'power2.out'
+    }, '<')
+    .to(burst, {
+      opacity:.22,
+      scale:1.24,
+      filter:'blur(34px)',
+      duration:.64,
+      ease:'power2.out'
+    }, '<');
+  return true;
+}
+
+function handleDecisionAdvance(){
+  if(decisionAnimating) return true;
+  if(decisionStage === 1) return triggerDecisionCopy();
+  return false;
+}
+
+function playHealthIn(){
+  const slide = document.getElementById('slide-health');
+  if(!slide || !window.gsap) return;
+  const primary = slide.querySelector('#health-stage-primary');
+  const grid = slide.querySelector('#health-stage-grid');
+  const final = slide.querySelector('#health-stage-final');
+  if(!primary || !grid || !final) return;
+
+  healthStageStep = 0;
+  healthStageAnimating = false;
+  primary.textContent = '不是堆token';
+  gsap.killTweensOf([primary, grid, final]);
+  gsap.set(primary, {opacity:1, y:0, scale:1, filter:'blur(0px)'});
+  gsap.set(grid, {opacity:0, y:70, filter:'blur(18px)'});
+  gsap.set(final, {opacity:0, y:180, filter:'blur(20px)'});
+}
+
+function triggerHealthStage(){
+  const slide = document.getElementById('slide-health');
+  if(!slide || !window.gsap || healthStageAnimating) return false;
+  const primary = slide.querySelector('#health-stage-primary');
+  const grid = slide.querySelector('#health-stage-grid');
+  const final = slide.querySelector('#health-stage-final');
+  if(!primary || !grid || !final) return false;
+
+  healthStageAnimating = true;
+  gsap.killTweensOf([primary, grid, final]);
+  const tl = gsap.timeline({
+    onComplete(){
+      healthStageAnimating = false;
+      healthStageStep += 1;
+    }
+  });
+
+  if(healthStageStep === 0){
+    tl.to(primary, {
+      opacity:0,
+      scale:.94,
+      filter:'blur(16px)',
+      duration:.26,
+      ease:'power2.in'
+    }).call(() => {
+      primary.textContent = '而是调度token';
+    }).to(primary, {
+      opacity:1,
+      scale:1,
+      filter:'blur(0px)',
+      duration:.42,
+      ease:'power3.out'
+    });
+    return true;
+  }
+
+  if(healthStageStep === 1){
+    tl.to(primary, {
+      y:-24,
+      scale:.66,
+      transformOrigin:'center top',
+      duration:.72,
+      ease:'power3.inOut'
+    }).to(grid, {
+      opacity:1,
+      y:0,
+      filter:'blur(0px)',
+      duration:.62,
+      ease:'power3.out'
+    }, '-=.34');
+    return true;
+  }
+
+  if(healthStageStep === 2){
+    tl.to([primary, grid], {
+      y:'-=118',
+      opacity:0,
+      filter:'blur(16px)',
+      duration:.62,
+      ease:'power3.inOut'
+    }).to(final, {
+      opacity:1,
+      y:0,
+      filter:'blur(0px)',
+      duration:.78,
+      ease:'power3.out'
+    }, '-=.08');
+    return true;
+  }
+
+  healthStageAnimating = false;
+  return false;
+}
+
+/* ===== 第 13 页 · 软硬件护城河 ===== */
+let customPlanStage = 0;
+let customPlanAnimating = false;
+
+function resetCustomPlanState(){
+  const slide = document.getElementById('slide-custom-plan');
+  if(!slide) return;
+  const hero = slide.querySelector('#moat-hero');
+  const title = slide.querySelector('#moat-hero-title');
+  const matrix = slide.querySelector('#moat-matrix');
+  const panels = matrix ? Array.from(matrix.querySelectorAll('.moat-panel')) : [];
+  const nodes = matrix ? Array.from(matrix.querySelectorAll('.moat-node')) : [];
+  const robots = matrix ? Array.from(matrix.querySelectorAll('.moat-robot')) : [];
+  const impact = slide.querySelector('#moat-impact');
+  const impactCopy = slide.querySelector('#moat-impact-copy');
+  const dust = slide.querySelector('#moat-dust');
+  const smoke = slide.querySelector('.moat-smoke');
+
+  customPlanStage = 0;
+  customPlanAnimating = false;
+
+  if(!window.gsap){
+    if(hero) hero.style.opacity = '1';
+    if(title){
+      title.style.opacity = '1';
+      title.style.transform = 'translateY(0)';
+    }
+    if(matrix) matrix.style.opacity = '0';
+    if(impact) impact.style.opacity = '0';
+    return;
+  }
+
+  gsap.killTweensOf([hero, title, matrix, ...panels, ...nodes, ...robots, impact, impactCopy, dust, smoke]);
+  gsap.set(hero, {opacity:1, scale:1, filter:'blur(0px)'});
+  gsap.set(title, {opacity:0, y:-240, scale:1, filter:'blur(18px)'});
+  gsap.set(matrix, {opacity:0, x:0, pointerEvents:'none'});
+  gsap.set(panels, {opacity:0, y:48, scale:.96, filter:'blur(14px)'});
+  gsap.set(nodes, {opacity:0, y:22, scale:.92, filter:'blur(10px)'});
+  gsap.set(robots, {opacity:0, y:54, scale:.9, filter:'blur(14px)'});
+  gsap.set(impact, {opacity:0, pointerEvents:'none'});
+  gsap.set(impactCopy, {opacity:0, y:-320, scale:1.16, filter:'blur(18px)'});
+  gsap.set(dust, {opacity:0});
+  if(smoke) gsap.set(smoke, {opacity:0, scale:.32, y:180, rotation:-3, transformOrigin:'50% 65%'});
+}
+
+function playCustomPlanIn(){
+  const slide = document.getElementById('slide-custom-plan');
+  if(!slide) return;
+  const title = slide.querySelector('#moat-hero-title');
+
+  resetCustomPlanState();
+  if(!window.gsap) return;
+
+  customPlanAnimating = true;
+  const tl = gsap.timeline({
+    onComplete(){
+      customPlanAnimating = false;
+    }
+  })
+    .to(title, {
+      opacity:1,
+      y:0,
+      filter:'blur(0px)',
+      duration:.43,
+      ease:'none'
+    }, '-=.04');
+}
+
+function triggerCustomPlanMatrix(){
+  const slide = document.getElementById('slide-custom-plan');
+  if(!slide || customPlanStage !== 0 || customPlanAnimating) return false;
+  const hero = slide.querySelector('#moat-hero');
+  const matrix = slide.querySelector('#moat-matrix');
+  const panels = matrix ? Array.from(matrix.querySelectorAll('.moat-panel')) : [];
+  const nodes = matrix ? Array.from(matrix.querySelectorAll('.moat-node')) : [];
+  const robots = matrix ? Array.from(matrix.querySelectorAll('.moat-robot')) : [];
+  if(!hero || !matrix || !window.gsap) return false;
+
+  customPlanAnimating = true;
+  customPlanStage = 1;
+
+  gsap.timeline({
+    onComplete(){
+      customPlanAnimating = false;
+    }
+  })
+    .to(hero, {
+      opacity:0,
+      scale:.96,
+      filter:'blur(16px)',
+      duration:.4,
+      ease:'power2.out'
+    })
+    .set(matrix, {pointerEvents:'auto'})
+    .to(matrix, {
+      opacity:1,
+      duration:.14,
+      ease:'none'
+    }, '<')
+    .to(panels, {
+      opacity:1,
+      y:0,
+      scale:1,
+      filter:'blur(0px)',
+      duration:.54,
+      stagger:.08,
+      ease:'power3.out'
+    }, '-=.04')
+    .to(nodes, {
+      opacity:1,
+      y:0,
+      scale:1,
+      filter:'blur(0px)',
+      duration:.34,
+      stagger:.03,
+      ease:'power2.out'
+    }, '-=.22')
+    .to(robots, {
+      opacity:1,
+      y:0,
+      scale:1,
+      filter:'blur(0px)',
+      duration:.42,
+      stagger:.05,
+      ease:'back.out(1.8)'
+    }, '-=.14');
+  return true;
+}
+
+function triggerCustomPlanImpact(){
+  const slide = document.getElementById('slide-custom-plan');
+  if(!slide || customPlanStage !== 1 || customPlanAnimating) return false;
+  const matrix = slide.querySelector('#moat-matrix');
+  const impact = slide.querySelector('#moat-impact');
+  const impactCopy = slide.querySelector('#moat-impact-copy');
+  const dust = slide.querySelector('#moat-dust');
+  const smoke = slide.querySelector('.moat-smoke');
+  if(!matrix || !impact || !impactCopy || !dust || !window.gsap) return false;
+
+  customPlanAnimating = true;
+  customPlanStage = 2;
+
+  // 烟尘容器立即就绪（淡入由 smoke 自身爆开承担）
+  gsap.set(dust, {opacity:1});
+  if(smoke) gsap.set(smoke, {opacity:0, scale:.32, y:180, rotation:-3, transformOrigin:'50% 65%'});
+
+  gsap.timeline({onComplete(){ customPlanAnimating = false; }})
+    // 1) 矩阵后退到背景
+    .to(matrix, {
+      opacity:.14, scale:.965, filter:'blur(7px)',
+      duration:.32, ease:'power2.out'
+    })
+    .set(impact, {pointerEvents:'auto'})
+    .to(impact, {opacity:1, duration:.08, ease:'none'}, '<')
+
+    // 2) 文字从高空快速坠落（带动态模糊）
+    .fromTo(impactCopy,
+      {opacity:0, y:-380, scale:1.22, filter:'blur(22px)'},
+      {opacity:1, y:0, scale:1, filter:'blur(0px)', duration:.44, ease:'power4.in'},
+      'impact'
+    )
+    // 3) 撞击瞬间：文字超调 + 弹性回弹
+    .to(impactCopy, {
+      scale:1.08, duration:.09, ease:'power2.out'
+    }, 'impact+=.44')
+    .to(impactCopy, {
+      scale:1, duration:.6, ease:'elastic.out(1, .5)'
+    })
+
+    // 4) 烟尘从落点瞬间炸开（水花溅起的爆破帧）
+    .to(smoke, {
+      opacity:1, scale:1.15, y:0, rotation:2,
+      duration:.22, ease:'expo.out'
+    }, 'impact+=.42')
+    // 5) 立即消散 —— 边扩散边淡出，不留痕（像水花飞溅后散去）
+    .to(smoke, {
+      scale:1.55, opacity:0, y:-20,
+      duration:.5, ease:'power2.out'
+    }, 'impact+=.64')
+
+    // 6) 舞台被震一下（背景矩阵横向抖动）
+    .to(matrix, {
+      x:'+=10', duration:.045, repeat:6, yoyo:true, ease:'none'
+    }, 'impact+=.44')
+    .set(matrix, {x:0});
+
+  return true;
+}
+
+function handleCustomPlanAdvance(){
+  if(customPlanAnimating) return true;
+  if(customPlanStage === 0) return triggerCustomPlanMatrix();
+  if(customPlanStage === 1) return triggerCustomPlanImpact();
+  return false;
+}
+
+/* ===== 第 14 页 · 用户闭环 ===== */
+let compareStage = 0;
+let compareAnimating = false;
+
+function clearCompareDemo(){
+  // 仅清理：kill tweens + 状态归零。视觉重置交给 playCompareIn。
+  // 不在离开页面时改 DOM，避免与切页 CSS 动画叠加导致"用户"闪现。
+  compareStage = 0;
+  compareAnimating = false;
+  const slide = document.getElementById('slide-compare');
+  if(!slide || !window.gsap) return;
+  const userWord = slide.querySelector('#journey-user-word');
+  const grid = slide.querySelector('#journey-grid');
+  const cards = grid ? Array.from(grid.querySelectorAll('.journey-card')) : [];
+  const subs = grid ? Array.from(grid.querySelectorAll('.journey-card-sub')) : [];
+  gsap.killTweensOf([userWord, grid, ...cards, ...subs]);
+}
+
+function playCompareIn(){
+  const slide = document.getElementById('slide-compare');
+  if(!slide) return;
+  const userWord = slide.querySelector('#journey-user-word');
+  const grid = slide.querySelector('#journey-grid');
+  const cards = grid ? Array.from(grid.querySelectorAll('.journey-card')) : [];
+  const subs = grid ? Array.from(grid.querySelectorAll('.journey-card-sub')) : [];
+
+  clearCompareDemo();
+  if(!window.gsap || !userWord) return;
+
+  // 进入页面才重置视觉。transformOrigin/perspective 必须与后续翻页动画一致，
+  // 避免 GSAP 中途切换 transformOrigin 触发位置补偿，造成翻转动作错位。
+  gsap.set(userWord, {opacity:1, y:0, rotateX:0, scale:1, filter:'blur(0px)', transformOrigin:'center bottom', transformPerspective:700});
+  if(grid) gsap.set(grid, {opacity:1});
+  gsap.set(cards, {opacity:0, rotateX:-90, transformOrigin:'top center', transformPerspective:900, filter:'blur(0px)'});
+  gsap.set(subs, {opacity:0, y:8});
+
+  compareAnimating = true;
+  gsap.fromTo(userWord,
+    {opacity:0, y:72, scale:.86, filter:'blur(16px)'},
+    {
+      opacity:1,
+      y:0,
+      scale:1,
+      filter:'blur(0px)',
+      duration:.88,
+      ease:'power3.out',
+      onComplete(){ compareAnimating = false; }
+    }
+  );
+}
+
+function triggerCompareJourney(){
+  const slide = document.getElementById('slide-compare');
+  if(!slide || compareStage !== 0 || compareAnimating || !window.gsap) return false;
+  const userWord = slide.querySelector('#journey-user-word');
+  const grid = slide.querySelector('#journey-grid');
+  const cards = grid ? Array.from(grid.querySelectorAll('.journey-card')) : [];
+  const subs = grid ? Array.from(grid.querySelectorAll('.journey-card-sub')) : [];
+  if(!userWord || !grid || !cards.length) return false;
+
+  compareAnimating = true;
+  compareStage = 1;
+
+  gsap.timeline({onComplete(){ compareAnimating = false; }})
+    // "用户" 向上翻页消失：底部为轴，顶部折向屏幕后方，同时上移
+    .to(userWord, {
+      y:-110,
+      rotateX:-90,
+      opacity:0,
+      filter:'blur(10px)',
+      transformPerspective:700,
+      transformOrigin:'center bottom',
+      duration:.52,
+      ease:'power3.in'
+    })
+    // 五词从顶部轴翻转落下（stagger 依次出现）
+    .to(cards, {
+      opacity:1,
+      rotateX:0,
+      filter:'blur(0px)',
+      transformOrigin:'top center',
+      transformPerspective:900,
+      duration:.68,
+      stagger:.12,
+      ease:'power3.out'
+    }, '-=.08')
+    // 小字在卡片定格时同步淡入（与 cards stagger 对齐）
+    .to(subs, {
+      opacity:1,
+      y:0,
+      duration:.32,
+      stagger:.12,
+      ease:'power2.out'
+    }, '<+=.42');
+  return true;
+}
+
+function handleCompareAdvance(){
+  if(compareAnimating) return true;
+  if(compareStage === 0) return triggerCompareJourney();
+  return false;
+}
+
+function playCompanionIn(){
+  const slide = document.getElementById('slide-companion');
+  if(!slide) return;
+  playSlideReveal(slide);
+  if(!window.gsap) return;
+  const visual = slide.querySelector('.partner-visual img');
+  if(!visual) return;
+  gsap.killTweensOf(visual);
+  gsap.fromTo(visual,
+    {opacity:0, scale:.9, y:24, filter:'blur(12px)'},
+    {opacity:1, scale:1, y:0, filter:'blur(0px)', duration:.82, ease:'power3.out'}
+  );
+}
+
+/* ===== 第 7 页复制页 / 第 16 页原页 · AI 建档持续学习 ===== */
+let profileStage = 0;
+let profileAnimating = false;
+let profileFloatRunning = false;
+let profileCollisionRaf = null;
+let profileCollisionLastTs = 0;
+let profileCollisionItems = [];
+
+const PROFILE_SLIDE_IDS = new Set(['slide-profile', 'slide-profile-copy']);
+const PROFILE_COPY_SLIDE_ID = 'slide-profile-copy';
+const PROFILE_COLLISION_BOUNDS = {
+  width:1024,
+  height:576,
+  cx:525,
+  cy:290,
+  r:105
+};
+
+function getProfileSlide(slideId = 'slide-profile'){
+  return document.getElementById(slideId);
+}
+
+function stopProfileCollision(){
+  if(profileCollisionRaf) cancelAnimationFrame(profileCollisionRaf);
+  profileCollisionRaf = null;
+  profileCollisionLastTs = 0;
+  profileCollisionItems = [];
+}
+
+function applyProfileCollisionPositions(){
+  profileCollisionItems.forEach(item => {
+    item.el.style.transform = `translate(${(item.x - item.w / 2).toFixed(1)}px, ${(item.y - item.h / 2).toFixed(1)}px)`;
+  });
+}
+
+function createProfileCollisionItem(el, existing){
+  const w = el.offsetWidth || 64;
+  const h = el.offsetHeight || 36;
+  const radius = Math.max(w, h) * 0.46;
+  let x = PROFILE_COLLISION_BOUNDS.cx;
+  let y = PROFILE_COLLISION_BOUNDS.cy;
+
+  for(let attempt = 0; attempt < 160; attempt++){
+    const angle = Math.random() * Math.PI * 2;
+    const dist = Math.sqrt(Math.random()) * Math.max(8, PROFILE_COLLISION_BOUNDS.r - radius - 6);
+    const tx = PROFILE_COLLISION_BOUNDS.cx + Math.cos(angle) * dist;
+    const ty = PROFILE_COLLISION_BOUNDS.cy + Math.sin(angle) * dist;
+    const overlaps = existing.some(item => {
+      const dx = item.x - tx;
+      const dy = item.y - ty;
+      return Math.hypot(dx, dy) < item.radius + radius + 8;
+    });
+    if(!overlaps){
+      x = tx;
+      y = ty;
+      break;
+    }
+  }
+
+  const velocityAngle = Math.random() * Math.PI * 2;
+  const speed = 12 + Math.random() * 10;
+  return {
+    el, w, h, radius, x, y,
+    vx: Math.cos(velocityAngle) * speed,
+    vy: Math.sin(velocityAngle) * speed
+  };
+}
+
+function profileCollisionTick(ts){
+  if(!profileCollisionItems.length) return;
+  if(!profileCollisionLastTs) profileCollisionLastTs = ts;
+  const dt = Math.min(0.032, Math.max(0.012, (ts - profileCollisionLastTs) / 1000));
+  profileCollisionLastTs = ts;
+
+  profileCollisionItems.forEach(item => {
+    item.x += item.vx * dt;
+    item.y += item.vy * dt;
+
+    const dx = item.x - PROFILE_COLLISION_BOUNDS.cx;
+    const dy = item.y - PROFILE_COLLISION_BOUNDS.cy;
+    const dist = Math.hypot(dx, dy) || 0.0001;
+    const limit = PROFILE_COLLISION_BOUNDS.r - item.radius - 3;
+    if(dist > limit){
+      const nx = dx / dist;
+      const ny = dy / dist;
+      item.x = PROFILE_COLLISION_BOUNDS.cx + nx * limit;
+      item.y = PROFILE_COLLISION_BOUNDS.cy + ny * limit;
+      const dot = item.vx * nx + item.vy * ny;
+      if(dot > 0){
+        item.vx -= 2 * dot * nx;
+        item.vy -= 2 * dot * ny;
+      }
+    }
+  });
+
+  applyProfileCollisionPositions();
+  profileCollisionRaf = requestAnimationFrame(profileCollisionTick);
+}
+
+function startProfileCollision(){
+  const slide = getProfileSlide('slide-profile');
+  if(!slide) return;
+  const tags = [...slide.querySelectorAll('.profile-collision-tag')];
+  if(!tags.length) return;
+  stopProfileCollision();
+  profileCollisionItems = [];
+  tags.forEach(tag => {
+    const item = createProfileCollisionItem(tag, profileCollisionItems);
+    profileCollisionItems.push(item);
+  });
+  applyProfileCollisionPositions();
+  profileCollisionLastTs = 0;
+  profileCollisionRaf = requestAnimationFrame(profileCollisionTick);
+}
+
+function clearProfileDemo(slideId = 'slide-profile'){
+  // 仅清理：kill tweens + 状态归零。视觉重置交给 playProfileIn。
+  profileStage = 0;
+  profileAnimating = false;
+  profileFloatRunning = false;
+  stopProfileCollision();
+  const slide = getProfileSlide(slideId);
+  window.stopProfileOrbitScene?.();
+  if(!slide || !window.gsap) return;
+  const title = slide.querySelector('.profile-title-main');
+  const orbitWrap = slide.querySelector('.profile-orbit-wrap');
+  const bottom = slide.querySelector('.profile-bottom');
+  const stageTwo = slide.querySelector('.profile-stage-two');
+  const stageTwoSubtitle = slide.querySelector('.profile-stage-two-subtitle');
+  const brainPanel = slide.querySelector('.profile-brain-panel');
+  const collisionTags = slide.querySelectorAll('.profile-collision-tag');
+  gsap.killTweensOf([title, orbitWrap, bottom, stageTwo, stageTwoSubtitle, brainPanel, ...collisionTags].filter(Boolean));
+}
+
+function playProfileIn(slideId = 'slide-profile'){
+  const slide = getProfileSlide(slideId);
+  if(!slide) return;
+  const title = slide.querySelector('.profile-title-main');
+  const orbitWrap = slide.querySelector('.profile-orbit-wrap');
+  const bottom = slide.querySelector('.profile-bottom');
+
+  clearProfileDemo(slideId);
+  if(!window.gsap) return;
+
+  if(slideId === PROFILE_COPY_SLIDE_ID){
+    if(!orbitWrap) return;
+    profileStage = 1;
+    gsap.set(orbitWrap, {opacity:0, scale:.94, filter:'blur(12px)'});
+    profileAnimating = true;
+    const orbitMount = slide.querySelector('.profile-orbit-mount');
+    window.startProfileOrbitScene?.(orbitMount, {
+      variant:'diagonal-arc',
+      imageSrc:'./assets/cyber-brain-gap-transparent.png',
+      labels:['理解目标','推理路径','判断优先级','调用工具','处理数据','生成文件','执行任务','独立运行','失败隔离','随时重启'],
+      labelScaleMultiplier:1.14,
+      imageHeight:11.8
+    });
+    gsap.to(orbitWrap, {
+      opacity:1, scale:1, filter:'blur(0px)',
+      duration:.92, ease:'power2.out',
+      onComplete(){ profileAnimating = false; }
+    });
+    return;
+  }
+
+  if(!title) return;
+  const stageTwo = slide.querySelector('.profile-stage-two');
+  const stageTwoSubtitle = slide.querySelector('.profile-stage-two-subtitle');
+  const brainPanel = slide.querySelector('.profile-brain-panel');
+  const collisionTags = slide.querySelectorAll('.profile-collision-tag');
+
+  // 视觉初始化（重置 transform/opacity）
+  gsap.set(title, {xPercent:-50, yPercent:-50, x:0, y:0, scale:1, rotation:0, opacity:0, filter:'blur(18px)', transformOrigin:'center center'});
+  if(stageTwo) gsap.set(stageTwo, {opacity:0});
+  if(stageTwoSubtitle) gsap.set(stageTwoSubtitle, {opacity:0, x:-40, y:24, filter:'blur(14px)'});
+  if(brainPanel) gsap.set(brainPanel, {opacity:0, x:90, scale:.94, filter:'blur(14px)'});
+  if(collisionTags.length) gsap.set(collisionTags, {opacity:0, scale:.84});
+  if(orbitWrap) gsap.set(orbitWrap, {opacity:0, scale:.94, filter:'blur(12px)'});
+  if(bottom) gsap.set(bottom, {xPercent:-50, x:0, y:30, opacity:0});
+
+  profileAnimating = true;
+  gsap.to(title, {
+    opacity:1, filter:'blur(0px)',
+    duration:.88, ease:'power3.out',
+    onComplete(){ profileAnimating = false; }
+  });
+}
+
+function triggerProfileStage(slideId = 'slide-profile'){
+  const slide = getProfileSlide(slideId);
+  if(!slide || profileStage !== 0 || profileAnimating || !window.gsap) return false;
+  const title = slide.querySelector('.profile-title-main');
+
+  if(slideId !== PROFILE_COPY_SLIDE_ID){
+    const stageTwo = slide.querySelector('.profile-stage-two');
+    const stageTwoSubtitle = slide.querySelector('.profile-stage-two-subtitle');
+    const brainPanel = slide.querySelector('.profile-brain-panel');
+    const collisionTags = slide.querySelectorAll('.profile-collision-tag');
+    if(!title || !stageTwo || !stageTwoSubtitle || !brainPanel || !collisionTags.length) return false;
+
+    profileAnimating = true;
+    profileStage = 1;
+
+    gsap.timeline({
+      onStart(){ startProfileCollision(); },
+      onComplete(){ profileAnimating = false; }
+    })
+      .set(stageTwo, {opacity:1}, '<')
+      .to(title, {
+        x:-720,
+        y:-46,
+        scale:.4,
+        opacity:1,
+        filter:'blur(0px)',
+        duration:.92,
+        ease:'power3.inOut'
+      })
+      .to(stageTwoSubtitle, {
+        opacity:1,
+        x:0,
+        y:0,
+        filter:'blur(0px)',
+        duration:.7,
+        ease:'power3.out'
+      }, '-=.54')
+      .to(brainPanel, {
+        opacity:1,
+        x:0,
+        scale:1,
+        filter:'blur(0px)',
+        duration:.88,
+        ease:'power3.out'
+      }, '-=.6')
+      .to(collisionTags, {
+        opacity:1,
+        scale:1,
+        duration:.38,
+        stagger:.05,
+        ease:'power2.out'
+      }, '-=.54');
+    return true;
+  }
+
+  const orbitWrap = slide.querySelector('.profile-orbit-wrap');
+  const orbitMount = slide.querySelector('.profile-orbit-mount');
+  const bottom = slide.querySelector('.profile-bottom');
+  if(!title || !orbitWrap || !orbitMount || !bottom) return false;
+
+  profileAnimating = true;
+  profileStage = 1;
+  window.startProfileOrbitScene?.(orbitMount, {
+    imageSrc:'./assets/cyber-brain-page16-transparent.png',
+    labels:['行业','规模','客单','成本','团队','客流','现金流','目标']
+  });
+
+  gsap.timeline({
+    onComplete(){
+      profileAnimating = false;
+    }
+  })
+    // 1) 主文案缩小并飞到顶部
+    .to(title, {
+      y:-230, scale:.36,
+      duration:.92, ease:'power3.inOut'
+    })
+    // 2) Three.js 环绕层渐显
+    .to(orbitWrap, {
+      opacity:1, scale:1, filter:'blur(0px)',
+      duration:.92, ease:'power2.out'
+    }, '-=.72')
+    // 4) 底部标题升起
+    .to(bottom, {
+      opacity:1, y:0,
+      duration:.62, ease:'power3.out'
+    }, '-=.2');
+
+  return true;
+}
+
+function startProfileTagsFloating(){
+  // 已由 Three.js 环绕场景接管。
+  profileFloatRunning = true;
+}
+
+function handleProfileAdvance(slideId = 'slide-profile'){
+  if(slideId === PROFILE_COPY_SLIDE_ID) return false;
+  if(profileAnimating) return true;
+  if(profileStage === 0) return triggerProfileStage(slideId);
+  return false;
+}
+
+/* ===== 第 17 页 · 企业商业体检 ===== */
+let checkupAnimating = false;
+let checkupPhoneTl = null;
+let checkupLiveRunning = false;
+let checkupRadarState = null;
+
+const CHECKUP_RADAR_CENTER = {x:360, y:280};
+const CHECKUP_RADAR_RADIUS = 180;
+
+function getCheckupRadarTargets(slide){
+  return [...slide.querySelectorAll('.chart-dots .dot')].map(dot => parseFloat(dot.dataset.value) || 0);
+}
+
+function getCheckupRadarValues(){
+  if(!checkupRadarState) return [];
+  return checkupRadarState.base.map((_, i) => checkupRadarState[`v${i}`]);
+}
+
+function getCheckupRadarPoint(value, idx, total){
+  const angle = -Math.PI / 2 + idx * (Math.PI * 2 / total);
+  const radius = CHECKUP_RADAR_RADIUS * Math.max(0, value);
+  return {
+    x: CHECKUP_RADAR_CENTER.x + Math.cos(angle) * radius,
+    y: CHECKUP_RADAR_CENTER.y + Math.sin(angle) * radius
+  };
+}
+
+function buildCheckupRadarPath(values, reveal = 1){
+  if(!values.length) return '';
+  const pts = values.map((value, idx) => getCheckupRadarPoint(value * reveal, idx, values.length));
+  let d = `M ${pts[0].x.toFixed(1)} ${pts[0].y.toFixed(1)}`;
+  for(let i = 1; i < pts.length; i++) d += ` L ${pts[i].x.toFixed(1)} ${pts[i].y.toFixed(1)}`;
+  return `${d} Z`;
+}
+
+function renderCheckupRadar(slide){
+  if(!slide || !checkupRadarState) return;
+  const values = getCheckupRadarValues();
+  const reveal = checkupRadarState.reveal ?? 1;
+  const area = slide.querySelector('.chart-area');
+  const line = slide.querySelector('.chart-line');
+  const dots = slide.querySelectorAll('.chart-dots .dot');
+  const d = buildCheckupRadarPath(values, reveal);
+  if(area) area.setAttribute('d', d);
+  if(line) line.setAttribute('d', d);
+  dots.forEach((dot, idx) => {
+    const point = getCheckupRadarPoint(values[idx] * reveal, idx, values.length);
+    dot.setAttribute('cx', point.x.toFixed(1));
+    dot.setAttribute('cy', point.y.toFixed(1));
+  });
+}
+
+function clearCheckupDemo(){
+  checkupAnimating = false;
+  checkupLiveRunning = false;
+  if(checkupPhoneTl){ checkupPhoneTl.kill(); checkupPhoneTl = null; }
+  const slide = document.getElementById('slide-checkup');
+  if(!slide || !window.gsap) return;
+  const phone = slide.querySelector('.phone-frame');
+  const content = slide.querySelector('.phone-content');
+  const dots = slide.querySelectorAll('.chart-dots .dot');
+  const area = slide.querySelector('.chart-area');
+  const line = slide.querySelector('.chart-line');
+  const left = slide.querySelectorAll('.checkup-left > *');
+  const meta = slide.querySelectorAll('.chart-meta-cell');
+  const chart = slide.querySelector('.chart-svg');
+  const axisLabels = slide.querySelectorAll('.chart-axis-labels text');
+  if(checkupRadarState) gsap.killTweensOf(checkupRadarState);
+  gsap.killTweensOf([phone, content, ...dots, area, line, ...left, ...meta, chart, ...axisLabels]);
+  checkupRadarState = null;
+}
+
+function playCheckupIn(){
+  const slide = document.getElementById('slide-checkup');
+  if(!slide) return;
+  const left = slide.querySelectorAll('.checkup-left > *');
+  const phone = slide.querySelector('.phone-frame');
+  const content = slide.querySelector('.phone-content');
+  const chart = slide.querySelector('.chart-svg');
+  const meta = slide.querySelectorAll('.chart-meta-cell');
+  const dots = slide.querySelectorAll('.chart-dots .dot');
+  const area = slide.querySelector('.chart-area');
+  const line = slide.querySelector('.chart-line');
+  const axisLabels = slide.querySelectorAll('.chart-axis-labels text');
+
+  clearCheckupDemo();
+  if(!window.gsap || !left.length || !phone || !chart) return;
+
+  const targets = getCheckupRadarTargets(slide);
+  checkupRadarState = {reveal:0, base:targets};
+  targets.forEach((value, idx) => { checkupRadarState[`v${idx}`] = value; });
+  renderCheckupRadar(slide);
+
+  // 初始化视觉
+  gsap.set(left, {opacity:0, x:-50, filter:'blur(14px)'});
+  gsap.set(phone, {opacity:0, y:40, scale:.94, filter:'blur(10px)'});
+  gsap.set(content, {y:0});
+  gsap.set(chart, {opacity:0, y:30});
+  gsap.set(meta, {opacity:0, y:20});
+  gsap.set(axisLabels, {opacity:0, scale:.9, transformOrigin:'center center'});
+  gsap.set(dots, {opacity:0, scale:.7, transformOrigin:'center center'});
+  gsap.set([area, line], {opacity:0});
+
+  checkupAnimating = true;
+  const tl = gsap.timeline({
+    onComplete(){
+      checkupAnimating = false;
+      startCheckupPhoneScroll();
+      startCheckupBarsLive();
+    }
+  });
+
+  tl.to(left, {opacity:1, x:0, filter:'blur(0px)', duration:.72, stagger:.12, ease:'power3.out'});
+  tl.to(phone, {opacity:1, y:0, scale:1, filter:'blur(0px)', duration:.74, ease:'power3.out'}, '-=.4');
+  tl.to(chart, {opacity:1, y:0, duration:.5, ease:'power2.out'}, '-=.42');
+  tl.to(axisLabels, {opacity:1, scale:1, duration:.48, stagger:.06, ease:'power2.out'}, '-=.3');
+  tl.to(checkupRadarState, {
+    reveal:1,
+    duration:1.08,
+    ease:'power3.out',
+    onStart(){ gsap.set([area, line, dots], {opacity:1}); },
+    onUpdate(){ renderCheckupRadar(slide); }
+  }, '-=.18');
+  tl.to(dots, {scale:1, duration:.42, stagger:.04, ease:'back.out(2)'}, '<+=.18');
+  tl.to(meta, {opacity:1, y:0, duration:.55, stagger:.12, ease:'power2.out'}, '-=.5');
+}
+
+function startCheckupPhoneScroll(){
+  if(checkupPhoneTl) return;
+  const slide = document.getElementById('slide-checkup');
+  if(!slide || !window.gsap) return;
+  const content = slide.querySelector('.phone-content');
+  const screen = slide.querySelector('.phone-screen');
+  if(!content || !screen) return;
+
+  const start = () => {
+    const sH = screen.clientHeight;
+    const cH = content.naturalHeight && content.clientWidth
+      ? content.naturalHeight * (content.clientWidth / content.naturalWidth)
+      : content.clientHeight;
+    if(!sH || !cH || cH <= sH + 20) return;
+    const pages = Math.max(2, Math.floor(cH / sH));
+    const tl = gsap.timeline({repeat:-1, defaults:{ease:'power2.inOut'}});
+    for(let i = 1; i < pages; i++){
+      tl.to(content, {y: -i * sH, duration:.7}, '+=2.2');
+    }
+    tl.to(content, {y:0, duration:.8}, '+=2.2');
+    checkupPhoneTl = tl;
+  };
+
+  if(content.complete && content.naturalHeight) start();
+  else content.addEventListener('load', start, {once:true});
+}
+
+function wobbleCheckupRadar(){
+  if(!checkupLiveRunning) return;
+  const slide = document.getElementById('slide-checkup');
+  if(!slide || !window.gsap || !checkupRadarState) return;
+  const vars = {
+    duration: gsap.utils.random(2.2, 3.6),
+    ease:'sine.inOut',
+    onUpdate(){ renderCheckupRadar(slide); },
+    onComplete: wobbleCheckupRadar
+  };
+  checkupRadarState.base.forEach((base, idx) => {
+    vars[`v${idx}`] = gsap.utils.clamp(.36, .92, base + gsap.utils.random(-.07, .07));
+  });
+  gsap.to(checkupRadarState, vars);
+}
+
+function startCheckupBarsLive(){
+  if(checkupLiveRunning) return;
+  checkupLiveRunning = true;
+  if(!window.gsap || !checkupRadarState) return;
+  gsap.delayedCall(.5, wobbleCheckupRadar);
+}
+
+/* ===== 第 18 页 · 作战图报告（流式输出 + 五边形按序点亮） ===== */
+let actionMapAnimating = false;
+let actionMapStreamCtl = null;
+
+// 流式片段（5 段，与五边形 5 顶点一一对应）—— 模拟文案，可后续替换
+const actionMapStreamSegments = [
+  { vertex: 0, text:
+"> SCAN · 问题判断\n>> 正在扫描经营数据...\n  ✓ 客流环比 -17.4%\n  ✓ 第二步转化流失 38%\n  ✓ 复购周期 +9 天\n  ✓ 入账延迟告警 3 项\n>> 已识别 4 项关键问题。\n\n"
+  },
+  { vertex: 1, text:
+"> STRATEGY · 策略选择\n>> 正在生成可执行方案...\n  ✓ 方案 B（推荐）高客单 + 短回款\n  ✓ 方案 A（备选）低门槛拉新\n  ✓ 预期 4 周可见拐点\n>> 已生成 2 套备选策略。\n\n"
+  },
+  { vertex: 2, text:
+"> COST · 成本测算\n>> 正在测算资源投入...\n  ✓ 总预算 ¥12.4 万\n  ✓ 团队 5 人 × 4 周\n  ✓ 渠道投放 ¥4.8 万\n  ✓ ROI 预期 1 : 2.7\n>> 投入产出比可承受。\n\n"
+  },
+  { vertex: 3, text:
+"> RISK · 风险提醒\n>> 正在评估风险等级...\n  ✓ 流量单一依赖 [高]\n  ✓ 客户感知差异 [中]\n  ✓ 团队执行容错 [中]\n  ✓ 季节性叠加  [低]\n>> 已部署同步对冲方案。\n\n"
+  },
+  { vertex: 4, text:
+"> ACTIONS · 动作清单\n>> 正在生成本周动作清单...\n  ✓ W1 完成 A/B 落地页\n  ✓ W2 分流测试上线\n  ✓ W3 数据复盘 + 调整\n  ✓ W4 全量切换 + 总结\n>> 输出完毕，建议立即执行。\n\n"
+  }
+];
+
+function setPentagonActive(slide, activeIdx, closeLoop = false){
+  // -1 = 全部重置
+  slide.querySelectorAll('.pentagon-nodes .node').forEach((el, i) => {
+    el.classList.remove('active','completed');
+    if(activeIdx >= 0 && i < activeIdx) el.classList.add('completed');
+    if(i === activeIdx) el.classList.add('active');
+  });
+  slide.querySelectorAll('.pentagon-halos .halo').forEach((el, i) => {
+    el.classList.toggle('active', activeIdx >= 0 && i <= activeIdx);
+  });
+  slide.querySelectorAll('.pentagon-labels .label-text').forEach((el, i) => {
+    el.classList.remove('active','completed');
+    if(activeIdx >= 0 && i < activeIdx) el.classList.add('completed');
+    if(i === activeIdx) el.classList.add('active');
+  });
+  // 边：两端都已激活就点亮（max(from,to) <= activeIdx）
+  slide.querySelectorAll('.pentagon-edges .edge').forEach(el => {
+    const [a, b] = el.dataset.pair.split('-').map(Number);
+    const isClosingEdge = (a === 4 && b === 0) || (a === 0 && b === 4);
+    const shouldLight = isClosingEdge
+      ? closeLoop
+      : activeIdx >= Math.max(a, b);
+    el.classList.toggle('lit', shouldLight);
+  });
+}
+
+function clearActionMapDemo(){
+  actionMapAnimating = false;
+  if(actionMapStreamCtl){ actionMapStreamCtl.stop = true; actionMapStreamCtl = null; }
+  const slide = document.getElementById('slide-action-map');
+  if(!slide) return;
+  if(window.gsap){
+    const left = slide.querySelectorAll('.actionmap-left > *');
+    const phone = slide.querySelector('.phone-frame');
+    const right = slide.querySelector('.actionmap-right');
+    gsap.killTweensOf([...left, phone, right]);
+  }
+  // 重置五边形 + 流式输出
+  setPentagonActive(slide, -1);
+  const txt = slide.querySelector('#action-map-stream-text');
+  if(txt) txt.textContent = '';
+  const out = slide.querySelector('#action-map-stream-output');
+  if(out) out.scrollTop = 0;
+}
+
+function playActionMapIn(){
+  const slide = document.getElementById('slide-action-map');
+  if(!slide) return;
+  const left = slide.querySelectorAll('.actionmap-left > *');
+  const phone = slide.querySelector('.phone-frame');
+  const right = slide.querySelector('.actionmap-right');
+  if(!left.length || !phone || !right) return;
+
+  clearActionMapDemo();
+  if(!window.gsap) return;
+
+  gsap.set(left,  {opacity:0, x:50, filter:'blur(14px)'});
+  gsap.set(phone, {opacity:0, y:40, scale:.94, filter:'blur(10px)'});
+  gsap.set(right, {opacity:0, scale:.92, filter:'blur(10px)'});
+
+  actionMapAnimating = true;
+  const tl = gsap.timeline({
+    onComplete(){
+      actionMapAnimating = false;
+      startActionMapStream();
+    }
+  });
+
+  tl.to(left,  {opacity:1, x:0, filter:'blur(0px)', duration:.72, stagger:.12, ease:'power3.out'});
+  tl.to(phone, {opacity:1, y:0, scale:1, filter:'blur(0px)', duration:.74, ease:'power3.out'}, '-=.4');
+  tl.to(right, {opacity:1, scale:1, filter:'blur(0px)', duration:.78, ease:'power3.out'}, '-=.55');
+}
+
+function _amSleep(ms){ return new Promise(r => setTimeout(r, ms)); }
+
+/* ===== 第 19/20/21 页 · 通用 AI vs 硕果 AI ===== */
+let vsAnimating = false;
+
+function clearVsDemo(){
+  vsAnimating = false;
+  const slide = document.getElementById('slide-vs');
+  if(!slide || !window.gsap) return;
+  const cards = slide.querySelectorAll('.vs-card');
+  const tags = slide.querySelectorAll('.vs-card .vs-tag, .vs-card .vs-sep');
+  const brands = slide.querySelectorAll('.vs-card-brand');
+  const marks = slide.querySelectorAll('.vs-card-mark');
+  const divider = slide.querySelector('.vs-divider');
+  const dLines = slide.querySelectorAll('.vs-divider-line');
+  const dVs = slide.querySelector('.vs-divider-vs');
+  gsap.killTweensOf([...cards, ...tags, ...brands, ...marks, divider, ...dLines, dVs]);
+}
+
+function playVsIn(){
+  const slide = document.getElementById('slide-vs');
+  if(!slide) return;
+  const cardG = slide.querySelector('.vs-card-general');
+  const cardS = slide.querySelector('.vs-card-shuoguo');
+  const brandG = cardG?.querySelector('.vs-card-brand');
+  const brandS = cardS?.querySelector('.vs-card-brand');
+  const markG = cardG?.querySelector('.vs-card-mark');
+  const markS = cardS?.querySelector('.vs-card-mark');
+  const tagsG = cardG?.querySelectorAll('.vs-tag, .vs-sep') || [];
+  const tagsS = cardS?.querySelectorAll('.vs-tag, .vs-sep') || [];
+  const dLines = slide.querySelectorAll('.vs-divider-line');
+  const dVs = slide.querySelector('.vs-divider-vs');
+  const brands = [brandG, brandS].filter(Boolean);
+  const marks = [markG, markS].filter(Boolean);
+  const allTags = [...tagsG, ...tagsS];
+
+  clearVsDemo();
+  if(!window.gsap || !cardG || !cardS) return;
+
+  // 初始态
+  gsap.set(cardG,  {opacity:0, x:-160, scale:.96, filter:'blur(14px)'});
+  gsap.set(cardS,  {opacity:0, x: 160, scale:.96, filter:'blur(14px)'});
+  if(brands.length) gsap.set(brands, {opacity:0, y:30});
+  if(marks.length) gsap.set(marks, {opacity:0});
+  if(allTags.length) gsap.set(allTags, {opacity:0, y:24, filter:'blur(8px)'});
+  gsap.set(dLines, {scaleY:0, transformOrigin:'center center'});
+  if(dVs) gsap.set(dVs, {opacity:0, scale:.4});
+
+  vsAnimating = true;
+  gsap.timeline({onComplete(){ vsAnimating = false; }})
+    // 1) 两张卡同时从两侧飞入（硕果稍晚一点带强调感）
+    .to(cardG, {opacity:.88, x:0, scale:1, filter:'blur(0px)', duration:.82, ease:'power3.out'})
+    .to(cardS, {opacity:1,  x:0, scale:1, filter:'blur(0px)', duration:.86, ease:'power3.out'}, '<+=.12')
+    // 2) 中间分隔线从中心向上下展开
+    .to(dLines, {scaleY:1, duration:.55, ease:'power3.inOut'}, '-=.35')
+    .to(dVs, {opacity:1, scale:1, duration:.42, ease:'back.out(2.2)'}, '-=.28')
+    // 3) 品牌大字浮起
+    .to(brands, {opacity:1, y:0, duration:.58, stagger:.08, ease:'power3.out'}, '-=.45')
+    // 4) 角标 A/B
+    .to(marks, {opacity:1, duration:.4, stagger:.08, ease:'power2.out'}, '-=.3')
+    // 5) 标签逐个亮起（同行 stagger）
+    .to(tagsG, {opacity:1, y:0, filter:'blur(0px)', duration:.46, stagger:.06, ease:'power2.out'}, '-=.2')
+    .to(tagsS, {opacity:1, y:0, filter:'blur(0px)', duration:.46, stagger:.06, ease:'power2.out'}, '<+=.08');
+}
+
+function handleVsAdvance(){
+  // 入场未结束时拦住右键 / →，避免打断动画；结束后直接放行到下一页
+  return vsAnimating;
+}
+
+/* ===== 第 21 页 · 三方对比 三手机流式 ===== */
+let vsTrioAnimating = false;
+let vsTrioStreamCtls = [];
+
+// 占位文案，稍后用户可替换
+const vsTrioStreams = {
+  general:
+"> 怎么提升业绩？\n> 思考中...\n\n# 通用建议\n  · 改善服务质量\n  · 优化产品定价\n  · 调整营销策略\n  · 提升用户体验\n\n请追问获取更多。\n",
+
+  industry:
+"> 提升业绩\n> 行业模板加载...\n  ✓ 餐饮业\n\n# 餐饮增长方法\n1. 客单价提升\n   · 套餐组合\n   · 加菜推荐\n2. 频次提升\n   · 会员体系\n3. 引流方案\n   · 美团/抖音\n\n请结合自身\n选择方案。\n",
+
+  shuoguo:
+"> 提升业绩\n> 调档案 ✓\n  · 业态 中餐\n  · 客单 ¥85\n> 触发 Agent ✓\n\n# 你的店增长\n1. 周三/四 -22%\n   → 工作日套餐\n2. 30+ 复购 -38%\n   → 老客回访\n3. 评分 4.3→4.1\n   → 差评回应\n\n# 节奏\nW1 上线套餐\nW2 老客触达\nW3 数据复盘\n\n预期 +18%\n"
+};
+
+function clearVsTrioDemo(){
+  vsTrioAnimating = false;
+  vsTrioStreamCtls.forEach(c => { if(c) c.stop = true; });
+  vsTrioStreamCtls = [];
+  const slide = document.getElementById('slide-vs-trio');
+  if(!slide) return;
+  if(window.gsap){
+    const head = slide.querySelector('.vs-trio-head');
+    const sides = slide.querySelectorAll('.vs-trio-side');
+    gsap.killTweensOf([head, ...sides]);
+  }
+  slide.querySelectorAll('.stream-content').forEach(el => el.textContent = '');
+  slide.querySelectorAll('.stream-body').forEach(el => el.scrollTop = 0);
+}
+
+function playVsTrioIn(){
+  const slide = document.getElementById('slide-vs-trio');
+  if(!slide) return;
+  const head = slide.querySelector('.vs-trio-head');
+  const sides = slide.querySelectorAll('.vs-trio-side');
+  clearVsTrioDemo();
+  if(!window.gsap || !sides.length) return;
+
+  gsap.set(head,  {opacity:0, x:-60, filter:'blur(12px)'});
+  gsap.set(sides, {opacity:0, x:60, scale:.94, filter:'blur(10px)'});
+
+  vsTrioAnimating = true;
+  gsap.timeline({
+    onComplete(){
+      vsTrioAnimating = false;
+      startVsTrioStreams();
+    }
+  })
+    .to(head,  {opacity:1, x:0, filter:'blur(0px)', duration:.76, ease:'power3.out'})
+    .to(sides, {opacity:1, x:0, scale:1, filter:'blur(0px)', duration:.78, stagger:.1, ease:'power3.out'}, '-=.42');
+}
+
+async function streamVsTrioPhone(textSel, outSel, content){
+  const slide = document.getElementById('slide-vs-trio');
+  if(!slide) return;
+  const txt = slide.querySelector(textSel);
+  const out = slide.querySelector(outSel);
+  if(!txt || !out) return;
+  const ctl = {stop:false};
+  vsTrioStreamCtls.push(ctl);
+  txt.textContent = '';
+  out.scrollTop = 0;
+  await _amSleep(280 + Math.random() * 400);
+  for(let i = 0; i < content.length; i++){
+    if(ctl.stop) return;
+    const ch = content[i];
+    txt.textContent += ch;
+    out.scrollTop = out.scrollHeight;
+    await _amSleep(ch === '\n' ? 55 : 22 + Math.random() * 8);
+  }
+}
+
+function startVsTrioStreams(){
+  streamVsTrioPhone('#vs-trio-text-general',  '#vs-trio-output-general',  vsTrioStreams.general);
+  streamVsTrioPhone('#vs-trio-text-industry', '#vs-trio-output-industry', vsTrioStreams.industry);
+  streamVsTrioPhone('#vs-trio-text-shuoguo',  '#vs-trio-output-shuoguo',  vsTrioStreams.shuoguo);
+}
+
+function handleVsTrioAdvance(){
+  // 入场未完拦住，结束后任由 → / 右键跳下一页
+  return vsTrioAnimating;
+}
+
+/* ===== 第 23 页 · 速度 vs 落地（简单陈述） ===== */
+function playSpeedExecuteIn(slideId = 'slide-speed-execute'){
+  const slide = document.getElementById(slideId);
+  if(!slide || !window.gsap) return;
+  const title = slide.querySelector('.speed-execute-title');
+  if(!title) return;
+  gsap.killTweensOf(title);
+  gsap.set(title, {opacity:0, x:-260, filter:'blur(18px)'});
+  gsap.to(title, {opacity:1, x:0, filter:'blur(0px)', duration:.96, ease:'power3.out'});
+}
+
+/* ===== 第 24 页 · 人机协同（3 stage） ===== */
+let collabStage = 0;
+let collabAnimating = false;
+
+function clearCollabDemo(){
+  collabStage = 0;
+  collabAnimating = false;
+  const slide = document.getElementById('slide-collab');
+  if(!slide || !window.gsap) return;
+  const cardA = slide.querySelector('#collab-card-ai');
+  const cardP = slide.querySelector('#collab-card-pro');
+  const finale = slide.querySelector('#collab-finale');
+  const shell = slide.querySelector('.collab-shell');
+  gsap.killTweensOf([cardA, cardP, finale, shell]);
+}
+
+function playCollabIn(){
+  const slide = document.getElementById('slide-collab');
+  if(!slide) return;
+  const cardA = slide.querySelector('#collab-card-ai');
+  const cardP = slide.querySelector('#collab-card-pro');
+  const finale = slide.querySelector('#collab-finale');
+  const shell = slide.querySelector('.collab-shell');
+
+  clearCollabDemo();
+  if(!window.gsap || !cardA || !cardP || !finale || !shell) return;
+
+  // 初始：两张卡都不可见、shell 无倾斜、finale 隐藏
+  gsap.set(shell, {rotationX:0, y:0, z:0, scale:1, opacity:1, filter:'blur(0px) brightness(1)', transformOrigin:'center 90%'});
+  gsap.set(cardA, {opacity:0, x:-120, y:30, z:0, rotationX:0, scale:.94, filter:'blur(14px)', pointerEvents:'none', transformOrigin:'center bottom'});
+  gsap.set(cardP, {opacity:0, x: 120, y:30, z:0, rotationX:0, scale:.94, filter:'blur(14px)', pointerEvents:'none', transformOrigin:'center bottom'});
+  gsap.set(finale, {opacity:0, scale:.88, filter:'blur(14px)'});
+
+  // 第一阶段：AI 咨询师入场（左卡飞入）
+  collabAnimating = true;
+  collabStage = 1;
+  gsap.to(cardA, {
+    opacity:1, x:0, y:0, scale:1, filter:'blur(0px)',
+    duration:.86, ease:'power3.out',
+    onComplete(){ collabAnimating = false; }
+  });
+}
+
+function triggerCollabPro(){
+  const slide = document.getElementById('slide-collab');
+  if(!slide || collabStage !== 1 || collabAnimating || !window.gsap) return false;
+  const cardP = slide.querySelector('#collab-card-pro');
+  if(!cardP) return false;
+
+  collabAnimating = true;
+  collabStage = 2;
+  gsap.to(cardP, {
+    opacity:1, x:0, y:0, scale:1, filter:'blur(0px)',
+    duration:.86, ease:'power3.out',
+    onComplete(){ collabAnimating = false; }
+  });
+  return true;
+}
+
+function triggerCollabFinale(){
+  const slide = document.getElementById('slide-collab');
+  if(!slide || collabStage !== 2 || collabAnimating || !window.gsap) return false;
+  const shell = slide.querySelector('.collab-shell');
+  const finale = slide.querySelector('#collab-finale');
+  const cardA = slide.querySelector('#collab-card-ai');
+  const cardP = slide.querySelector('#collab-card-pro');
+  if(!shell || !finale || !cardA || !cardP) return false;
+
+  collabAnimating = true;
+  collabStage = 3;
+  gsap.timeline({onComplete(){ collabAnimating = false; }})
+    // shell 整体只做后退 + 模糊 + 变暗，不参与旋转（避免 perspective 让左右非对称）
+    .to(shell, {
+      z:-160,
+      scale:.86,
+      opacity:.6,
+      filter:'blur(3px) brightness(.5)',
+      duration:1.1,
+      ease:'power3.inOut'
+    }, 0)
+    // 两张 card 各自以自身底部中心为锚向前倾倒，左右严格对称
+    .to([cardA, cardP], {
+      rotationX:22,
+      y:24,
+      transformOrigin:'center bottom',
+      duration:1.1,
+      ease:'power3.inOut'
+    }, 0)
+    // finale 文案从画面正中浮起（独立于 shell，文字保持正向）
+    .to(finale, {
+      opacity:1, scale:1, filter:'blur(0px)',
+      duration:.82, ease:'back.out(1.4)'
+    }, .48);
+  return true;
+}
+
+function handleCollabAdvance(){
+  if(collabAnimating) return true;
+  if(collabStage === 1) return triggerCollabPro();
+  if(collabStage === 2) return triggerCollabFinale();
+  return false;
+}
+
+/* —— 第 20 页 —— */
+function playVsLineIn(){
+  const slide = document.getElementById('slide-vs-line');
+  if(!slide || !window.gsap) return;
+  const title = slide.querySelector('#vs-line-title');
+  const sub = slide.querySelector('#vs-line-sub');
+  if(!title || !sub) return;
+  gsap.killTweensOf([title, sub]);
+  gsap.set(title, {opacity:0, x:-260, filter:'blur(16px)'});
+  gsap.set(sub,   {opacity:0, x:-220, filter:'blur(14px)'});
+  gsap.to(title, {opacity:1, x:0, filter:'blur(0px)', duration:.88, ease:'power3.out'});
+  gsap.to(sub,   {opacity:1, x:0, filter:'blur(0px)', duration:.84, delay:.32, ease:'power3.out'});
+}
+
+/* —— 第 21 页 —— */
+function playVsStrictIn(){
+  const slide = document.getElementById('slide-vs-strict');
+  if(!slide || !window.gsap) return;
+  const title = slide.querySelector('#vs-strict-title');
+  if(!title) return;
+  gsap.killTweensOf(title);
+  gsap.set(title, {opacity:0, x:-300, filter:'blur(18px)'});
+  gsap.to(title, {opacity:1, x:0, filter:'blur(0px)', duration:.96, ease:'power3.out'});
+}
+
+async function startActionMapStream(){
+  if(actionMapStreamCtl) return;
+  const slide = document.getElementById('slide-action-map');
+  if(!slide) return;
+  const txt = slide.querySelector('#action-map-stream-text');
+  const out = slide.querySelector('#action-map-stream-output');
+  if(!txt || !out) return;
+
+  const ctl = { stop:false };
+  actionMapStreamCtl = ctl;
+
+  txt.textContent = '';
+  out.scrollTop = 0;
+  setPentagonActive(slide, -1);
+  await _amSleep(400);
+  if(ctl.stop) return;
+
+  for(let i = 0; i < actionMapStreamSegments.length; i++){
+    if(ctl.stop) return;
+    setPentagonActive(slide, i);
+    const seg = actionMapStreamSegments[i];
+    for(let j = 0; j < seg.text.length; j++){
+      if(ctl.stop) return;
+      const ch = seg.text[j];
+      txt.textContent += ch;
+      out.scrollTop = out.scrollHeight;
+      await _amSleep(ch === '\n' ? 60 : 22);
+    }
+    if(ctl.stop) return;
+    await _amSleep(1300);
+  }
+
+  if(ctl.stop) return;
+  setPentagonActive(slide, actionMapStreamSegments.length - 1, true);
+}
+
+function playSlideEnter(slide){
+  if(slide.id === 'slide-cover') playCoverIn();
+  else if(slide.id === 'slide-direction') playDirectionIn();
+  else if(slide.id === 'slide-compute') playComputeIn();
+  else if(slide.id === 'slide-decision') playDecisionIn();
+  else if(slide.id === 'slide-health') playHealthIn();
+  else if(slide.id === 'slide-custom-plan') playCustomPlanIn();
+  else if(slide.id === 'slide-agent-reform') playAgentReformIn();
+  else if(slide.id === 'slide-compare') playCompareIn();
+  else if(slide.id === 'slide-companion') playCompanionIn();
+  else if(PROFILE_SLIDE_IDS.has(slide.id)) playProfileIn(slide.id);
+  else if(slide.id === 'slide-checkup') playCheckupIn();
+  else if(slide.id === 'slide-action-map') playActionMapIn();
+  else if(slide.id === 'slide-vs') playVsIn();
+  else if(slide.id === 'slide-vs-line') playVsLineIn();
+  else if(slide.id === 'slide-vs-trio') playVsTrioIn();
+  else if(slide.id === 'slide-vs-strict') playVsStrictIn();
+  else if(slide.id === 'slide-speed-execute') playSpeedExecuteIn();
+  else if(slide.id === 'slide-know-business') playSpeedExecuteIn('slide-know-business');
+  else if(slide.id === 'slide-live') playSpeedExecuteIn('slide-live');
+  else if(slide.id === 'slide-smart-match') playSpeedExecuteIn('slide-smart-match');
+  else if(slide.id === 'slide-collab') playCollabIn();
+  else playSlideReveal(slide);
+  if(slide.id === 'slide-reform'){
+    window.particleSlidePending = 'particle-canvas-reform';
+    if(window.particleSlideReady){
+      window.dispatchEvent(new CustomEvent('particle-slide-enter', {detail:{canvasId:'particle-canvas-reform'}}));
+    }
+  }
+  if(slide.id === 'slide-flow') p5Show();
+}
+
+function setSlideInstant(idx){
+  slides.forEach(slide => {
+    slide.classList.remove('active','enter-right','enter-left','exit-left','exit-right');
+  });
+  cur = idx;
+  slides[cur].classList.add('active');
+  syncSlideChrome(cur);
+  syncPageParam(cur);
+  playSlideEnter(slides[cur]);
+}
+
+function go(idx, dir=1){
+  if(idx<0||idx>=total||idx===cur) return;
+  const a = slides[cur], b = slides[idx];
+  a.classList.remove('active','enter-right','enter-left');
+  a.classList.add(dir>0?'exit-left':'exit-right');
+  b.classList.remove('exit-left','exit-right');
+  b.classList.add('active', dir>0?'enter-right':'enter-left');
+  cur = idx;
+  syncSlideChrome(cur);
+  syncPageParam(cur);
+  if(a.id==='slide-reform'){
+    window.dispatchEvent(new CustomEvent('particle-slide-leave'));
+  }
+  // 触发对应入场动画
+  playSlideEnter(b);
+  if(a.id==='slide-direction') stopDirectionTextParticles();
+  if(a.id==='slide-compute') clearComputeDemo();
+  if(a.id==='slide-agent-reform') clearAgentReformDemo();
+  if(a.id==='slide-decision') clearDecisionDemo();
+  if(a.id==='slide-compare') clearCompareDemo();
+  if(PROFILE_SLIDE_IDS.has(a.id)) clearProfileDemo(a.id);
+  if(a.id==='slide-checkup') clearCheckupDemo();
+  if(a.id==='slide-action-map') clearActionMapDemo();
+  if(a.id==='slide-vs') clearVsDemo();
+  if(a.id==='slide-vs-trio') clearVsTrioDemo();
+  if(a.id==='slide-collab') clearCollabDemo();
+  // Presentation5 overlay
+  if(a.id==='slide-flow')  p5Hide();
+}
+document.addEventListener('keydown',e=>{
+  const isForwardKey = e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'||e.key==='Enter';
+  // 开场等待：按右键/空格触发撕裂
+  if(introWaiting && isForwardKey){
+    introWaiting = false;
+    playIntroTear();
+    e.preventDefault();
+    return;
+  }
+  // 开场期间（淡入中 或 撕裂中）禁用其他切页
+  if(introWaiting || (!introPlayed && document.getElementById('intro')?.style.display!=='none')){
+    if(e.key==='f'||e.key==='F') document.documentElement.requestFullscreen?.();
+    return;
+  }
+  if(e.key==='ArrowRight' && slides[cur]?.id === 'slide-direction'){
+    if(directionFinaleAnimating){
+      e.preventDefault();
+      return;
+    }
+    if(!directionFinaleShown && triggerDirectionFinale()){
+      e.preventDefault();
+      return;
+    }
+  }
+  if(isForwardKey && slides[cur]?.id === 'slide-agent-reform'){
+    if(handleAgentReformAdvance()){
+      e.preventDefault();
+      return;
+    }
+  }
+  if(isForwardKey && slides[cur]?.id === 'slide-compute'){
+    if(handleComputeAdvance()){
+      e.preventDefault();
+      return;
+    }
+  }
+  if(isForwardKey && slides[cur]?.id === 'slide-decision'){
+    if(handleDecisionAdvance()){
+      e.preventDefault();
+      return;
+    }
+  }
+  if(isForwardKey && slides[cur]?.id === 'slide-health'){
+    if(healthStageAnimating){
+      e.preventDefault();
+      return;
+    }
+    if(triggerHealthStage()){
+      e.preventDefault();
+      return;
+    }
+  }
+  if(isForwardKey && slides[cur]?.id === 'slide-custom-plan'){
+    if(handleCustomPlanAdvance()){
+      e.preventDefault();
+      return;
+    }
+  }
+  if(isForwardKey && slides[cur]?.id === 'slide-compare'){
+    if(handleCompareAdvance()){
+      e.preventDefault();
+      return;
+    }
+  }
+  if(isForwardKey && PROFILE_SLIDE_IDS.has(slides[cur]?.id)){
+    if(handleProfileAdvance(slides[cur].id)){
+      e.preventDefault();
+      return;
+    }
+  }
+  if(isForwardKey && slides[cur]?.id === 'slide-vs'){
+    if(handleVsAdvance()){
+      e.preventDefault();
+      return;
+    }
+  }
+  if(isForwardKey && slides[cur]?.id === 'slide-vs-trio'){
+    if(handleVsTrioAdvance()){
+      e.preventDefault();
+      return;
+    }
+  }
+  if(isForwardKey && slides[cur]?.id === 'slide-collab'){
+    if(handleCollabAdvance()){
+      e.preventDefault();
+      return;
+    }
+  }
+  if(isForwardKey) go(cur+1,1);
+  if(e.key==='ArrowLeft'||e.key==='PageUp') go(cur-1,-1);
+  if(e.key==='Home') go(0,-1);
+  if(e.key==='End') go(total-1,1);
+  if(e.key==='f'||e.key==='F') document.documentElement.requestFullscreen?.();
+});
+document.addEventListener('contextmenu', e => {
+  if(slides[cur]?.id === 'slide-shouji-method'){
+    e.preventDefault();
+    go(cur+1, 1);
+    return;
+  }
+  if(slides[cur]?.id === 'slide-custom-plan'){
+    e.preventDefault();
+    if(handleCustomPlanAdvance()) return;
+    if(!customPlanAnimating) go(cur+1, 1);
+    return;
+  }
+  if(slides[cur]?.id === 'slide-compare'){
+    e.preventDefault();
+    if(handleCompareAdvance()) return;
+    if(!compareAnimating) go(cur+1, 1);
+    return;
+  }
+  if(PROFILE_SLIDE_IDS.has(slides[cur]?.id)){
+    e.preventDefault();
+    if(handleProfileAdvance(slides[cur].id)) return;
+    if(!profileAnimating) go(cur+1, 1);
+    return;
+  }
+  if(slides[cur]?.id === 'slide-vs'){
+    e.preventDefault();
+    if(handleVsAdvance()) return;
+    if(!vsAnimating) go(cur+1, 1);
+    return;
+  }
+  if(slides[cur]?.id === 'slide-vs-trio'){
+    e.preventDefault();
+    if(handleVsTrioAdvance()) return;
+    if(!vsTrioAnimating) go(cur+1, 1);
+    return;
+  }
+  if(slides[cur]?.id === 'slide-collab'){
+    e.preventDefault();
+    if(handleCollabAdvance()) return;
+    if(!collabAnimating) go(cur+1, 1);
+  }
+});
+syncSlideChrome(cur);
+
+/* ===== 首页 · 大脑神经树 ===== */
+function initBrainTreeCanvas(canvasId){
+  const canvas = document.getElementById(canvasId);
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let W,H, nodes=[], edges=[], pulses=[];
+  function resize(){
+    const r = canvas.parentElement.getBoundingClientRect();
+    canvas.width = r.width; canvas.height = r.height;
+    W = canvas.width; H = canvas.height;
+    build();
+  }
+  function build(){
+    nodes = []; edges = [];
+    const cx = W*0.55, cy = H*0.55;
+    // 树干分形
+    function branch(x,y,len,ang,depth){
+      if(depth<=0) return;
+      const x2 = x + Math.cos(ang)*len;
+      const y2 = y + Math.sin(ang)*len;
+      const a = nodes.push({x,y,r:2+depth*.6,alpha:0,delay:Math.random()*1.5})-1;
+      const b = nodes.push({x:x2,y:y2,r:2+depth*.6,alpha:0,delay:Math.random()*1.5+0.2})-1;
+      edges.push({a,b,alpha:0,delay:Math.random()*2});
+      const spread = .55 + Math.random()*.3;
+      branch(x2,y2,len*.72,ang-spread,depth-1);
+      branch(x2,y2,len*.72,ang+spread,depth-1);
+      if(Math.random()>.5) branch(x2,y2,len*.6,ang+(Math.random()-.5)*.4,depth-1);
+    }
+    branch(cx, H+50, H*0.36, -Math.PI/2, 5);
+    // 添加散点星光
+    for(let i=0;i<60;i++){
+      nodes.push({x:Math.random()*W, y:Math.random()*H, r:Math.random()*1.0+.2, alpha:0, delay:Math.random()*2+1, twinkle:true});
+    }
+  }
+  function tick(t){
+    ctx.clearRect(0,0,W,H);
+    // 背景径向辉光
+    const g = ctx.createRadialGradient(W*.55,H*.55, 0, W*.55,H*.55, W*.6);
+    g.addColorStop(0,'rgba(0,242,255,.07)');
+    g.addColorStop(1,'rgba(0,0,0,0)');
+    ctx.fillStyle = g; ctx.fillRect(0,0,W,H);
+    const elapsed = t/1000;
+    // 边
+    edges.forEach(e=>{
+      const a = Math.min(1, Math.max(0, (elapsed - e.delay) * 1.4));
+      if(a<=0) return;
+      const n1 = nodes[e.a], n2 = nodes[e.b];
+      ctx.strokeStyle = `rgba(0,242,255,${a*.5})`;
+      ctx.lineWidth = .8;
+      ctx.beginPath();
+      ctx.moveTo(n1.x,n1.y);
+      ctx.lineTo(n1.x + (n2.x-n1.x)*a, n1.y + (n2.y-n1.y)*a);
+      ctx.stroke();
+    });
+    // 节点
+    nodes.forEach(n=>{
+      const a = Math.min(1, Math.max(0,(elapsed - n.delay) * 2));
+      if(a<=0) return;
+      let tw = 1;
+      if(n.twinkle) tw = 0.5 + Math.sin(elapsed*2 + n.delay*5)*0.5;
+      ctx.beginPath();
+      ctx.fillStyle = `rgba(255,255,255,${a*tw})`;
+      ctx.arc(n.x,n.y,n.r,0,Math.PI*2);
+      ctx.fill();
+      // 光晕
+      ctx.beginPath();
+      const grd = ctx.createRadialGradient(n.x,n.y,0,n.x,n.y,n.r*4);
+      grd.addColorStop(0,`rgba(0,242,255,${a*tw*.5})`);
+      grd.addColorStop(1,'rgba(0,242,255,0)');
+      ctx.fillStyle = grd;
+      ctx.arc(n.x,n.y,n.r*4,0,Math.PI*2);
+      ctx.fill();
+    });
+    // 脉冲
+    if(elapsed>3 && Math.random()<.02){
+      const e = edges[Math.floor(Math.random()*edges.length)];
+      pulses.push({e, t:0});
+    }
+    pulses = pulses.filter(p=>{
+      p.t += 0.015;
+      const n1 = nodes[p.e.a], n2 = nodes[p.e.b];
+      const x = n1.x + (n2.x-n1.x)*p.t;
+      const y = n1.y + (n2.y-n1.y)*p.t;
+      ctx.beginPath();
+      ctx.fillStyle = `rgba(255,255,255,${1-p.t})`;
+      ctx.arc(x,y,3,0,Math.PI*2); ctx.fill();
+      const g = ctx.createRadialGradient(x,y,0,x,y,12);
+      g.addColorStop(0,`rgba(0,242,255,${(1-p.t)*.8})`);
+      g.addColorStop(1,'rgba(0,242,255,0)');
+      ctx.fillStyle=g;
+      ctx.beginPath(); ctx.arc(x,y,12,0,Math.PI*2); ctx.fill();
+      return p.t<1;
+    });
+    requestAnimationFrame(tick);
+  }
+  resize();
+  window.addEventListener('resize',resize);
+  requestAnimationFrame(tick);
+}
+
+initBrainTreeCanvas('brain-tree');
+initBrainTreeCanvas('brain-tree-result');
+
+/* ===== 首页 · 标题动画 ===== */
+function playCoverIn(){
+  const titleEl = document.getElementById('cover-title-text');
+  if(!titleEl) return;
+  gsap.killTweensOf(['.cover-eyebrow', '.cover-title', '.cover-sub', '.cover-meta']);
+  const tl = gsap.timeline();
+  tl.fromTo('.cover-eyebrow',{opacity:0,y:20},{opacity:1,y:0,duration:.8,ease:'power3.out'})
+    .fromTo('.cover-title',{opacity:0,y:22},{opacity:1,y:0,duration:.9,ease:'power3.out'},'-=.5')
+    .fromTo('.cover-sub',{opacity:0,y:30},{opacity:1,y:0,duration:.8,ease:'power3.out'},'-=.45')
+    .fromTo('.cover-meta',{opacity:0,y:20},{opacity:1,y:0,duration:.8,ease:'power3.out'},'-=.4');
+}
+
+
+/* ===== 网页开场 · 撕裂动画 ===== */
+let introWaiting = false;
+let introPlayed  = false;
+
+function unlockStageBehindIntro(){
+  document.body.classList.remove('intro-lock-stage');
+}
+
+function playIntro(){
+  const text = '硕果 AI 全球战略发布会 2026';
+  const wrap = document.getElementById('intro-text');
+  if(!wrap){ unlockStageBehindIntro(); playCoverIn(); return; }
+  gsap.set(['.cover-eyebrow', '.cover-title', '.cover-sub', '.cover-meta'], {opacity:0, y:0});
+  gsap.set('.intro-top,.intro-bottom', {y:'0%', '--slice-opacity':0, '--slice-scale':1.18});
+  gsap.set('.intro-bg', {opacity:0, scale:1.18, filter:'saturate(1.04) contrast(1.08) blur(0px)'});
+  gsap.set('.intro-kicker', {opacity:0, y:18});
+  const keepSet = new Set('硕果2026');
+  wrap.innerHTML = text.split('').map((c,i)=>{
+    let cls = 'intro-char';
+    if(keepSet.has(c)){
+      if(/\d/.test(c)) cls += ' keep keep-num';
+      else cls += ' keep keep-cn';
+    } else {
+      cls += ' hide';
+    }
+    const disp = c===' ' ? '&nbsp;' : c;
+    return `<span class="${cls}">${disp}</span>`;
+  }).join('');
+
+  const allChars = wrap.querySelectorAll('.intro-char');
+
+  const tl = gsap.timeline({
+    onComplete: ()=>{
+      introWaiting = true;
+    }
+  });
+
+  tl.to('.intro-bg', {
+      opacity:1,
+      scale:1,
+      duration:2.6,
+      ease:'power2.out'
+    }, 0)
+    .to('.intro-half', {
+      '--slice-opacity':.96,
+      '--slice-scale':1,
+      duration:2.6,
+      ease:'power2.out'
+    }, 0)
+    .to('.intro-kicker', {
+      opacity:1,
+      y:0,
+      duration:.9,
+      ease:'power3.out'
+    }, .35)
+    .from(allChars, {
+      opacity:0,
+      y:72,
+      scale:.94,
+      filter:'blur(10px)',
+      duration:.96,
+      stagger:.045,
+      ease:'power3.out'
+    }, .72);
+}
+
+function playIntroTear(){
+  introPlayed = true;
+  const wrap = document.getElementById('intro-text');
+  const hideChars = wrap.querySelectorAll('.intro-char.hide');
+  const keepChars = wrap.querySelectorAll('.intro-char.keep');
+  const numChars  = wrap.querySelectorAll('.intro-char.keep-num');
+  const cnChars   = wrap.querySelectorAll('.intro-char.keep-cn');
+
+  const tl = gsap.timeline({
+    onComplete: ()=>{
+      const intro = document.getElementById('intro');
+      if(intro) intro.style.display = 'none';
+    }
+  });
+
+  tl.to(hideChars, {scaleY:0, duration:.5, stagger:.04, ease:'power2.in', transformOrigin:'center center'}, '<+.1');
+  tl.to(hideChars, {width:0, marginLeft:0, marginRight:0, paddingLeft:0, paddingRight:0, duration:.85, ease:'power3.inOut'}, '-=.3');
+  tl.to(keepChars, {scale:1.15, duration:.5, ease:'power2.out'}, '-=.2');
+  tl.to(numChars, {scale:1.8, letterSpacing:'.02em', duration:.85, ease:'back.out(1.6)', transformOrigin:'center center'}, '+=.15')
+    .to(cnChars, {scale:1.35, duration:.5, ease:'power2.out'}, '<+.1');
+  tl.to('.crack-glow', {scale:1, opacity:1, duration:.18, ease:'power2.out'}, '+=.16')
+    .to('.crack-line', {scaleX:1, duration:.38, ease:'power4.inOut'}, '<')
+    .to('.crack-glow', {scale:28, opacity:0, duration:.46, ease:'power2.out'}, '-=.16');
+  tl.to(wrap, {opacity:0, scale:.85, filter:'blur(10px)', duration:.35, ease:'power2.in'}, '-=.5');
+  tl.to('.intro-kicker', {opacity:0, y:-16, duration:.32, ease:'power2.in'}, '<');
+  tl.to('.intro-bg', {opacity:0, scale:1.04, filter:'saturate(1.1) contrast(1.12) blur(3px)', duration:.42, ease:'power3.inOut'}, '-=.2');
+  tl.call(unlockStageBehindIntro, null);
+  tl.to('.intro-top',    {y:'-100%', duration:1.25, ease:'power4.inOut'})
+    .to('.intro-bottom', {y:'100%',  duration:1.25, ease:'power4.inOut'}, '<')
+    .call(playCoverIn, null, '<+.18')
+    .to('.crack-line',   {opacity:0, scaleX:1.2, duration:.7, ease:'power2.out'}, '<');
+}
+
+/* 启动初始 */
+window.addEventListener('load', () => {
+  const initialPage = readPageIndexFromUrl();
+  if(initialPage !== null){
+    introPlayed = true;
+    introWaiting = false;
+    const intro = document.getElementById('intro');
+    if(intro) intro.style.display = 'none';
+    unlockStageBehindIntro();
+    setSlideInstant(initialPage);
+    return;
+  }
+  slides[0].classList.add('active');
+  playIntro();
+});
+</script>
+
+<script type="module">
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+
+/* ===== 第二页 · 参考文件移植版粒子系统（无拖动 / 无旋转） ===== */
+const DIRECTION_PARTICLE_COUNT = 26000;
+const DIRECTION_PARTICLE_SIZE = 200;
+let directionSceneData = null;
+let directionRaf = null;
+let directionMorphFactor = 0;
+let directionMorphTarget = 0;
+let directionTime = 0;
+let directionResizeHandler = null;
+let directionPhaseTimer = null;
+let directionFlowRaf = null;
+let directionRevealStartedAt = 0;
+let directionRevealActive = false;
+
+const directionVertexShader = `
+uniform float uTime;
+uniform float uMorph;
+uniform float uPointSize;
+uniform int uEffectMode;
+uniform float uEffectIntensity;
+uniform float uExplosionTime;
+uniform float uCanvasLightness;
+uniform float uParticleColorMode;
+uniform float uReveal;
+uniform float uRevealMin;
+uniform float uRevealMax;
+uniform vec3 uCustomParticleColor;
+attribute vec3 targetPosition;
+attribute vec3 targetColor;
+attribute vec3 color;
+attribute vec3 randomOffset;
+attribute float routeAlpha;
+varying vec3 vColor;
+varying float vDistance;
+varying float vRevealAlpha;
+varying float vRouteAlpha;
+vec3 mod289(vec3 x){return x - floor(x * (1.0 / 289.0)) * 289.0;}
+vec2 mod289(vec2 x){return x - floor(x * (1.0 / 289.0)) * 289.0;}
+vec3 permute(vec3 x){return mod289(((x * 34.0) + 1.0) * x);}
+float snoise(vec2 v){
+  const vec4 C = vec4(0.211324865405187, 0.366025403784439, -0.577350269189626, 0.024390243902439);
+  vec2 i = floor(v + dot(v, C.yy));
+  vec2 x0 = v - i + dot(i, C.xx);
+  vec2 i1 = (x0.x > x0.y) ? vec2(1.0, 0.0) : vec2(0.0, 1.0);
+  vec4 x12 = x0.xyxy + C.xxzz;
+  x12.xy -= i1;
+  i = mod289(i);
+  vec3 p = permute(permute(i.y + vec3(0.0, i1.y, 1.0)) + i.x + vec3(0.0, i1.x, 1.0));
+  vec3 m = max(0.5 - vec3(dot(x0, x0), dot(x12.xy, x12.xy), dot(x12.zw, x12.zw)), 0.0);
+  m = m * m;
+  m = m * m;
+  vec3 x = 2.0 * fract(p * C.www) - 1.0;
+  vec3 h = abs(x) - 0.5;
+  vec3 ox = floor(x + 0.5);
+  vec3 a0 = x - ox;
+  m *= 1.79284291400159 - 0.85373472095314 * (a0 * a0 + h * h);
+  vec3 g;
+  g.x = a0.x * x0.x + h.x * x0.y;
+  g.yz = a0.yz * x12.xz + h.yz * x12.yw;
+  return 130.0 * dot(m, g);
+}
+void main(){
+  vec3 mixedBase = mix(color, targetColor, uMorph);
+  vColor = mix(mixedBase, uCustomParticleColor, uParticleColorMode);
+  vec3 pos = mix(position, targetPosition, uMorph);
+  vec3 originalPos = pos;
+  float effectMix = uEffectIntensity;
+  if(uEffectMode == 0){
+    float noise = sin(uTime * 1.5 + position.x * 0.3) * cos(uTime * 1.5 + position.y * 0.3);
+    pos += normalize(pos) * noise * (0.2 * (1.0 - uMorph));
+    pos.x += sin(uTime * 0.3 + position.z) * 0.1;
+    pos.y += cos(uTime * 0.3 + position.x) * 0.1;
+  }else if(uEffectMode == 1){
+    vec3 scatterDir = normalize(pos + randomOffset * 0.5);
+    float scatterDist = length(pos) * 0.5 + randomOffset.x * 3.0;
+    vec3 scattered = pos + scatterDir * scatterDist * effectMix * 2.5;
+    float turb = snoise(pos.xy * 0.3 + uTime * 0.5);
+    scattered += vec3(turb, turb * 0.5, turb * 0.3) * effectMix * 1.5;
+    pos = mix(originalPos, scattered, effectMix);
+  }
+  vec4 mvPosition = modelViewMatrix * vec4(pos, 1.0);
+  float dist = length(pos);
+  vDistance = dist;
+  float revealEdge = mix(uRevealMin, uRevealMax, uReveal);
+  vRevealAlpha = 1.0 - smoothstep(revealEdge, revealEdge + 2.8, position.x);
+  vRouteAlpha = mix(routeAlpha, 1.0, smoothstep(0.08, 0.78, uMorph));
+  gl_PointSize = (uPointSize / -mvPosition.z) * (1.2 + sin(uTime * 3.0 + dist * 0.15) * 0.5);
+  gl_Position = projectionMatrix * mvPosition;
+}`;
+
+const directionFragmentShader = `
+uniform float uTime;
+uniform float uCanvasLightness;
+varying vec3 vColor;
+varying float vDistance;
+varying float vRevealAlpha;
+varying float vRouteAlpha;
+void main(){
+  float dist = distance(gl_PointCoord, vec2(0.5));
+  if(dist > 0.5) discard;
+  float strength = pow(1.0 - dist * 2.0, 1.6);
+  vec3 finalColor = vColor * 2.0;
+  float particleLightness = dot(vColor, vec3(0.299, 0.587, 0.114));
+  float lightParticle = smoothstep(0.55, 0.95, particleLightness);
+  finalColor = mix(finalColor, vColor * 0.45, uCanvasLightness * lightParticle);
+  float alpha = strength * (0.8 + sin(vDistance * 0.3 + uTime) * 0.2);
+  alpha = mix(alpha, min(alpha * 1.35, 1.0), uCanvasLightness);
+  alpha *= vRevealAlpha;
+  alpha *= vRouteAlpha;
+  if(alpha < 0.01) discard;
+  gl_FragColor = vec4(finalColor, alpha);
+}`;
+
+function directionCreateMask(kind, text = ''){
+  const canvas = document.createElement('canvas');
+  canvas.width = 900;
+  canvas.height = 220;
+  const ctx = canvas.getContext('2d');
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  if(kind === 'route'){
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+    const startX = 64;
+    const endX = canvas.width - 64;
+    const midY = canvas.height * .5;
+
+    function drawBend(offsetY, lift, color, width, alpha, blur){
+      ctx.save();
+      ctx.shadowColor = color;
+      ctx.shadowBlur = blur;
+      ctx.strokeStyle = color;
+      ctx.globalAlpha = alpha;
+      ctx.lineWidth = width;
+      ctx.beginPath();
+      ctx.moveTo(startX, midY + offsetY);
+      ctx.bezierCurveTo(
+        canvas.width * .28,
+        midY - lift + offsetY,
+        canvas.width * .68,
+        midY + lift * .72 + offsetY,
+        endX,
+        midY - offsetY * .28
+      );
+      ctx.stroke();
+      ctx.restore();
+    }
+
+    drawBend(0, 74, '#00f2ff', 18, .1, 30);
+    drawBend(-14, 56, '#00f2ff', 12, .08, 24);
+    drawBend(14, 44, '#00f2ff', 10, .08, 20);
+    drawBend(0, 74, '#00f2ff', 4.5, .62, 12);
+    drawBend(-14, 56, '#00f2ff', 3.2, .32, 8);
+    drawBend(14, 44, '#00f2ff', 2.8, .28, 7);
+    drawBend(0, 74, '#00f2ff', 1.1, .86, 4);
+
+    ctx.save();
+    ctx.globalCompositeOperation = 'lighter';
+    const packets = [
+      [.16, -22, 22, 3.2],
+      [.28, -38, 16, 2.8],
+      [.42, -6, 24, 3],
+      [.57, 24, 18, 2.6],
+      [.72, 6, 26, 3],
+      [.84, -18, 14, 2.4]
+    ];
+    packets.forEach(([t, yOffset, length, width]) => {
+      const x = startX + (endX - startX) * t;
+      const y = midY + yOffset + Math.sin(t * Math.PI * 2) * 8;
+      const grad = ctx.createLinearGradient(x - length, y, x + length, y);
+      grad.addColorStop(0, 'rgba(0,242,255,0)');
+      grad.addColorStop(.55, 'rgba(0,242,255,.58)');
+      grad.addColorStop(1, 'rgba(255,255,255,.95)');
+      ctx.shadowColor = '#00f2ff';
+      ctx.shadowBlur = 10;
+      ctx.strokeStyle = grad;
+      ctx.lineWidth = width;
+      ctx.lineCap = 'round';
+      ctx.beginPath();
+      ctx.moveTo(x - length, y);
+      ctx.lineTo(x + length, y);
+      ctx.stroke();
+      ctx.fillStyle = '#00f2ff';
+      ctx.beginPath();
+      ctx.arc(x + length, y, width * .75, 0, Math.PI * 2);
+      ctx.fill();
+    });
+    ctx.restore();
+    return canvas;
+  }
+
+  const chars = Array.from(text);
+  let fontSize = 58;
+  let spacing = 10;
+  let textWidth = 0;
+  do{
+    ctx.font = `600 ${fontSize}px -apple-system, "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif`;
+    spacing = fontSize * .18;
+    textWidth = chars.reduce((sum, char) => sum + ctx.measureText(char).width, 0) + spacing * Math.max(0, chars.length - 1);
+    if(textWidth > canvas.width * .9) fontSize -= 2;
+  }while(textWidth > canvas.width * .9 && fontSize > 36);
+
+  ctx.textBaseline = 'middle';
+  ctx.textAlign = 'left';
+  ctx.shadowColor = '#00f2ff';
+  ctx.shadowBlur = 10;
+  const grad = ctx.createLinearGradient(0, 0, 0, canvas.height);
+  grad.addColorStop(0, '#ffffff');
+  grad.addColorStop(.55, '#bae6fd');
+  grad.addColorStop(1, '#00f2ff');
+  ctx.fillStyle = grad;
+  let x = (canvas.width - textWidth) / 2;
+  const y = canvas.height * .34;
+  chars.forEach(char => {
+    ctx.fillText(char, x, y);
+    x += ctx.measureText(char).width + spacing;
+  });
+  return canvas;
+}
+
+function directionMaskToPoints(mask, options = {}){
+  const offsetY = options.offsetY || 0;
+  const ctx = mask.getContext('2d');
+  const data = ctx.getImageData(0, 0, mask.width, mask.height).data;
+  const points = [];
+  for(let y = 0; y < mask.height; y++){
+    for(let x = 0; x < mask.width; x++){
+      const idx = (y * mask.width + x) * 4;
+      const r = data[idx], g = data[idx + 1], b = data[idx + 2], a = data[idx + 3];
+      if(a > 18 && (r + g + b) / 3 > 15){
+        points.push({
+          pos:[
+            (x / mask.width - 0.5) * 84,
+            (0.5 - y / mask.height) * 18 + offsetY,
+            ((r + g + b) / 765 - 0.5) * 7
+          ],
+          col:[r / 255, g / 255, b / 255]
+        });
+      }
+    }
+  }
+  for(let i = points.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    [points[i], points[j]] = [points[j], points[i]];
+  }
+  return points;
+}
+
+function directionApplyTargets(points){
+  if(!directionSceneData || !points.length) return;
+  const {targetPositions, targetColors, geometry} = directionSceneData;
+  for(let i = 0; i < DIRECTION_PARTICLE_COUNT; i++){
+    const i3 = i * 3;
+    const p = points[i % points.length];
+    targetPositions[i3] = p.pos[0] + (Math.random() - 0.5) * 0.18;
+    targetPositions[i3 + 1] = p.pos[1] + (Math.random() - 0.5) * 0.18;
+    targetPositions[i3 + 2] = p.pos[2] + (Math.random() - 0.5) * 0.65;
+    targetColors[i3] = p.col[0];
+    targetColors[i3 + 1] = p.col[1];
+    targetColors[i3 + 2] = p.col[2];
+  }
+  geometry.attributes.targetPosition.needsUpdate = true;
+  geometry.attributes.targetColor.needsUpdate = true;
+}
+
+function directionSetMistOriginAround(points){
+  if(!directionSceneData || !points.length) return;
+  const {geometry, targetPositions, targetColors, material} = directionSceneData;
+  const positions = geometry.attributes.position.array;
+  const colors = geometry.attributes.color.array;
+  const routeAlpha = geometry.attributes.routeAlpha?.array;
+
+  for(let i = 0; i < DIRECTION_PARTICLE_COUNT; i++){
+    const i3 = i * 3;
+    const p = points[i % points.length];
+    const angle = Math.random() * Math.PI * 2;
+    const radius = 2.6 + Math.random() * 8.4;
+    const vertical = (Math.random() - 0.5) * 5.2;
+    const depth = (Math.random() - 0.5) * 9.5;
+    positions[i3] = p.pos[0] + Math.cos(angle) * radius;
+    positions[i3 + 1] = p.pos[1] + Math.sin(angle) * radius * .32 + vertical;
+    positions[i3 + 2] = p.pos[2] + depth;
+    targetPositions[i3] = p.pos[0] + (Math.random() - 0.5) * 0.18;
+    targetPositions[i3 + 1] = p.pos[1] + (Math.random() - 0.5) * 0.18;
+    targetPositions[i3 + 2] = p.pos[2] + (Math.random() - 0.5) * 0.65;
+    colors[i3] = p.col[0];
+    colors[i3 + 1] = p.col[1];
+    colors[i3 + 2] = p.col[2];
+    targetColors[i3] = p.col[0];
+    targetColors[i3 + 1] = p.col[1];
+    targetColors[i3 + 2] = p.col[2];
+    if(routeAlpha) routeAlpha[i] = 1;
+  }
+
+  geometry.attributes.position.needsUpdate = true;
+  geometry.attributes.targetPosition.needsUpdate = true;
+  geometry.attributes.color.needsUpdate = true;
+  geometry.attributes.targetColor.needsUpdate = true;
+  if(geometry.attributes.routeAlpha) geometry.attributes.routeAlpha.needsUpdate = true;
+  directionMorphFactor = 0;
+  directionMorphTarget = 0;
+  material.uniforms.uMorph.value = 0;
+}
+
+function directionGatherTextFromMist(text){
+  if(!directionSceneData) return;
+  const {material} = directionSceneData;
+  material.uniforms.uEffectMode.value = 1;
+  material.uniforms.uEffectIntensity.value = .18;
+
+  const startTextMorph = () => {
+    const textPoints = directionMaskToPoints(directionCreateMask('text', text), {
+      offsetY: directionPageRatioOffsetY(.34)
+    });
+    directionSetMistOriginAround(textPoints);
+    directionMorphTarget = 1;
+  };
+
+  if(window.gsap){
+    gsap.killTweensOf(material.uniforms.uEffectIntensity);
+    gsap.timeline()
+      .call(startTextMorph)
+      .to(material.uniforms.uEffectIntensity, {
+        value:.34,
+        duration:.16,
+        ease:'power2.out'
+      })
+      .to(material.uniforms.uEffectIntensity, {
+        value:0,
+        duration:.52,
+        ease:'power3.out'
+      });
+  }else{
+    startTextMorph();
+    material.uniforms.uEffectIntensity.value = .34;
+    setTimeout(() => {
+      material.uniforms.uEffectIntensity.value = 0;
+    }, 180);
+  }
+}
+
+function stopDirectionDataflow(){
+  if(directionFlowRaf) cancelAnimationFrame(directionFlowRaf);
+  directionFlowRaf = null;
+  const canvas = document.querySelector('#slide-direction .direction-dataflow-canvas');
+  if(canvas){
+    const ctx = canvas.getContext('2d');
+    ctx?.clearRect(0, 0, canvas.width, canvas.height);
+    canvas.style.opacity = '0';
+  }
+}
+
+function startDirectionDataflow(){
+  const canvas = document.querySelector('#slide-direction .direction-dataflow-canvas');
+  if(!canvas) return;
+  stopDirectionDataflow();
+
+  const ctx = canvas.getContext('2d');
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  const rect = canvas.getBoundingClientRect();
+  const W = Math.max(1, Math.round(rect.width));
+  const H = Math.max(1, Math.round(rect.height));
+  canvas.width = Math.round(W * dpr);
+  canvas.height = Math.round(H * dpr);
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  canvas.style.opacity = '1';
+
+  const startTime = performance.now();
+  const drawDuration = 1280;
+  const holdDuration = 100;
+  const fadeDuration = 120;
+  const totalDuration = drawDuration + holdDuration + fadeDuration;
+  const x0 = W * .12;
+  const x1 = W * .88;
+  const y0 = H * .5;
+  const lanes = [-28, 0, 28];
+
+  function point(t, lane){
+    const lift = lane === 0 ? 54 : 38;
+    const yOffset = lanes[lane];
+    const mt = 1 - t;
+    return {
+      x: mt * mt * mt * x0 + 3 * mt * mt * t * (W * .34) + 3 * mt * t * t * (W * .64) + t * t * t * x1,
+      y: mt * mt * mt * (y0 + yOffset) + 3 * mt * mt * t * (y0 - lift + yOffset) + 3 * mt * t * t * (y0 + lift * .62 + yOffset) + t * t * t * (y0 - yOffset * .22)
+    };
+  }
+
+  function drawLane(lane, progress, width, alpha, blur){
+    ctx.save();
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+    ctx.strokeStyle = '#00f2ff';
+    ctx.shadowColor = '#00f2ff';
+    ctx.shadowBlur = blur;
+    ctx.globalAlpha = alpha;
+    ctx.lineWidth = width;
+    ctx.beginPath();
+    const steps = 70;
+    const maxStep = Math.max(1, Math.floor(steps * progress));
+    for(let i = 0; i <= maxStep; i++){
+      const p = point(i / steps, lane);
+      if(i === 0) ctx.moveTo(p.x, p.y);
+      else ctx.lineTo(p.x, p.y);
+    }
+    ctx.stroke();
+    ctx.restore();
+  }
+
+  function drawPacket(lane, head, size){
+    const tail = Math.max(0, head - .055);
+    const a = point(tail, lane);
+    const b = point(head, lane);
+    const grad = ctx.createLinearGradient(a.x, a.y, b.x, b.y);
+    grad.addColorStop(0, 'rgba(0,242,255,0)');
+    grad.addColorStop(.58, 'rgba(0,242,255,.52)');
+    grad.addColorStop(1, 'rgba(255,255,255,.94)');
+    ctx.save();
+    ctx.lineCap = 'round';
+    ctx.strokeStyle = grad;
+    ctx.shadowColor = '#00f2ff';
+    ctx.shadowBlur = 14;
+    ctx.lineWidth = size;
+    ctx.beginPath();
+    ctx.moveTo(a.x, a.y);
+    ctx.lineTo(b.x, b.y);
+    ctx.stroke();
+    ctx.fillStyle = '#00f2ff';
+    ctx.beginPath();
+    ctx.arc(b.x, b.y, size * .68, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
+  }
+
+  function draw(now){
+    const elapsed = now - startTime;
+    const progress = Math.min(1, elapsed / drawDuration);
+    const fade = elapsed < drawDuration + holdDuration
+      ? 1
+      : Math.max(0, 1 - (elapsed - drawDuration - holdDuration) / fadeDuration);
+    ctx.clearRect(0, 0, W, H);
+    ctx.globalCompositeOperation = 'lighter';
+    canvas.style.opacity = String(fade);
+
+    lanes.forEach((_, lane) => drawLane(lane, progress, 15, .1 * fade, 26));
+    lanes.forEach((_, lane) => drawLane(lane, progress, lane === 1 ? 3.2 : 2.4, .78 * fade, 10));
+    for(let lane = 0; lane < 3; lane++){
+      const head = Math.min(1, progress * 1.12 - lane * .08);
+      if(head > 0) drawPacket(lane, head, lane === 1 ? 3.8 : 3);
+      const second = head - .28;
+      if(second > 0 && second < 1) drawPacket(lane, second, 2.4);
+    }
+
+    if(elapsed < totalDuration){
+      directionFlowRaf = requestAnimationFrame(draw);
+    }else{
+      ctx.clearRect(0, 0, W, H);
+      canvas.style.opacity = '0';
+      directionFlowRaf = null;
+    }
+  }
+
+  directionFlowRaf = requestAnimationFrame(draw);
+}
+
+function directionPageRatioOffsetY(maskYRatio){
+  if(!directionSceneData) return 0;
+  const rect = directionSceneData.mount.getBoundingClientRect();
+  const height = Math.max(1, rect.height || 360);
+  const cameraZ = 45 * Math.max(1, height / 360);
+  const visibleWorldHeight = 2 * cameraZ * Math.tan(THREE.MathUtils.degToRad(35) / 2);
+  const currentMaskWorldY = (0.5 - maskYRatio) * 18;
+  const targetWorldY = visibleWorldHeight * (0.5 - 0.25);
+  return targetWorldY - currentMaskWorldY;
+}
+
+function directionSetRouteOrigin(points){
+  if(!directionSceneData || !points.length) return;
+  const {geometry, targetPositions, targetColors, material} = directionSceneData;
+  const positions = geometry.attributes.position.array;
+  const colors = geometry.attributes.color.array;
+  let minX = Infinity;
+  let maxX = -Infinity;
+  for(let i = 0; i < DIRECTION_PARTICLE_COUNT; i++){
+    const i3 = i * 3;
+    const p = points[i % points.length];
+    const x = p.pos[0] + (Math.random() - 0.5) * 0.18;
+    const y = p.pos[1] + (Math.random() - 0.5) * 0.18;
+    const z = p.pos[2] + (Math.random() - 0.5) * 0.65;
+    positions[i3] = x;
+    positions[i3 + 1] = y;
+    positions[i3 + 2] = z;
+    targetPositions[i3] = x;
+    targetPositions[i3 + 1] = y;
+    targetPositions[i3 + 2] = z;
+    colors[i3] = p.col[0];
+    colors[i3 + 1] = p.col[1];
+    colors[i3 + 2] = p.col[2];
+    targetColors[i3] = p.col[0];
+    targetColors[i3 + 1] = p.col[1];
+    targetColors[i3 + 2] = p.col[2];
+    minX = Math.min(minX, x);
+    maxX = Math.max(maxX, x);
+  }
+  geometry.attributes.position.needsUpdate = true;
+  geometry.attributes.targetPosition.needsUpdate = true;
+  geometry.attributes.color.needsUpdate = true;
+  geometry.attributes.targetColor.needsUpdate = true;
+  material.uniforms.uRevealMin.value = minX - 3;
+  material.uniforms.uRevealMax.value = maxX + 3;
+  material.uniforms.uReveal.value = 0;
+  directionMorphFactor = 0;
+  directionMorphTarget = 0;
+  material.uniforms.uMorph.value = 0;
+}
+
+function directionBakeCurrentAsOrigin(){
+  if(!directionSceneData) return;
+  const {geometry, targetPositions, targetColors} = directionSceneData;
+  geometry.attributes.position.array.set(targetPositions);
+  geometry.attributes.color.array.set(targetColors);
+  geometry.attributes.position.needsUpdate = true;
+  geometry.attributes.color.needsUpdate = true;
+  directionMorphFactor = 0;
+  directionMorphTarget = 0;
+  directionSceneData.material.uniforms.uMorph.value = 0;
+}
+
+function directionAnimate(){
+  if(!directionSceneData) return;
+  directionRaf = requestAnimationFrame(directionAnimate);
+  directionTime += 0.008;
+  const {renderer, scene, camera, material} = directionSceneData;
+  material.uniforms.uTime.value = directionTime;
+  if(directionRevealActive){
+    const elapsed = performance.now() - directionRevealStartedAt;
+    material.uniforms.uReveal.value = Math.min(1, elapsed / 850);
+  }
+  directionMorphFactor += (directionMorphTarget - directionMorphFactor) * 0.075;
+  material.uniforms.uMorph.value = directionMorphFactor;
+  renderer.render(scene, camera);
+}
+
+function directionInitParticleCanvas(mount, text){
+  const rect = mount.getBoundingClientRect();
+  const width = Math.max(1, rect.width || 2300);
+  const height = Math.max(1, rect.height || 360);
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(35, width / height, 0.1, 1000);
+  camera.position.z = 45 * Math.max(1, height / 360);
+  camera.lookAt(0, 0, 0);
+
+  const renderer = new THREE.WebGLRenderer({antialias:true, alpha:true, powerPreference:'high-performance'});
+  renderer.setSize(width, height);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+  renderer.setClearColor(new THREE.Color('#000000'), 0);
+  mount.innerHTML = '';
+  mount.appendChild(renderer.domElement);
+
+  const geometry = new THREE.BufferGeometry();
+  const positions = new Float32Array(DIRECTION_PARTICLE_COUNT * 3);
+  const targetPositions = new Float32Array(DIRECTION_PARTICLE_COUNT * 3);
+  const colors = new Float32Array(DIRECTION_PARTICLE_COUNT * 3);
+  const targetColors = new Float32Array(DIRECTION_PARTICLE_COUNT * 3);
+  const randomOffsets = new Float32Array(DIRECTION_PARTICLE_COUNT * 3);
+  const routeAlpha = new Float32Array(DIRECTION_PARTICLE_COUNT);
+  const cyanColor = new THREE.Color(0x00f2ff);
+  const whiteColor = new THREE.Color(0xffffff);
+
+  for(let i = 0; i < DIRECTION_PARTICLE_COUNT; i++){
+    const i3 = i * 3;
+    const t = (Math.random() - 0.5) * 5.0;
+    const angle = Math.random() * Math.PI * 2;
+    const radiusBase = 0.4 + Math.pow(Math.abs(t), 2.4);
+    const radius = radiusBase * (0.75 + Math.random() * 0.55);
+    const x = radius * Math.cos(angle) * 2.9;
+    const z = radius * Math.sin(angle) * 2.9;
+    const y = t * 7.5;
+    positions[i3] = x;
+    positions[i3 + 1] = y;
+    positions[i3 + 2] = z;
+    targetPositions[i3] = x;
+    targetPositions[i3 + 1] = y;
+    targetPositions[i3 + 2] = z;
+    randomOffsets[i3] = (Math.random() - 0.5) * 2;
+    randomOffsets[i3 + 1] = (Math.random() - 0.5) * 2;
+    randomOffsets[i3 + 2] = (Math.random() - 0.5) * 2;
+    const color = Math.random() > 0.7 ? cyanColor : whiteColor;
+    colors[i3] = color.r;
+    colors[i3 + 1] = color.g;
+    colors[i3 + 2] = color.b;
+    targetColors[i3] = color.r;
+    targetColors[i3 + 1] = color.g;
+    targetColors[i3 + 2] = color.b;
+    routeAlpha[i] = 0;
+  }
+
+  geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+  geometry.setAttribute('targetPosition', new THREE.BufferAttribute(targetPositions, 3));
+  geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+  geometry.setAttribute('targetColor', new THREE.BufferAttribute(targetColors, 3));
+  geometry.setAttribute('randomOffset', new THREE.BufferAttribute(randomOffsets, 3));
+  geometry.setAttribute('routeAlpha', new THREE.BufferAttribute(routeAlpha, 1));
+
+  const material = new THREE.ShaderMaterial({
+    vertexShader: directionVertexShader,
+    fragmentShader: directionFragmentShader,
+    transparent: true,
+    uniforms: {
+      uTime: {value:0},
+      uMorph: {value:0},
+      uPointSize: {value:DIRECTION_PARTICLE_SIZE},
+      uEffectMode: {value:0},
+      uEffectIntensity: {value:0},
+      uExplosionTime: {value:0},
+      uCanvasLightness: {value:0},
+      uParticleColorMode: {value:0},
+      uReveal: {value:1},
+      uRevealMin: {value:-45},
+      uRevealMax: {value:45},
+      uCustomParticleColor: {value:new THREE.Vector3(cyanColor.r, cyanColor.g, cyanColor.b)}
+    },
+    depthWrite: false,
+    blending: THREE.AdditiveBlending
+  });
+
+  const points = new THREE.Points(geometry, material);
+  scene.add(points);
+  directionSceneData = {scene, camera, renderer, points, geometry, material, targetPositions, targetColors, mount, text};
+  directionResizeHandler = () => {
+    if(!directionSceneData) return;
+    const r = mount.getBoundingClientRect();
+    const w = Math.max(1, r.width || 2300);
+    const h = Math.max(1, r.height || 360);
+    camera.aspect = w / h;
+    camera.position.z = 45 * Math.max(1, h / 360);
+    camera.updateProjectionMatrix();
+    renderer.setSize(w, h);
+  };
+  window.addEventListener('resize', directionResizeHandler);
+}
+
+window.stopDirectionReferenceParticles = function(){
+  if(directionPhaseTimer) clearTimeout(directionPhaseTimer);
+  directionPhaseTimer = null;
+  stopDirectionDataflow();
+  if(window.gsap && directionSceneData?.material?.uniforms?.uEffectIntensity){
+    gsap.killTweensOf(directionSceneData.material.uniforms.uEffectIntensity);
+  }
+  if(directionRaf) cancelAnimationFrame(directionRaf);
+  directionRaf = null;
+  if(directionResizeHandler) window.removeEventListener('resize', directionResizeHandler);
+  directionResizeHandler = null;
+  if(directionSceneData){
+    directionSceneData.geometry.dispose();
+    directionSceneData.material.dispose();
+    directionSceneData.renderer.dispose();
+    directionSceneData.mount.innerHTML = '';
+  }
+  directionSceneData = null;
+  directionMorphFactor = 0;
+  directionMorphTarget = 0;
+  directionTime = 0;
+  directionRevealStartedAt = 0;
+  directionRevealActive = false;
+};
+
+window.startDirectionReferenceParticles = function(mount, text){
+  if(!mount) return;
+  window.stopDirectionReferenceParticles();
+  directionInitParticleCanvas(mount, text);
+  directionSetRouteOrigin(directionMaskToPoints(directionCreateMask('route')));
+  startDirectionDataflow();
+  directionRevealStartedAt = performance.now();
+  directionRevealActive = true;
+  directionAnimate();
+  directionPhaseTimer = setTimeout(() => {
+    directionRevealActive = false;
+    if(directionSceneData) directionSceneData.material.uniforms.uReveal.value = 1;
+    directionGatherTextFromMist(text);
+  }, 1780);
+};
+
+/* ===== 第 16 页 · Three.js 文字环绕图片 ===== */
+let profileOrbitSceneData = null;
+let profileOrbitRaf = null;
+let profileOrbitResizeHandler = null;
+let profileOrbitTime = 0;
+
+function profileCreateLabelTexture(text){
+  const canvas = document.createElement('canvas');
+  canvas.width = 704;
+  canvas.height = 224;
+  const ctx = canvas.getContext('2d');
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  let fontSize = 80;
+  do{
+    ctx.font = `700 ${fontSize}px -apple-system, "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif`;
+    if(ctx.measureText(text).width <= canvas.width * 0.86) break;
+    fontSize -= 4;
+  }while(fontSize > 46);
+  const grad = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+  grad.addColorStop(0, '#ffffff');
+  grad.addColorStop(0.45, '#dbeafe');
+  grad.addColorStop(1, '#00f2ff');
+  ctx.fillStyle = grad;
+  ctx.shadowColor = 'rgba(0,242,255,.45)';
+  ctx.shadowBlur = 24;
+  ctx.fillText(text, canvas.width / 2, canvas.height / 2);
+  const texture = new THREE.CanvasTexture(canvas);
+  texture.needsUpdate = true;
+  texture.minFilter = THREE.LinearFilter;
+  texture.magFilter = THREE.LinearFilter;
+  return texture;
+}
+
+function stopProfileOrbitScene(){
+  if(profileOrbitRaf) cancelAnimationFrame(profileOrbitRaf);
+  profileOrbitRaf = null;
+  if(profileOrbitResizeHandler) window.removeEventListener('resize', profileOrbitResizeHandler);
+  profileOrbitResizeHandler = null;
+  profileOrbitTime = 0;
+  if(profileOrbitSceneData){
+    const {mount, renderer, resources = []} = profileOrbitSceneData;
+    resources.forEach((res) => res?.dispose?.());
+    renderer?.dispose?.();
+    if(mount) mount.innerHTML = '';
+  }
+  profileOrbitSceneData = null;
+}
+
+function profileOrbitTick(){
+  if(!profileOrbitSceneData) return;
+  profileOrbitRaf = requestAnimationFrame(profileOrbitTick);
+  profileOrbitTime += 0.0095;
+  const {renderer, scene, camera, labels, imagePlane, glowPlane} = profileOrbitSceneData;
+  const tempPos = new THREE.Vector3();
+
+  labels.forEach((sprite, index) => {
+    const orbit = sprite.userData.orbit;
+    if(orbit.mode === 'diagonal-arc'){
+      const arcT = 0.5 + 0.5 * Math.sin(profileOrbitTime * orbit.speed + orbit.phase);
+      const baseX = THREE.MathUtils.lerp(orbit.startX, orbit.endX, arcT);
+      const baseY = THREE.MathUtils.lerp(orbit.startY, orbit.endY, arcT);
+      const pathDx = orbit.endX - orbit.startX;
+      const pathDy = orbit.endY - orbit.startY;
+      const pathLen = Math.hypot(pathDx, pathDy) || 1;
+      const normalX = -pathDy / pathLen;
+      const normalY = pathDx / pathLen;
+      const arcOffset = Math.sin(arcT * Math.PI) * orbit.arcLift;
+      tempPos.set(
+        baseX + normalX * arcOffset,
+        baseY + normalY * arcOffset,
+        0
+      ).applyQuaternion(orbit.quaternion);
+      const drift = Math.sin(profileOrbitTime * orbit.driftSpeed + orbit.phase);
+      tempPos.x += orbit.centerX + drift * orbit.driftX;
+      tempPos.y += orbit.centerY + Math.cos(arcT * Math.PI * 1.35 + orbit.phase) * orbit.floatAmp + drift * orbit.driftY;
+      tempPos.z += orbit.centerZ + Math.sin(arcT * Math.PI + profileOrbitTime * 0.32 + orbit.phase) * orbit.depthAmp;
+      const depthFactor = THREE.MathUtils.clamp((tempPos.z + orbit.depthRange) / (orbit.depthRange * 2), 0, 1);
+      const scale = orbit.baseScale * (0.76 + depthFactor * 0.46);
+      sprite.position.copy(tempPos);
+      sprite.scale.set(scale, scale * 0.36, 1);
+      sprite.material.opacity = orbit.baseOpacity + depthFactor * orbit.opacityBoost;
+      sprite.lookAt(camera.position);
+      return;
+    }
+    const a = profileOrbitTime * orbit.speed + orbit.phase;
+    const x = Math.cos(a) * orbit.radiusX;
+    const z = Math.sin(a) * orbit.radiusZ;
+    const y = orbit.baseY + Math.sin(a * 1.6 + orbit.phase) * orbit.floatAmp;
+    const depthFactor = THREE.MathUtils.clamp((z + orbit.radiusZ) / (orbit.radiusZ * 2), 0, 1);
+    const scale = orbit.baseScale * (0.72 + depthFactor * 0.58);
+    sprite.position.set(x, y, z);
+    sprite.scale.set(scale, scale * 0.36, 1);
+    sprite.material.opacity = 0.26 + depthFactor * 0.9;
+    sprite.lookAt(camera.position);
+  });
+
+  if(imagePlane){
+    imagePlane.rotation.y = Math.sin(profileOrbitTime * 0.42) * 0.12;
+    imagePlane.rotation.x = Math.cos(profileOrbitTime * 0.28) * 0.04;
+  }
+  if(glowPlane){
+    glowPlane.material.opacity = 0.24 + Math.sin(profileOrbitTime * 1.2) * 0.06;
+  }
+
+  camera.position.x = 0;
+  camera.position.y = Math.cos(profileOrbitTime * 0.18) * 0.24;
+  camera.lookAt(0, 0, 0);
+  renderer.render(scene, camera);
+}
+
+window.stopProfileOrbitScene = stopProfileOrbitScene;
+window.startProfileOrbitScene = function(mount, options = {}){
+  if(!mount) return;
+  stopProfileOrbitScene();
+
+  const rect = mount.getBoundingClientRect();
+  const width = Math.max(1, rect.width || 1200);
+  const height = Math.max(1, rect.height || 470);
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(34, width / height, 0.1, 1000);
+  camera.position.set(0, 0, 22);
+  const renderer = new THREE.WebGLRenderer({antialias:true, alpha:true, powerPreference:'high-performance'});
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+  renderer.setSize(width, height, false);
+  renderer.setClearColor(0x000000, 0);
+  mount.innerHTML = '';
+  mount.appendChild(renderer.domElement);
+
+  const resources = [];
+  const root = new THREE.Group();
+  scene.add(root);
+
+  const glowCanvas = document.createElement('canvas');
+  glowCanvas.width = 512;
+  glowCanvas.height = 512;
+  const glowCtx = glowCanvas.getContext('2d');
+  const glowGrad = glowCtx.createRadialGradient(256, 256, 0, 256, 256, 256);
+  glowGrad.addColorStop(0, 'rgba(255,255,255,0.65)');
+  glowGrad.addColorStop(0.22, 'rgba(0,242,255,0.24)');
+  glowGrad.addColorStop(0.58, 'rgba(0,242,255,0.08)');
+  glowGrad.addColorStop(1, 'rgba(0,0,0,0)');
+  glowCtx.fillStyle = glowGrad;
+  glowCtx.fillRect(0, 0, 512, 512);
+  const glowTexture = new THREE.CanvasTexture(glowCanvas);
+  resources.push(glowTexture);
+  const glowMaterial = new THREE.MeshBasicMaterial({map:glowTexture, transparent:true, depthWrite:false, opacity:0.28});
+  const glowPlane = new THREE.Mesh(new THREE.PlaneGeometry(12.8, 12.8), glowMaterial);
+  glowPlane.position.z = -1.2;
+  root.add(glowPlane);
+  resources.push(glowPlane.geometry, glowMaterial);
+
+  const labels = [];
+  const orbitVariant = options.variant || 'default';
+  const labelScaleMultiplier = options.labelScaleMultiplier || 1;
+  const labelTexts = options.labels || ['行业','规模','客单','成本','团队','客流','现金流','目标'];
+  const orbitConfigs = orbitVariant === 'diagonal-arc'
+    ? [
+        {startX:-11.4, startY:-5.3, endX:4.4, endY:3.1, arcLift:2.2, centerX:-1.26, centerY:-0.34, centerZ:-0.55, floatAmp:0.12, speed:0.5, baseScale:3.28, tiltX:1.02, tiltZ:-0.12, depthAmp:1.12, depthRange:5.6, driftX:0.14, driftY:0.08, driftSpeed:0.66, baseOpacity:0.34, opacityBoost:0.64},
+        {startX:-9.6, startY:-4.7, endX:6.9, endY:4.15, arcLift:2.55, centerX:-0.08, centerY:0.06, centerZ:0.05, floatAmp:0.15, speed:0.46, baseScale:3.04, tiltX:0.96, tiltZ:-0.08, depthAmp:1.26, depthRange:6.4, driftX:0.13, driftY:0.07, driftSpeed:0.58, baseOpacity:0.28, opacityBoost:0.68},
+        {startX:-7.6, startY:-3.9, endX:8.9, endY:4.95, arcLift:2.78, centerX:0.96, centerY:0.4, centerZ:0.62, floatAmp:0.17, speed:0.42, baseScale:3.44, tiltX:0.9, tiltZ:-0.04, depthAmp:1.42, depthRange:7.1, driftX:0.11, driftY:0.05, driftSpeed:0.52, baseOpacity:0.24, opacityBoost:0.72}
+      ]
+    : [
+        {radiusX:8.8, radiusZ:4.1, baseY:-1.1, floatAmp:0.35, speed:0.46, baseScale:2.9},
+        {radiusX:8.1, radiusZ:3.5, baseY:1.2, floatAmp:0.3, speed:0.52, baseScale:2.6},
+        {radiusX:9.9, radiusZ:4.9, baseY:0.15, floatAmp:0.42, speed:0.4, baseScale:3.05}
+      ];
+  labelTexts.forEach((text, index) => {
+    const texture = profileCreateLabelTexture(text);
+    resources.push(texture);
+    const material = new THREE.SpriteMaterial({
+      map:texture,
+      transparent:true,
+      depthWrite:false,
+      opacity:0.88
+    });
+    const sprite = new THREE.Sprite(material);
+    const orbitBase = orbitConfigs[index % orbitConfigs.length];
+    if(orbitVariant === 'diagonal-arc'){
+      const zStep = Math.floor(index / 3) - 1;
+      sprite.userData.orbit = {
+        mode:'diagonal-arc',
+        startX: orbitBase.startX + zStep * 1.05,
+        startY: orbitBase.startY + zStep * 0.58,
+        endX: orbitBase.endX + zStep * 0.76,
+        endY: orbitBase.endY + zStep * 0.42,
+        arcLift: orbitBase.arcLift + (index % 2 === 0 ? 0.18 : -0.12),
+        centerX: orbitBase.centerX + zStep * 0.38,
+        centerY: orbitBase.centerY + zStep * 0.34,
+        centerZ: orbitBase.centerZ + zStep * 0.42,
+        floatAmp: orbitBase.floatAmp,
+        speed: orbitBase.speed,
+        phase: index * 0.74,
+        baseScale: orbitBase.baseScale * labelScaleMultiplier,
+        quaternion: new THREE.Quaternion().setFromEuler(new THREE.Euler(orbitBase.tiltX, 0, orbitBase.tiltZ)),
+        depthAmp: orbitBase.depthAmp,
+        depthRange: orbitBase.depthRange,
+        driftX: orbitBase.driftX,
+        driftY: orbitBase.driftY,
+        driftSpeed: orbitBase.driftSpeed,
+        baseOpacity: orbitBase.baseOpacity,
+        opacityBoost: orbitBase.opacityBoost
+      };
+    }else{
+      sprite.userData.orbit = {
+        radiusX: orbitBase.radiusX + (index % 2 === 0 ? 0.45 : -0.35),
+        radiusZ: orbitBase.radiusZ + (index % 2 === 0 ? 0.3 : -0.2),
+        baseY: orbitBase.baseY + (Math.floor(index / 3) - 1) * 0.65,
+        floatAmp: orbitBase.floatAmp,
+        speed: orbitBase.speed * (index % 2 === 0 ? 1 : -1),
+        phase: index * 0.82,
+        baseScale: orbitBase.baseScale * labelScaleMultiplier
+      };
+    }
+    root.add(sprite);
+    labels.push(sprite);
+    resources.push(material);
+  });
+
+  let imagePlane = null;
+  const localSceneData = {mount, scene, camera, renderer, labels, resources, imagePlane, glowPlane};
+  const imageTexture = new THREE.TextureLoader().load(options.imageSrc || './assets/cyber-brain.png', (tex) => {
+    if(profileOrbitSceneData !== localSceneData){
+      tex.dispose?.();
+      return;
+    }
+    tex.colorSpace = THREE.SRGBColorSpace;
+    const img = tex.image;
+    const ratio = img?.width && img?.height ? img.width / img.height : 1;
+    const planeHeight = options.imageHeight || 10.4;
+    const planeWidth = planeHeight * ratio;
+    const imageMaterial = new THREE.MeshBasicMaterial({
+      map:tex,
+      transparent:true,
+      depthWrite:false
+    });
+    imagePlane = new THREE.Mesh(new THREE.PlaneGeometry(planeWidth, planeHeight), imageMaterial);
+    imagePlane.position.x = -0.28;
+    root.add(imagePlane);
+    localSceneData.imagePlane = imagePlane;
+    resources.push(tex, imagePlane.geometry, imageMaterial);
+  });
+
+  profileOrbitSceneData = localSceneData;
+  profileOrbitResizeHandler = () => {
+    if(!profileOrbitSceneData) return;
+    const r = mount.getBoundingClientRect();
+    const w = Math.max(1, r.width || 1200);
+    const h = Math.max(1, r.height || 470);
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+    renderer.setSize(w, h, false);
+  };
+  window.addEventListener('resize', profileOrbitResizeHandler);
+  profileOrbitTick();
+};
+
+let scene, camera, renderer, points, material, particleCanvas;
+let initialized = false, animating = false;
+let progress = 1.0, targetProgress = 0.0;
+const clock = new THREE.Clock();
+const BASE_ROT_Y = -Math.PI / 4;  // 模型正面朝向校正（向左转 45 度）
+let activeParticleCanvasId = 'particle-canvas-reform';
+let particleResizeBound = false;
+
+const VERT = `
+  uniform float uTime;
+  uniform float uProgress;
+  uniform float uSize;
+  attribute vec3 aRandom;
+  attribute float aSeed;
+  varying float vAlpha;
+  varying float vMix;
+  void main(){
+    vec3 p = position;
+    float t = uTime + aSeed * 6.2831;
+    vec3 jitter = vec3(
+      sin(t*1.2) + cos(t*0.7),
+      cos(t*0.9) + sin(t*1.4),
+      sin(t*1.1) + cos(t*0.8)
+    ) * 0.05;
+    p += jitter;
+    float disp = uProgress * (1.0 + aSeed*1.6);
+    p += aRandom * disp;
+    vec4 mv = modelViewMatrix * vec4(p, 1.0);
+    gl_Position = projectionMatrix * mv;
+    gl_PointSize = uSize * (0.6 + aSeed*0.5) * (90.0 / -mv.z);
+    vAlpha = mix(0.55, 0.08, smoothstep(0.0, 1.0, uProgress));
+    vMix = aSeed;
+  }
+`;
+const FRAG = `
+  uniform vec3 uColor1;
+  uniform vec3 uColor2;
+  uniform vec3 uColor3;
+  varying float vAlpha;
+  varying float vMix;
+  void main(){
+    vec2 uv = gl_PointCoord - vec2(0.5);
+    float d = length(uv);
+    if(d > 0.5) discard;
+    float core = pow(1.0 - smoothstep(0.0, 0.5, d), 1.7);
+    vec3 col;
+    if(vMix < 0.56){
+      col = mix(uColor1, uColor2, smoothstep(0.0, 0.56, vMix));
+    }else{
+      col = mix(uColor2, uColor3, smoothstep(0.56, 1.0, vMix));
+    }
+    gl_FragColor = vec4(col, core * vAlpha);
+  }
+`;
+
+function pickTriangleIndex(cumulativeAreas, target){
+  let lo = 0;
+  let hi = cumulativeAreas.length - 1;
+  while(lo < hi){
+    const mid = (lo + hi) >> 1;
+    if(target <= cumulativeAreas[mid]) hi = mid;
+    else lo = mid + 1;
+  }
+  return lo;
+}
+
+function disposeParticleScene(){
+  animating = false;
+  if(points){
+    points.geometry?.dispose?.();
+    points.material?.dispose?.();
+    if(scene) scene.remove(points);
+    points = null;
+  }
+  material = null;
+  if(renderer){
+    renderer.dispose?.();
+    renderer = null;
+  }
+  scene = null;
+  camera = null;
+  particleCanvas = null;
+  initialized = false;
+}
+
+function init(canvasId = 'particle-canvas-reform'){
+  if(initialized && activeParticleCanvasId === canvasId) return;
+  if(initialized) disposeParticleScene();
+  activeParticleCanvasId = canvasId;
+  initialized = true;
+  const canvas = document.getElementById(canvasId);
+  if(!canvas){
+    initialized = false;
+    return;
+  }
+  particleCanvas = canvas;
+  const W = canvas.clientWidth || 3000, H = canvas.clientHeight || 600;
+  scene = new THREE.Scene();
+  scene.fog = new THREE.FogExp2(0x050507, 0.012);
+  camera = new THREE.PerspectiveCamera(40, W/H, 0.1, 800);
+  camera.position.set(0, 0, 60);
+  renderer = new THREE.WebGLRenderer({canvas, antialias:false, alpha:true});
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setSize(W, H, false);
+  scene.add(new THREE.AmbientLight(0xffffff, 0.4));
+  new GLTFLoader().load(
+    'modelToUse.glb',
+    buildParticles,
+    undefined,
+    (err) => console.error('[particles] load error:', err)
+  );
+  if(!particleResizeBound){
+    window.addEventListener('resize', onResize);
+    particleResizeBound = true;
+  }
+}
+
+function buildParticles(gltf){
+  gltf.scene.updateMatrixWorld(true);
+  const bbox = new THREE.Box3().setFromObject(gltf.scene);
+  const size = new THREE.Vector3();
+  bbox.getSize(size);
+  const center = bbox.getCenter(new THREE.Vector3());
+  const maxDim = Math.max(size.x, size.y, size.z) || 1;
+  const scaleF = 28 / maxDim;
+  const surfaces = [];
+  let totalArea = 0;
+  const vA = new THREE.Vector3();
+  const vB = new THREE.Vector3();
+  const vC = new THREE.Vector3();
+  const samplePoint = new THREE.Vector3();
+  const edgeAB = new THREE.Vector3();
+  const edgeAC = new THREE.Vector3();
+
+  gltf.scene.traverse(o => {
+    if(!o.isMesh || !o.geometry?.attributes?.position) return;
+    const pos = o.geometry.attributes.position;
+    const index = o.geometry.index;
+    const triCount = index ? Math.floor(index.count / 3) : Math.floor(pos.count / 3);
+    if(!triCount) return;
+    const cumulativeAreas = new Float32Array(triCount);
+    let meshArea = 0;
+
+    for(let t = 0; t < triCount; t++){
+      const base = t * 3;
+      const i0 = index ? index.getX(base) : base;
+      const i1 = index ? index.getX(base + 1) : base + 1;
+      const i2 = index ? index.getX(base + 2) : base + 2;
+      vA.fromBufferAttribute(pos, i0).applyMatrix4(o.matrixWorld);
+      vB.fromBufferAttribute(pos, i1).applyMatrix4(o.matrixWorld);
+      vC.fromBufferAttribute(pos, i2).applyMatrix4(o.matrixWorld);
+      const area = edgeAB.subVectors(vB, vA).cross(edgeAC.subVectors(vC, vA)).length() * 0.5;
+      meshArea += area;
+      cumulativeAreas[t] = meshArea;
+    }
+
+    if(meshArea <= 0) return;
+    totalArea += meshArea;
+    surfaces.push({pos, index, matrixWorld: o.matrixWorld.clone(), cumulativeAreas, meshArea});
+  });
+
+  const TARGET = 270000;
+  const positions = [];
+
+  if(totalArea > 0 && surfaces.length){
+    let assigned = 0;
+    surfaces.forEach((surface, surfaceIndex) => {
+      const sampleCount = surfaceIndex === surfaces.length - 1
+        ? Math.max(0, TARGET - assigned)
+        : Math.max(1, Math.round(TARGET * (surface.meshArea / totalArea)));
+      assigned += sampleCount;
+
+      for(let i = 0; i < sampleCount; i++){
+        const triIndex = pickTriangleIndex(surface.cumulativeAreas, Math.random() * surface.meshArea);
+        const base = triIndex * 3;
+        const i0 = surface.index ? surface.index.getX(base) : base;
+        const i1 = surface.index ? surface.index.getX(base + 1) : base + 1;
+        const i2 = surface.index ? surface.index.getX(base + 2) : base + 2;
+        vA.fromBufferAttribute(surface.pos, i0).applyMatrix4(surface.matrixWorld);
+        vB.fromBufferAttribute(surface.pos, i1).applyMatrix4(surface.matrixWorld);
+        vC.fromBufferAttribute(surface.pos, i2).applyMatrix4(surface.matrixWorld);
+
+        let u = Math.random();
+        let v = Math.random();
+        if(u + v > 1){
+          u = 1 - u;
+          v = 1 - v;
+        }
+
+        samplePoint.copy(vA)
+          .add(edgeAB.subVectors(vB, vA).multiplyScalar(u))
+          .add(edgeAC.subVectors(vC, vA).multiplyScalar(v));
+        samplePoint.sub(center).multiplyScalar(scaleF);
+        positions.push(samplePoint.x, samplePoint.y, samplePoint.z);
+      }
+    });
+  }
+
+  const count = positions.length / 3;
+  console.log('[particles] sampled:', count);
+  const geo = new THREE.BufferGeometry();
+  geo.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+  const randoms = new Float32Array(count*3);
+  const seeds = new Float32Array(count);
+  for(let i=0;i<count;i++){
+    const theta = Math.random()*Math.PI*2;
+    const phi = Math.acos(2*Math.random()-1);
+    const r = 14 + Math.random()*26;
+    randoms[i*3]   = Math.sin(phi)*Math.cos(theta)*r;
+    randoms[i*3+1] = Math.sin(phi)*Math.sin(theta)*r;
+    randoms[i*3+2] = Math.cos(phi)*r;
+    seeds[i] = Math.pow(Math.random(), 1.65);
+  }
+  geo.setAttribute('aRandom', new THREE.BufferAttribute(randoms, 3));
+  geo.setAttribute('aSeed', new THREE.BufferAttribute(seeds, 1));
+  material = new THREE.ShaderMaterial({
+    uniforms: {
+      uTime: {value:0},
+      uProgress: {value:1.0},
+      uSize: {value: 3.25},
+      uColor1: {value: new THREE.Color('#3b82f6')},
+      uColor2: {value: new THREE.Color('#ffffff')},
+      uColor3: {value: new THREE.Color('#7000ff')}
+    },
+    vertexShader: VERT,
+    fragmentShader: FRAG,
+    blending: THREE.AdditiveBlending,
+    transparent: true,
+    depthWrite: false,
+    depthTest: true
+  });
+  points = new THREE.Points(geo, material);
+  scene.add(points);
+  points.rotation.set(0, BASE_ROT_Y, 0);
+  // 进场：散→聚
+  progress = 1.0;
+  targetProgress = 0.0;
+}
+
+function onResize(){
+  const canvas = particleCanvas || document.getElementById(activeParticleCanvasId);
+  if(!canvas) return;
+  const W = canvas.clientWidth || 3000, H = canvas.clientHeight || 600;
+  if(camera){ camera.aspect = W/H; camera.updateProjectionMatrix(); }
+  if(renderer) renderer.setSize(W, H, false);
+}
+
+function tick(){
+  if(!animating) return;
+  requestAnimationFrame(tick);
+  const dt = Math.min(0.05, clock.getDelta());
+  progress += (targetProgress - progress) * Math.min(1, dt * 1.3);
+  if(material){
+    material.uniforms.uTime.value += dt;
+    material.uniforms.uProgress.value = progress;
+  }
+  if(points){
+    const rotFactor = Math.max(0, Math.min(1, (0.18 - progress) / 0.14));
+    points.rotation.y += dt * 0.12 * rotFactor;
+    points.rotation.x = Math.sin(material.uniforms.uTime.value * 0.15) * 0.06 * rotFactor;
+  }
+  renderer.render(scene, camera);
+}
+
+function start(canvasId = 'particle-canvas-reform'){
+  if(!initialized || activeParticleCanvasId !== canvasId) init(canvasId);
+  if(animating) return;
+  animating = true;
+  // 重新进入也重播汇聚动画
+  progress = 1.0;
+  targetProgress = 0.0;
+  if(material){
+    material.uniforms.uProgress.value = 1.0;
+    material.uniforms.uTime.value = 0;
+  }
+  if(points) points.rotation.set(0, BASE_ROT_Y, 0);
+  clock.start();
+  tick();
+}
+function stop(){ animating = false; }
+
+window.addEventListener('particle-slide-enter', (event) => {
+  const canvasId = event.detail?.canvasId || 'particle-canvas-reform';
+  init(canvasId);
+  start(canvasId);
+});
+window.addEventListener('particle-slide-leave', () => stop());
+window.particleSlideReady = true;
+if(window.particleSlidePending){
+  window.dispatchEvent(new CustomEvent('particle-slide-enter', {detail:{canvasId:window.particleSlidePending}}));
+}
+</script>
+
+
+<script>
+/* ===== Preshow：视频 + Ambilight 环境光 ===== */
+function playPreshow(){
+  const psEl  = document.getElementById('preshow');
+  const video = document.getElementById('ps-video');
+  const ambi  = document.getElementById('ps-ambi');
+  const start = document.getElementById('ps-start');
+  const skip  = document.getElementById('ps-skip');
+  if(!psEl || !video){ playIntro(); return; }
+
+  /* ── Ambilight 参数 ── */
+  const SEGS  = 14;
+  const SW    = 192;
+  const SH    = 108;
+  const DEPTH = 0.12;
+  const EXT   = 110;
+  const SMOOTH = 0.10;
+
+  const sampleCanvas = document.createElement('canvas');
+  sampleCanvas.width = SW; sampleCanvas.height = SH;
+  const sctx = sampleCanvas.getContext('2d', {willReadFrequently:true});
+  const actx = ambi.getContext('2d');
+
+  const state = {
+    top:    new Float32Array(SEGS*3),
+    bottom: new Float32Array(SEGS*3),
+    left:   new Float32Array(SEGS*3),
+    right:  new Float32Array(SEGS*3),
+  };
+
+  function sampleAvg(x,y,w,h){
+    x=Math.max(0,Math.round(x)); y=Math.max(0,Math.round(y));
+    w=Math.max(1,Math.min(Math.round(w),SW-x));
+    h=Math.max(1,Math.min(Math.round(h),SH-y));
+    const d=sctx.getImageData(x,y,w,h).data;
+    let r=0,g=0,b=0; const n=d.length>>2;
+    for(let i=0;i<d.length;i+=4){r+=d[i];g+=d[i+1];b+=d[i+2];}
+    return[r/n,g/n,b/n];
+  }
+  function updateColors(){
+    const depth=Math.round(SH*DEPTH),segW=SW/SEGS,segH=SH/SEGS;
+    for(let i=0;i<SEGS;i++){
+      const t={
+        top:   sampleAvg(i*segW,0,segW,depth),
+        bottom:sampleAvg(i*segW,SH-depth,segW,depth),
+        left:  sampleAvg(0,i*segH,depth,segH),
+        right: sampleAvg(SW-depth,i*segH,depth,segH),
+      };
+      for(const s of['top','bottom','left','right']){
+        const a=state[s];
+        a[i*3]  +=(t[s][0]-a[i*3])  *SMOOTH;
+        a[i*3+1]+=(t[s][1]-a[i*3+1])*SMOOTH;
+        a[i*3+2]+=(t[s][2]-a[i*3+2])*SMOOTH;
+      }
+    }
+  }
+  const rgb=(a,i)=>`rgb(${a[i*3]|0},${a[i*3+1]|0},${a[i*3+2]|0})`;
+  const avgRgb=(a,ia,b,ib)=>
+    `rgb(${((a[ia*3]+b[ib*3])/2)|0},${((a[ia*3+1]+b[ib*3+1])/2)|0},${((a[ia*3+2]+b[ib*3+2])/2)|0})`;
+
+  function fillGrad(x,y,w,h,arr,dir){
+    const g=dir==='h'
+      ?actx.createLinearGradient(x,0,x+w,0)
+      :actx.createLinearGradient(0,y,0,y+h);
+    for(let i=0;i<SEGS;i++) g.addColorStop(i/(SEGS-1),rgb(arr,i));
+    actx.fillStyle=g; actx.fillRect(x,y,w,h);
+  }
+
+  function drawAmbi(){
+    const sceneEl = document.getElementById('ps-scene');
+    const vw = video.offsetWidth;
+    const vh = video.offsetHeight;
+    if(!vw||!vh) return;
+    const cw = vw+EXT*2, ch = vh+EXT*2;
+
+    // 定位：ambi 相对于 .ps-stage，从视频位置往外扩 EXT
+    const sceneLeft = sceneEl.offsetLeft;
+    const sceneTop  = sceneEl.offsetTop;
+    ambi.style.left = (sceneLeft - EXT) + 'px';
+    ambi.style.top  = (sceneTop  - EXT) + 'px';
+
+    if(ambi.width!==cw||ambi.height!==ch){
+      ambi.width=cw; ambi.height=ch;
+    }
+    actx.clearRect(0,0,cw,ch);
+    fillGrad(EXT,0,vw,EXT,state.top,'h');
+    fillGrad(EXT,ch-EXT,vw,EXT,state.bottom,'h');
+    fillGrad(0,EXT,EXT,vh,state.left,'v');
+    fillGrad(cw-EXT,EXT,EXT,vh,state.right,'v');
+    const corners=[
+      [0,0,              avgRgb(state.top,0,     state.left,0)],
+      [cw-EXT,0,         avgRgb(state.top,SEGS-1,state.right,0)],
+      [0,ch-EXT,         avgRgb(state.bottom,0,  state.left,SEGS-1)],
+      [cw-EXT,ch-EXT,    avgRgb(state.bottom,SEGS-1,state.right,SEGS-1)],
+    ];
+    for(const[cx,cy,c] of corners){actx.fillStyle=c;actx.fillRect(cx,cy,EXT,EXT);}
+  }
+
+  let rafId;
+  function tick(){
+    rafId=requestAnimationFrame(tick);
+    if(video.paused||video.ended||!video.videoWidth) return;
+    sctx.drawImage(video,0,0,SW,SH);
+    updateColors();
+    drawAmbi();
+  }
+  video.addEventListener('play',  ()=>{cancelAnimationFrame(rafId);tick();});
+  video.addEventListener('pause', ()=>cancelAnimationFrame(rafId));
+  window.addEventListener('resize', drawAmbi);
+
+  /* ── 结束/跳过 ── */
+  let ended=false;
+  function endPreshow(){
+    if(ended) return; ended=true;
+    cancelAnimationFrame(rafId);
+    gsap.to(psEl,{
+      opacity:0,y:'-3%',duration:1.1,ease:'power3.inOut',
+      onComplete:()=>{
+        psEl.style.display='none';
+        const introEl=document.getElementById('intro');
+        if(introEl){introEl.style.display='';gsap.set(introEl,{opacity:1,y:'0%'});}
+        gsap.set('.intro-top',{y:'0%'});
+        gsap.set('.intro-bottom',{y:'0%'});
+        playIntro();
+      }
+    });
+  }
+  video.addEventListener('ended', endPreshow);
+  skip.addEventListener('click',  endPreshow);
+
+  /* ── 启动播放（2×速）── */
+  function startVideo(){
+    if(video.paused){
+      video.playbackRate=2.0;
+      video.play().catch(()=>{});
+      gsap.to(start,{opacity:0,duration:.5,onComplete:()=>start.style.display='none'});
+      setTimeout(()=>skip.classList.add('on'),800);
+    }
+  }
+  start.addEventListener('click', startVideo);
+  video.addEventListener('click',()=>{
+    if(!video.paused) video.pause();
+    else{video.playbackRate=2.0;video.play().catch(()=>{});}
+  });
+
+  function preshowKey(e){
+    if(e.key===' '||e.key==='Enter'){e.preventDefault();startVideo();}
+    if(e.key==='Escape') endPreshow();
+  }
+  document.addEventListener('keydown', preshowKey);
+  video.addEventListener('ended',()=>document.removeEventListener('keydown',preshowKey));
+}
+</script>
+
+
+<script>window.process={env:{NODE_ENV:"production"}};</script>
+<script src="./assets/p5-bundle.iife.js"></script>
+<script>
+/* ===== Presentation5 第 11 页挂载/卸载 ===== */
+let _p5Unmount = null;
+let _p5HideTimer = null;
+let _p5StartRaf = 0;
+const P5_INIT_PAYLOAD = {
+  name: '成都川味云享餐饮有限公司',
+  type: '餐饮 - 川菜馆 (高新区旗舰店)',
+  scale: '3人核心团队 + 6人雇员',
+  region: '成都市高新自贸区孵化园餐娱街',
+  status: '月流水5万元左右，客源持续下降，复购率低于15%，面临高额铺租与线上平台分流竞争。',
+  goal: '请生成一份高质量发展咨询报告，评估经营瓶颈，识别突破机会，并提供未来三个月高度可执行、低成本的项目落地运营计划。'
+};
+
+function p5Show(){
+  const overlay = document.getElementById('p5-overlay');
+  const mount   = document.getElementById('p5-mount');
+  const slide   = document.getElementById('slide-flow');
+  if(!overlay || !mount || !window.Presentation5) return;
+  if(_p5HideTimer){
+    clearTimeout(_p5HideTimer);
+    _p5HideTimer = null;
+  }
+  if(slide){
+    slide.classList.remove('flow-entering');
+    void slide.offsetWidth;
+    slide.classList.add('flow-entering');
+  }
+  overlay.style.display = 'flex';
+  requestAnimationFrame(() => overlay.classList.add('on'));
+  // mount() 内部已处理重复调用，无需手动 unmount
+  _p5Unmount = window.Presentation5.mount(mount);
+  if(_p5StartRaf){
+    cancelAnimationFrame(_p5StartRaf);
+    _p5StartRaf = 0;
+  }
+  _p5StartRaf = requestAnimationFrame(() => {
+    _p5StartRaf = 0;
+    window.Presentation5.start(P5_INIT_PAYLOAD);
+  });
+  requestAnimationFrame(() => {
+    syncP5MountScale();
+    requestAnimationFrame(syncP5MountScale);
+  });
+  setTimeout(() => slide?.classList.remove('flow-entering'), 1000);
+}
+
+function p5Hide(){
+  const overlay = document.getElementById('p5-overlay');
+  const slide   = document.getElementById('slide-flow');
+  if(!overlay) return;
+  slide?.classList.remove('flow-entering');
+  overlay.classList.remove('on');
+  if(_p5StartRaf){
+    cancelAnimationFrame(_p5StartRaf);
+    _p5StartRaf = 0;
+  }
+  _p5HideTimer = setTimeout(() => {
+    if(_p5Unmount){ _p5Unmount(); _p5Unmount = null; }
+    overlay.style.display = 'none';
+    _p5HideTimer = null;
+  }, 460);
+}
+</script>
+
+</body>
+</html>
