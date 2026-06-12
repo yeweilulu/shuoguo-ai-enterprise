@@ -72,6 +72,7 @@ body::-webkit-scrollbar{
   <div class="intro-half intro-bottom"></div>
   <div class="intro-kicker">SO GOOD AI · GLOBAL STRATEGY LAUNCH</div>
   <div class="intro-text" id="intro-text"></div>
+  <div class="intro-hint" id="intro-hint">按 → 进入</div>
   <div class="crack-line"></div>
   <div class="crack-glow"></div>
 </div>
@@ -4026,23 +4027,25 @@ function unlockStageBehindIntro(){
 }
 
 function playIntro(){
-  const text = '硕果 AI 全球战略发布会 2026';
   const wrap = document.getElementById('intro-text');
+  const hint = document.getElementById('intro-hint');
   if(!wrap){ unlockStageBehindIntro(); playCoverIn(); return; }
   gsap.set(['.cover-eyebrow', '.cover-title', '.cover-sub', '.cover-meta'], {opacity:0, y:0});
   gsap.set('.intro-top,.intro-bottom', {y:'0%', '--slice-opacity':0, '--slice-scale':1.18});
   gsap.set('.intro-bg', {opacity:0, scale:1.18, filter:'saturate(1.04) contrast(1.08) blur(0px)'});
   gsap.set('.intro-kicker', {opacity:0, y:18});
-  const keepSet = new Set('硕果2026');
-  wrap.innerHTML = text.split('').map((c,i)=>{
+  if(hint) gsap.set(hint, {opacity:0, y:18});
+  const text = '世界领先的下一代 Harness Agent';
+  const keepSet = new Set('HarnessAgent');
+  wrap.innerHTML = text.split('').map((c) => {
     let cls = 'intro-char';
+    if(c === ' ') cls += ' intro-space';
     if(keepSet.has(c)){
-      if(/\d/.test(c)) cls += ' keep keep-num';
-      else cls += ' keep keep-cn';
+      cls += ' keep keep-key';
     } else {
       cls += ' hide';
     }
-    const disp = c===' ' ? '&nbsp;' : c;
+    const disp = c === ' ' ? '&nbsp;' : c;
     return `<span class="${cls}">${disp}</span>`;
   }).join('');
 
@@ -4081,15 +4084,24 @@ function playIntro(){
       stagger:.045,
       ease:'power3.out'
     }, .72);
+
+  if(hint){
+    tl.to(hint, {
+      opacity:1,
+      y:0,
+      duration:.72,
+      ease:'power3.out'
+    }, '>-0.12');
+  }
 }
 
 function playIntroTear(){
   introPlayed = true;
   const wrap = document.getElementById('intro-text');
+  const hint = document.getElementById('intro-hint');
   const hideChars = wrap.querySelectorAll('.intro-char.hide');
   const keepChars = wrap.querySelectorAll('.intro-char.keep');
-  const numChars  = wrap.querySelectorAll('.intro-char.keep-num');
-  const cnChars   = wrap.querySelectorAll('.intro-char.keep-cn');
+  const keyChars  = wrap.querySelectorAll('.intro-char.keep-key');
 
   const tl = gsap.timeline({
     onComplete: ()=>{
@@ -4098,15 +4110,15 @@ function playIntroTear(){
     }
   });
 
-  tl.to(hideChars, {scaleY:0, duration:.5, stagger:.04, ease:'power2.in', transformOrigin:'center center'}, '<+.1');
-  tl.to(hideChars, {width:0, marginLeft:0, marginRight:0, paddingLeft:0, paddingRight:0, duration:.85, ease:'power3.inOut'}, '-=.3');
-  tl.to(keepChars, {scale:1.15, duration:.5, ease:'power2.out'}, '-=.2');
-  tl.to(numChars, {scale:1.8, letterSpacing:'.02em', duration:.85, ease:'back.out(1.6)', transformOrigin:'center center'}, '+=.15')
-    .to(cnChars, {scale:1.35, duration:.5, ease:'power2.out'}, '<+.1');
+  tl.to(hideChars, {opacity:0, y:-10, filter:'blur(16px)', duration:.46, stagger:.03, ease:'power2.in'}, '<+.1');
+  tl.to(hideChars, {width:0, duration:.62, ease:'power3.inOut'}, '-=.12');
+  tl.to(keepChars, {scale:1.15, duration:.5, ease:'power2.out'}, '-=.34');
+  tl.to(keyChars, {scale:1.58, duration:.85, ease:'back.out(1.55)', transformOrigin:'center center'}, '+=.15');
   tl.to('.crack-glow', {scale:1, opacity:1, duration:.18, ease:'power2.out'}, '+=.16')
     .to('.crack-line', {scaleX:1, duration:.38, ease:'power4.inOut'}, '<')
     .to('.crack-glow', {scale:28, opacity:0, duration:.46, ease:'power2.out'}, '-=.16');
   tl.to(wrap, {opacity:0, scale:.85, filter:'blur(10px)', duration:.35, ease:'power2.in'}, '-=.5');
+  if(hint) tl.to(hint, {opacity:0, y:10, duration:.28, ease:'power2.in'}, '<');
   tl.to('.intro-kicker', {opacity:0, y:-16, duration:.32, ease:'power2.in'}, '<');
   tl.to('.intro-bg', {opacity:0, scale:1.04, filter:'saturate(1.1) contrast(1.12) blur(3px)', duration:.42, ease:'power3.inOut'}, '-=.2');
   tl.call(unlockStageBehindIntro, null);
